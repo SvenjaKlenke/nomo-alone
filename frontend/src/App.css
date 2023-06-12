@@ -38,7 +38,11 @@
   z-index: -1;
 }
 
-.App-header h1,
+h1 {
+  color: #FF9B71;
+  font-size: 20px;
+}
+
 .App-header p {
   color: #274E13;
 }
