@@ -3,8 +3,12 @@ import logo from './Logo.png';
 import './App.css';
 import TaskCardGallery from "./gallery/TaskCardGallery";
 import {Route, Routes} from "react-router-dom";
+import useTasks from "./hook/useTasks";
 
 function App() {
+
+    const {tasksList} = useTasks()
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,7 +16,7 @@ function App() {
       </header>
         <Routes>
             <Route path={"/tasks"}
-            element={<TaskCardGallery allTasks={tasks}/>}/>
+            element={<TaskCardGallery allTasks={tasksList}/>}/>
         </Routes>
     </div>
   );
