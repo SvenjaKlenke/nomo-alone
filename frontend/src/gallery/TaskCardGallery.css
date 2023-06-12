@@ -1,0 +1,7 @@
+.Taskcardgallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    left: 16px;
+    top: 178px;
+}

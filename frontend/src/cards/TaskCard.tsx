@@ -13,6 +13,9 @@ function TaskCard(props:Props) {
             <p>{props.task.name}</p>
             <p>{props.task.createDate}</p>
             <p>{props.task.deadline}</p>
+            <div className="Buttons">
+                <button className="Buttons">Details</button>
+            </div>
         </div>
     );
 }

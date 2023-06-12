@@ -15,7 +15,7 @@ function TaskCardGallery(props:Props) {
         props.getAllTasks()
     }, [])
     return (
-        <div className={"taskcardgallery"}>
+        <div className={"Taskcardgallery"}>
             {props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)}
         </div>
     );
