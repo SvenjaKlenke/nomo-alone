@@ -16,7 +16,7 @@ public class ControllerTasks {
 
     private final ServiceTasks serviceTasks;
 
-    @GetMapping()
+    @GetMapping("")
     public List<TaskModel> getAllTasks() {
         return serviceTasks.getAllTasks();
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Task} from "../model/TaskModel";
+import './TaskCard.css';
 
 type Props = {
     task: Task

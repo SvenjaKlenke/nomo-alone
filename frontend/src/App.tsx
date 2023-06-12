@@ -7,7 +7,7 @@ import useTasks from "./hook/useTasks";
 
 function App() {
 
-    const {tasksList} = useTasks()
+    const {getAllTasks, tasksList} = useTasks()
 
   return (
     <div className="App">
@@ -15,8 +15,8 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
         <Routes>
-            <Route path={"/tasks"}
-            element={<TaskCardGallery allTasks={tasksList}/>}/>
+            <Route path="/tasks"
+            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>}/>
         </Routes>
     </div>
   );
