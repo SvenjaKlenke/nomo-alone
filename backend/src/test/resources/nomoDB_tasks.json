@@ -1,0 +1,54 @@
+[
+  {
+    "_id": {
+      "$oid": "6486f0fa5aa5266f62537361"
+    },
+    "creator": "Svenja",
+    "category": "PLAYDATE",
+    "name": "Skat",
+    "createDate": "12.06.2023",
+    "deadline": "15.06.2023",
+    "amoundOfPeople": 3,
+    "text": "Search people for playing Skat",
+    "_class": "de.neuefische.backend.model.TaskModel"
+  },
+  {
+    "_id": {
+      "$oid": "6486f3575aa5266f62537362"
+    },
+    "creator": "Amelie",
+    "category": "APPOINTMENT",
+    "name": "Doctor",
+    "createDate": "12.06.2023",
+    "deadline": "14.06.2023",
+    "amoundOfPeople": 1,
+    "text": "Search one to go to doctor",
+    "_class": "de.neuefische.backend.model.TaskModel"
+  },
+  {
+    "_id": {
+      "$oid": "648715665aa5266f62537363"
+    },
+    "creator": "Svenja",
+    "category": "VISIT",
+    "name": "Gossip",
+    "createDate": "12.06.2023",
+    "deadline": "13.06.2023",
+    "amoundOfPeople": 2,
+    "text": "Search people for talking about gossip",
+    "_class": "de.neuefische.backend.model.TaskModel"
+  },
+  {
+    "_id": {
+      "$oid": "648715b05aa5266f62537364"
+    },
+    "creator": "Kristina",
+    "category": "SHOPPING",
+    "name": "Shoes",
+    "createDate": "12.06.2023",
+    "deadline": "17.06.2023",
+    "amoundOfPeople": 1,
+    "text": "I need some sommershoes",
+    "_class": "de.neuefische.backend.model.TaskModel"
+  }
+]
