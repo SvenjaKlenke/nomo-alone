@@ -9,10 +9,22 @@ type Props = {
 function TaskCard(props:Props) {
     return (
         <div className="Taskcard">
-            <p>{props.task.creator}</p>
-            <p>{props.task.name}</p>
-            <p>{props.task.createDate}</p>
-            <p>{props.task.deadline}</p>
+            <div className="Smallcard">
+                <p>Creator:</p>
+                <p>{props.task.creator}</p>
+            </div>
+            <div className="Smallcard">
+                <p>Taskname:</p>
+                <p>{props.task.name}</p>
+            </div>
+            <div className="Smallcard">
+                <p>Createdate:</p>
+                <p>{props.task.createDate}</p>
+            </div>
+            <div className="Smallcard">
+                <p>Deadline:</p>
+                <p>{props.task.deadline}</p>
+            </div>
             <div className="Buttons">
                 <button className="Buttons">Details</button>
             </div>

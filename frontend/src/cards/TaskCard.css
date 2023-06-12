@@ -10,15 +10,14 @@
     margin: 10px;
 }
 
-p {
+.Smallcard {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 15px 5px 10px 5px;
-    width: 64px;
+    margin: 15px 2px 0 5px;
+    width: 67px;
     height: 103px;
-    left: 30px;
-    top: 194px;
     background: #F2F2F2;
     border: 1px solid #000000;
     border-radius: 10px;
@@ -36,19 +35,19 @@ p {
     height: 16px;
     left: 206px;
     top: 419px;
-
     background: #B6D7A8;
     border: 1px solid #000000;
     border-radius: 35px;
-
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 8px;
     line-height: 10px;
-
     text-align: center;
-
     color: #274E13;
+}
 
+p {
+    display: block;
+    margin-bottom: 10px;
 }
