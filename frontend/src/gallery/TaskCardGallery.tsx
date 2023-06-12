@@ -10,9 +10,10 @@ type Props = {
 
 function TaskCardGallery(props:Props) {
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     useEffect(() => {
         props.getAllTasks()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div className={"taskcardgallery"}>
