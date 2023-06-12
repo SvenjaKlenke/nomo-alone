@@ -16,7 +16,7 @@ public class TaskModel {
     @Id
     private String id;
     private String creator;
-    private String category;
+    private category category;
     private String name;
     private String createDate;
     private String deadline;
