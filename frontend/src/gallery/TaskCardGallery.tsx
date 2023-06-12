@@ -3,8 +3,7 @@ import {Task} from "../model/TaskModel";
 import TaskCard from "../cards/TaskCard";
 
 type Props = {
-    allTasks: Task[],
-    getAllTasks: ()=>void,
+    allTasks: Task[]
 }
 
 function TaskCardGallery(props:Props) {
