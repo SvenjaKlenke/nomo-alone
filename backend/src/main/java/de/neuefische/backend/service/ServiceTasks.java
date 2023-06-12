@@ -14,7 +14,6 @@ public class ServiceTasks {
 
     private final RepoTasks repoTasks;
 
-
     public List<TaskModel> getAllTasks() {
         return repoTasks.findAll();
     }
