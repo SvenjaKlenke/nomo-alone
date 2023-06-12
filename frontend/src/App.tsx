@@ -15,8 +15,8 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
         <Routes>
-            <Route path="/tasks"
-            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>}/>
+            <Route path="/"
+                   element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>}/>
         </Routes>
     </div>
   );
