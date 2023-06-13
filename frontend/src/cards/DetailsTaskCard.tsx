@@ -14,6 +14,10 @@ function DetailsTaskCard(props: Props) {
 
     const actualTask: Task | undefined = props.allTasks.find(currentTask => currentTask.id === id);
 
+    {
+        console.log("Test")
+    }
+
     return (
         <div className="Detailstaskcard">
             <div className="Smallcard">
