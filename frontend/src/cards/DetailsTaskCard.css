@@ -2,22 +2,59 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 158px;
-    height: 300px;
+    position: absolute;
+    width: 333px;
+    height: 572px;
     background: #B6D7A8;
     border: 1px solid #000000;
     border-radius: 35px;
     margin: 10px;
+    font-size: 20px;
+    color: #FF9B71;
 }
 
-.Smallcard {
+.Smallline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 2px 0 0;
+    width: 278px;
+    height: 44px;
+    background: #F2F2F2;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.Smallline2 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 15px 2px 0 5px;
-    width: 67px;
-    height: 103px;
+    width: 130px;
+    height: auto;
+    background: #F2F2F2;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 10px;
+    text-align: center;
+    color: #FF9B71;
+}
+
+.Textblock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 278px;
+    height: 145px;
     background: #F2F2F2;
     border: 1px solid #000000;
     border-radius: 10px;
@@ -47,7 +84,14 @@
     color: #274E13;
 }
 
-p {
-    display: block;
-    margin-bottom: 10px;
+h1 {
+    font-size: 24px;
 }
+
+h2 {
+    font-size: 20px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+

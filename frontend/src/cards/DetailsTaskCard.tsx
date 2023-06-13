@@ -15,22 +15,27 @@ function DetailsTaskCard(props: Props) {
     const actualTask: Task | undefined = props.allTasks.find(currentTask => currentTask.id === id);
 
     return (
-        <div className="Detailstaskcard">
-            <div className="Smallcard">
-                <p>Creator:</p>
-                <p>{actualTask?.creator}</p>
-            </div>
-            <div className="Smallcard">
-                <p>Taskname:</p>
-                <p>{actualTask?.name}</p>
-            </div>
-            <div className="Smallcard">
-                <p>Createdate:</p>
-                <p>{actualTask?.createDate}</p>
-            </div>
-            <div className="Smallcard">
-                <p>Deadline:</p>
-                <p>{actualTask?.deadline}</p>
+        <div>
+            <h1>{actualTask?.name}</h1>
+            <div className="Detailstaskcard">
+                <div className="Smallline">
+                    <h2>Creator: {actualTask?.creator}</h2>
+                </div>
+                <div className="Smallline">
+                    <h2>Category: {actualTask?.category}</h2>
+                </div>
+                <div className="Smallline2">
+                    <h2>Createdate: <br/>{actualTask?.createDate}</h2>
+                </div>
+                <div className="Smallline2">
+                    <h2>Deadline: <br/>{actualTask?.deadline}</h2>
+                </div>
+                <div className="Textblock">
+                    <h2>Text: <br/>{actualTask?.text}</h2>
+                </div>
+                <div className="Smallline">
+                    <h2>Amount of People: {actualTask?.amoundOfPeople}</h2>
+                </div>
             </div>
             <div>
                 <Link className="link" to={"/"}>back</Link>
