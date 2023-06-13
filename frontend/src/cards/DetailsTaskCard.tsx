@@ -36,7 +36,7 @@ function DetailsTaskCard(props: Props) {
                 <div className="Smallline">
                     <h2>Amount of People: {actualTask?.amoundOfPeople}</h2>
                 </div>
-                <div>
+                <div className="Links">
                     <Link className="link" to={"/"}>back</Link>
                 </div>
             </div>
