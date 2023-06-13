@@ -16,7 +16,7 @@ function TaskCardGallery(props:Props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <div className={"taskcardgallery"}>
+        <div className={"Taskcardgallery"}>
             {props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)}
         </div>
     );
