@@ -36,14 +36,13 @@
     align-items: center;
     justify-content: center;
     width: 130px;
-    height: auto;
+    height: 44px;
     background: #F2F2F2;
     border: 1px solid #000000;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 1000;
-    line-height: 10px;
     text-align: center;
     color: #FF9B71;
 }
@@ -62,7 +61,6 @@
     font-style: normal;
     font-weight: 1000;
     font-size: 12px;
-    line-height: 10px;
     text-align: center;
     color: #FF9B71;
 }
