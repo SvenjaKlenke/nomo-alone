@@ -1,12 +1,20 @@
 import React from 'react';
 import {Task} from "../model/TaskModel";
 import './TaskCard.css';
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     task: Task
 }
 
 function TaskCard(props:Props) {
+
+    const navigate = useNavigate();
+
+    function clickForDetails() {
+        navigate("/task/" + props.task.id)
+    }
+
     return (
         <div className="Taskcard">
             <div className="Smallcard">
@@ -26,7 +34,7 @@ function TaskCard(props:Props) {
                 <p>{props.task.deadline}</p>
             </div>
             <div className="Buttons">
-                <button className="Buttons">Details</button>
+                <button className="Buttons" onClick={clickForDetails}>Details</button>
             </div>
         </div>
     );
