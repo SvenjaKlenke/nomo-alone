@@ -33,7 +33,7 @@ function TaskCard(props:Props) {
                 <p>Deadline:</p>
                 <p>{props.task.deadline}</p>
             </div>
-            <div className="Buttons">
+            <div>
                 <button className="Buttons" onClick={clickForDetails}>Details</button>
             </div>
         </div>
