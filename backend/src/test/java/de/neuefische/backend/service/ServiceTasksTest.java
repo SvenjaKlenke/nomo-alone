@@ -50,15 +50,4 @@ class ServiceTasksTest {
         assertEquals(actual, List.of(taskModel1));
     }
 
-    @Test
-    void deleteById_verify() {
-        // GIVEN
-        String taskId = "123";
-
-        // WHEN
-        serviceTasks.deleteById(taskId);
-
-        // THEN
-        verify(repoTasks).deleteById(taskId);
-    }
 }

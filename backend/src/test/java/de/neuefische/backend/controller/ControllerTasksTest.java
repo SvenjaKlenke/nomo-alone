@@ -1,5 +1,7 @@
 package de.neuefische.backend.controller;
 
+import de.neuefische.backend.repository.RepoTasks;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,10 +19,19 @@ class ControllerTasksTest {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    private RepoTasks repoTasks;
+
+    @BeforeEach
+    void setup() {
+        repoTasks.deleteAll();
+    }
+
     @Test
     void getAllTasks_returnAllTasksAsList_andStatusCode200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
+
 }
