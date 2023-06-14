@@ -24,11 +24,13 @@ function DetailsTaskCard(props: Props) {
                 <div className="Smallline">
                     <h2>Category: {actualTask?.category}</h2>
                 </div>
-                <div className="Smallline2">
-                    <h2>Createdate: <br/>{actualTask?.createDate}</h2>
-                </div>
-                <div className="Smallline2">
-                    <h2>Deadline: <br/>{actualTask?.deadline}</h2>
+                <div className="DateContainer">
+                    <div className="Smallline2">
+                        <h2>Createdate: <br/>{actualTask?.createDate}</h2>
+                    </div>
+                    <div className="Smallline2">
+                        <h2>Deadline: <br/>{actualTask?.deadline}</h2>
+                    </div>
                 </div>
                 <div className="Textblock">
                     <h2>Text: <br/>{actualTask?.text}</h2>
