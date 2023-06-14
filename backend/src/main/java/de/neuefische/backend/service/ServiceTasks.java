@@ -17,4 +17,8 @@ public class ServiceTasks {
     public List<TaskModel> getAllTasks() {
         return repoTasks.findAll();
     }
+
+    public void deleteById(String id) {
+        repoTasks.deleteById(id);
+    }
 }

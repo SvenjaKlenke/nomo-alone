@@ -18,8 +18,8 @@ function DetailsTaskCard(props: Props) {
     const navigate = useNavigate();
 
     function clickForDelete() {
-        axios.delete("/task/" + actualTask?.id)
-        navigate("/")
+        axios.delete("/tasks/" + actualTask?.id)
+            .then(r => navigate("/"))
     }
 
     return (

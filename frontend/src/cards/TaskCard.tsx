@@ -12,7 +12,7 @@ function TaskCard(props:Props) {
     const navigate = useNavigate();
 
     function clickForDetails() {
-        navigate("/task/" + props.task.id)
+        navigate("/tasks/" + props.task.id)
     }
 
     return (
