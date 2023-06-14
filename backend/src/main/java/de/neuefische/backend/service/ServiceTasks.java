@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +21,12 @@ public class ServiceTasks {
     }
 
     public void deleteById(String id) {
-        repoTasks.deleteById(id);
+        Optional<TaskModel> task = repoTasks.findById(id);
+        if (task.isPresent()) {
+            repoTasks.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Task not found");
+        }
     }
+
 }
