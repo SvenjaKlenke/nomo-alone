@@ -4,6 +4,7 @@ import './App.css';
 import TaskCardGallery from "./gallery/TaskCardGallery";
 import {Route, Routes} from "react-router-dom";
 import useTasks from "./hook/useTasks";
+import DetailsTaskCard from "./cards/DetailsTaskCard";
 
 function App() {
 
@@ -14,11 +15,16 @@ function App() {
       <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
       </header>
-        <h1>All Tasks</h1>
         <Routes>
-            <Route path="/"
-                   element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>}/>
+            <Route path="/" element={
+                <>
+                    <h1>All Tasks</h1>
+                    <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
+                </>
+            }/>
+            <Route path="task/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
         </Routes>
+
     </div>
   );
 }
