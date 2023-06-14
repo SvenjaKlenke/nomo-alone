@@ -6,11 +6,8 @@ import de.neuefische.backend.repository.RepoTasks;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class ServiceTasksTest {
@@ -54,10 +51,14 @@ class ServiceTasksTest {
     }
 
     @Test
-    void deleteById_whenTaskNotFound_shouldThrowNoSuchElementException() {
+    void deleteById_verify() {
         // GIVEN
-        when(repoTasks.findById("1")).thenReturn(Optional.empty());
-        // WHEN/THEN
-        assertThrows(NoSuchElementException.class, () -> serviceTasks.deleteById("1"));
+        String taskId = "123";
+
+        // WHEN
+        serviceTasks.deleteById(taskId);
+
+        // THEN
+        verify(repoTasks).deleteById(taskId);
     }
 }
