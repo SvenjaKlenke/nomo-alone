@@ -15,9 +15,22 @@ function TaskCardGallery(props:Props) {
         props.getAllTasks()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    function addNewTask() {
+
+    }
+
     return (
-        <div className={"Taskcardgallery"}>
-            {props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)}
+        <div>
+            <div className="Headline">
+                <h1>All Tasks</h1>
+                <div className="ButtonContainerRoundButton">
+                    <button className="RoundButton" onClick={addNewTask}>New Task</button>
+                </div>
+            </div>
+            <div className={"Taskcardgallery"}>
+                {props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)}
+            </div>
         </div>
     );
 }

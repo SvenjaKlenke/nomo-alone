@@ -17,10 +17,7 @@ function App() {
       </header>
         <Routes>
             <Route path="/" element={
-                <>
-                    <h1>All Tasks</h1>
-                    <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
-                </>
+                <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
             }/>
             <Route path="task/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
         </Routes>

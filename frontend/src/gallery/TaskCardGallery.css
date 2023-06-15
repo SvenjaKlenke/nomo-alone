@@ -5,3 +5,36 @@
     left: 16px;
     top: 178px;
 }
+
+.Headline {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+.ButtonContainerRoundButton {
+    display: flex;
+    margin-top: 10px
+}
+
+.RoundButton {
+    padding: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #B6D7A8;
+    border: 1px solid #274E13;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #274E13;
+}
