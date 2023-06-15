@@ -50,6 +50,7 @@ function NewTaskCard() {
                 break;
         }
     }
+
     function addNewTask() {
         const task: Task = {
             id: "",
@@ -63,7 +64,6 @@ function NewTaskCard() {
         };
         axios.post('/tasks', task).then(getAllTasks);
     }
-
 
     function cancelAddNewTask() {
         navigate('/');
