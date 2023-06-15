@@ -6,6 +6,7 @@ import useTasks from '../hook/useTasks';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
+import {format} from 'date-fns';
 
 function NewTaskCard() {
     const [inputTaskName, setInputTaskName] = useState('');
@@ -58,11 +59,12 @@ function NewTaskCard() {
             category: inputCategory,
             name: inputTaskName,
             createDate: createdate,
-            deadline: selectedDate ? selectedDate.toISOString() : "",
+            deadline: selectedDate ? format(selectedDate, 'dd.MM.yyyy') : "",
             amoundOfPeople: inputAmoundOfPeople || 0,
             text: inputDescription
         };
         axios.post('/tasks', task).then(getAllTasks);
+        navigate('/');
     }
 
     function cancelAddNewTask() {
@@ -74,7 +76,7 @@ function NewTaskCard() {
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        return `${day}.${month}.${year}`;
     }
 
     return (
