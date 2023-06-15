@@ -52,18 +52,35 @@ function NewTaskCard() {
         }
     }
 
+    // ...
+
     function addNewTask() {
-        const task: TaskModel = {
-            id: "",
+        if (
+            inputTaskName.trim() === '' ||
+            inputCreator.trim() === '' ||
+            inputCategory.trim() === '' ||
+            selectedDate === null ||
+            inputDescription.trim() === '' ||
+            inputAmoundOfPeople === null
+        ) {
+            const alertMessage = document.getElementById('alert-message');
+            if (alertMessage) {
+                alertMessage.classList.add('alert-visible');
+            }
+            return;
+        }
+        const newTask: TaskModel = {
+            id: '',
             creator: inputCreator,
             category: inputCategory,
             name: inputTaskName,
             createDate: createdate,
-            deadline: selectedDate ? format(selectedDate, 'dd.MM.yyyy') : "",
-            amoundOfPeople: inputAmoundOfPeople || 0,
+            deadline: format(selectedDate, 'dd.MM.yyyy'),
+            amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
         };
-        axios.post('/tasks', task).then(getAllTasks);
+
+        axios.post('/tasks', newTask).then(getAllTasks);
         navigate('/');
     }
 
@@ -82,6 +99,9 @@ function NewTaskCard() {
     return (
         <div>
             <h1>New Task</h1>
+            <div id="alert-message" className="alert-message">
+                Please fill in all fields.
+            </div>
             <div className="Detailstaskcard">
                 <label htmlFor="taskName">Task Name</label>
                 <textarea
@@ -120,6 +140,7 @@ function NewTaskCard() {
                     selected={selectedDate}
                     onChange={handleDateChange}
                     placeholderText="Select Deadline"
+                    dateFormat="dd.MM.yyyy"
                     className="custom-datepicker"
                 />
 

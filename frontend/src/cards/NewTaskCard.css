@@ -27,7 +27,7 @@ textarea {
     padding: 5px 10px;
     color: #274E13;
     outline: none;
-    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
     margin-left: 5px;
     margin-right: 5px;
@@ -51,7 +51,7 @@ select {
     padding: 5px 10px;
     color: #274E13;
     outline: none;
-    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
     text-align: center;
     margin-left: 5px;
@@ -70,7 +70,7 @@ select {
     padding: 5px;
     color: #274E13;
     outline: none;
-    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
     text-align: center;
 }
@@ -81,5 +81,25 @@ select {
     box-shadow: 13px 13px 100px #969696,
     -13px -13px 100px #ffffff;
 }
+
+.alert-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 16px;
+    padding: 10px;
+    background-color: #FF9B71;
+    color: #274E13;
+    border: 1px solid #274E13;
+    border-radius: 5px;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+
+
+
 
 
