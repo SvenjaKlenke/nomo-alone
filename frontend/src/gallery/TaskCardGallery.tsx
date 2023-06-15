@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {Task} from "../model/TaskModel";
 import TaskCard from "../cards/TaskCard";
 import './TaskCardGallery.css';
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     allTasks: Task[],
@@ -10,6 +11,8 @@ type Props = {
 
 function TaskCardGallery(props:Props) {
 
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         props.getAllTasks()
@@ -17,7 +20,7 @@ function TaskCardGallery(props:Props) {
     }, [])
 
     function addNewTask() {
-
+        navigate("/new")
     }
 
     return (
