@@ -8,3 +8,4 @@ export type Task = {
     amoundOfPeople: number,
     text: string,
 }
+

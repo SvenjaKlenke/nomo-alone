@@ -5,6 +5,7 @@ import TaskCardGallery from "./gallery/TaskCardGallery";
 import {Route, Routes} from "react-router-dom";
 import useTasks from "./hook/useTasks";
 import DetailsTaskCard from "./cards/DetailsTaskCard";
+import NewTaskCard from "./cards/NewTaskCard";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
             }/>
             <Route path="task/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
+            <Route path="new" element={<NewTaskCard/>}/>
         </Routes>
 
     </div>

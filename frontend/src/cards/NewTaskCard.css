@@ -1,0 +1,43 @@
+.ButtonsContainer {
+    margin-bottom: 10px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+label {
+    margin-top: auto;
+    color: #274E13;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+
+}
+
+textarea {
+    height: 30px;
+    background: #F2F2F2;
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    padding: 5px;
+    color: #274E13;
+
+}
+
+select {
+    height: 30px;
+    background: #F2F2F2;
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    padding: 5px;
+    color: #274E13;
+
+}
+
