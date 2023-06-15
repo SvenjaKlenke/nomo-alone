@@ -83,7 +83,7 @@ select {
 }
 
 .alert-message {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 200px;
@@ -97,6 +97,10 @@ select {
     transition: 300ms ease-in-out;
     text-align: center;
     margin: 0 auto 10px;
+}
+
+.alert-message.alert-visible {
+    display: block;
 }
 
 

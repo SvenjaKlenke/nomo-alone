@@ -18,8 +18,6 @@ function NewTaskCard() {
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
     const navigate = useNavigate();
     const {getAllTasks} = useTasks();
-
-
     const handleDateChange = (date: Date | null) => {
         setSelectedDate(date);
     };

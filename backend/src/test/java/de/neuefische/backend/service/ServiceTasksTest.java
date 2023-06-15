@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class ServiceTasksTest {
 
     RepoTasks repoTasks = mock(RepoTasks.class);
+    GeneradeUUID generadeUUID = new GeneradeUUID();
 
     TaskModel taskModel = new TaskModel(
             "1",
@@ -25,7 +26,7 @@ class ServiceTasksTest {
             "This ist a Test!"
     );
 
-    ServiceTasks serviceTasks = new ServiceTasks(repoTasks);
+    ServiceTasks serviceTasks = new ServiceTasks(generadeUUID, repoTasks);
 
     @Test
     void getAllTasks_shouldReturnAListOfAllTasks() {
@@ -33,9 +34,20 @@ class ServiceTasksTest {
         when(repoTasks.findAll()).thenReturn(List.of(taskModel));
         //WHEN
         List<TaskModel> actual = serviceTasks.getAllTasks();
-
         //THEN
         verify(repoTasks).findAll();
         assertEquals(actual, List.of(taskModel));
     }
+
+    @Test
+    void addNewTask_returnTheTaskModel() {
+        //GIVEN
+        when(repoTasks.save(taskModel)).thenReturn(taskModel);
+        //WHEN
+        TaskModel actual = serviceTasks.addNewTask(taskModel);
+        //THEN
+        assertEquals(taskModel, actual);
+        verify(repoTasks).save(taskModel);
+    }
+
 }
