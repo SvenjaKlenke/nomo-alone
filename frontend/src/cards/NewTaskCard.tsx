@@ -3,22 +3,27 @@ import './NewTaskCard.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import useTasks from '../hook/useTasks';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function NewTaskCard() {
     const [inputTaskName, setInputTaskName] = useState('');
     const [inputCreator, setInputCreator] = useState('');
     const [inputCategory, setInputCategory] = useState('');
-    const [inputCreatedate, setInputCreatedate] = useState('');
-    const [inputDeadline, setInputDeadline] = useState('');
+    const [createdate, setCreatedate] = useState<string>(getTodayDate());
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [inputDescription, setInputDescription] = useState('');
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
     const navigate = useNavigate();
     const {getAllTasks} = useTasks();
 
-    const today = getTodayDate();
+
+    const handleDateChange = (date: Date | null) => {
+        setSelectedDate(date);
+    };
 
     useEffect(() => {
-        setInputCreatedate(today);
+        setCreatedate(getTodayDate());
     }, []);
 
     function useTextInput(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -33,9 +38,6 @@ function NewTaskCard() {
                 break;
             case 'category':
                 setInputCategory(value);
-                break;
-            case 'deadline':
-                setInputDeadline(value);
                 break;
             case 'description':
                 setInputDescription(value);
@@ -101,13 +103,12 @@ function NewTaskCard() {
                 </select>
 
                 <label htmlFor="deadline">Deadline</label>
-                <textarea
-                    id="deadline"
-                    name="deadline"
-                    placeholder="Deadline"
-                    value={inputDeadline}
-                    onChange={useTextInput}
-                ></textarea>
+                <DatePicker
+                    selected={selectedDate}
+                    onChange={handleDateChange}
+                    placeholderText="Select Deadline"
+                    className="custom-datepicker"
+                />
 
                 <label htmlFor="description">Description</label>
                 <textarea
@@ -125,7 +126,7 @@ function NewTaskCard() {
                     value={inputAmoundOfPeople || ''}
                     onChange={(event) => setInputAmoundOfPeople(Number(event.target.value))}
                 >
-                    <option value="">Select Amount of People</option>
+                    <option value="">How many people do you need?</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

@@ -15,7 +15,6 @@ label {
     font-weight: 500;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-
 }
 
 textarea {
@@ -25,11 +24,13 @@ textarea {
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    padding: 5px;
+    padding: 5px 10px;
     color: #274E13;
     outline: none;
     box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 
@@ -47,12 +48,38 @@ select {
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
+    padding: 5px 10px;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 300ms ease-in-out;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+
+.custom-datepicker {
+    height: 30px;
+    background: #F2F2F2;
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     padding: 5px;
     color: #274E13;
     outline: none;
     box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
-
-
+    text-align: center;
 }
+
+.custom-datepicker:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+    -13px -13px 100px #ffffff;
+}
+
 
