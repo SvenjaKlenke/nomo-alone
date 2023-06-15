@@ -81,7 +81,6 @@ function NewTaskCard() {
         axios.post('/tasks', newTask).then(getAllTasks);
         navigate('/');
     }
-
     function cancelAddNewTask() {
         navigate('/');
     }
