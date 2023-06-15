@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import {Task} from "../model/TaskModel";
+import {TaskModel} from "../model/TaskModel";
 import TaskCard from "../cards/TaskCard";
 import './TaskCardGallery.css';
 import {useNavigate} from "react-router-dom";
 
 type Props = {
-    allTasks: Task[],
+    allTasks: TaskModel[],
     getAllTasks: () => void
 }
 

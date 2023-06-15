@@ -5,7 +5,7 @@ import axios from 'axios';
 import useTasks from '../hook/useTasks';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import {Task} from "../model/TaskModel";
+import {TaskModel} from "../model/TaskModel";
 
 function NewTaskCard() {
     const [inputTaskName, setInputTaskName] = useState('');
@@ -52,7 +52,7 @@ function NewTaskCard() {
     }
 
     function addNewTask() {
-        const task: Task = {
+        const task: TaskModel = {
             id: "",
             creator: inputCreator,
             category: inputCategory,

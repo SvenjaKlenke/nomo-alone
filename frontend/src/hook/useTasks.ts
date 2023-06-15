@@ -1,11 +1,11 @@
 import axios from "axios";
 import {useState} from "react";
-import {Task} from "../model/TaskModel";
+import {TaskModel} from "../model/TaskModel";
 
 
 function useTasks() {
 
-    const [tasksList, setTasksList] = useState<Task[]>([])
+    const [tasksList, setTasksList] = useState<TaskModel[]>([])
 
     function getAllTasks() {
         axios.get("/tasks")

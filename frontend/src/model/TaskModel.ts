@@ -1,4 +1,4 @@
-export type Task = {
+export type TaskModel = {
     id: string,
     creator: string,
     category: string,
