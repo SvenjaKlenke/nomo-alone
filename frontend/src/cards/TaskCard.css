@@ -8,6 +8,9 @@
     border: 1px solid #274E13;
     border-radius: 35px;
     margin: 10px;
+    outline: none;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 300ms ease-in-out;
 }
 
 .Smallcard {
@@ -28,6 +31,9 @@
     line-height: 10px;
     text-align: center;
     color: #FF9B71;
+    outline: none;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 300ms ease-in-out;
 }
 
 .Buttons {
@@ -44,6 +50,9 @@
     font-size: 8px;
     text-align: center;
     color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 300ms ease-in-out;
 }
 
 p {
