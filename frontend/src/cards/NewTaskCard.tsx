@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './NewTaskCard.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -15,6 +15,12 @@ function NewTaskCard() {
     const navigate = useNavigate();
     const {getAllTasks} = useTasks();
 
+    const today = getTodayDate();
+
+    useEffect(() => {
+        setInputCreatedate(today);
+    }, []);
+
     function useTextInput(event: ChangeEvent<HTMLTextAreaElement>) {
         const {name, value} = event.target;
 
@@ -27,9 +33,6 @@ function NewTaskCard() {
                 break;
             case 'category':
                 setInputCategory(value);
-                break;
-            case 'createdate':
-                setInputCreatedate(value);
                 break;
             case 'deadline':
                 setInputDeadline(value);
@@ -51,6 +54,14 @@ function NewTaskCard() {
 
     function cancelAddNewTask() {
         navigate('/');
+    }
+
+    function getTodayDate(): string {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
 
     return (
@@ -88,15 +99,6 @@ function NewTaskCard() {
                     <option value="VISIT">Visit</option>
                     <option value="SHOPPING">Shopping</option>
                 </select>
-
-                <label htmlFor="createdate">Create Date</label>
-                <textarea
-                    id="createdate"
-                    name="createdate"
-                    placeholder="Createdate"
-                    value={inputCreatedate}
-                    onChange={useTextInput}
-                ></textarea>
 
                 <label htmlFor="deadline">Deadline</label>
                 <textarea
