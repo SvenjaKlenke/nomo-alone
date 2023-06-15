@@ -5,6 +5,7 @@ import axios from 'axios';
 import useTasks from '../hook/useTasks';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import {Task} from "../model/TaskModel";
 
 function NewTaskCard() {
     const [inputTaskName, setInputTaskName] = useState('');
@@ -49,10 +50,20 @@ function NewTaskCard() {
                 break;
         }
     }
-
     function addNewTask() {
-        axios.post('/tasks', {description: inputDescription, status: 'OPEN'}).then(getAllTasks);
+        const task: Task = {
+            id: "",
+            creator: inputCreator,
+            category: inputCategory,
+            name: inputTaskName,
+            createDate: createdate,
+            deadline: selectedDate ? selectedDate.toISOString() : "",
+            amoundOfPeople: inputAmoundOfPeople || 0,
+            text: inputDescription
+        };
+        axios.post('/tasks', task).then(getAllTasks);
     }
+
 
     function cancelAddNewTask() {
         navigate('/');
