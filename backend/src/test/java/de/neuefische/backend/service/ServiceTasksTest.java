@@ -29,7 +29,7 @@ class ServiceTasksTest {
     TaskModel taskModel2 = new TaskModel(
             "2",
             "Amelie",
-            category.PLAYDATE,
+            Category.PLAYDATE,
             "Schach",
             "12.06.2023",
             "15.06.2023",
@@ -65,12 +65,12 @@ class ServiceTasksTest {
     @Test
     void addNewTask_returnTheTaskModel() {
         //GIVEN
-        when(repoTasks.save(taskModel)).thenReturn(taskModel);
+        when(repoTasks.save(taskModel1)).thenReturn(taskModel1);
         //WHEN
-        TaskModel actual = serviceTasks.addNewTask(taskModel);
+        TaskModel actual = serviceTasks.addNewTask(taskModel1);
         //THEN
-        assertEquals(taskModel, actual);
-        verify(repoTasks).save(taskModel);
+        assertEquals(taskModel1, actual);
+        verify(repoTasks).save(taskModel1);
     }
 
 }
