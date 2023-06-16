@@ -74,8 +74,7 @@ function NewTaskCard() {
             text: inputDescription
         };
 
-        axios.post('/tasks', newTask).then(getAllTasks);
-        navigate('/');
+        axios.post('/tasks', newTask).then(r => navigate("/"))
     }
     function cancelAddNewTask() {
         navigate('/');

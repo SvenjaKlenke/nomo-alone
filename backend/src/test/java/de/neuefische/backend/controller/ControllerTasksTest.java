@@ -28,7 +28,6 @@ class ControllerTasksTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
-
     @Test
     @DirtiesContext
     void addNewTask_whenAddNewTask_then200OK() throws Exception {
