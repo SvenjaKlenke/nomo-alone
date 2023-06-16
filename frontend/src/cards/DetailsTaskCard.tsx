@@ -22,6 +22,12 @@ function DetailsTaskCard(props: Props) {
             .then(r => navigate("/"))
     }
 
+    function clickForEdit() {
+        axios.put("/tasks/" + actualTask?.id)
+            .then(r => navigate("/edit"))
+
+    }
+
     return (
         <div>
             <h1>{actualTask?.name}</h1>
@@ -48,6 +54,7 @@ function DetailsTaskCard(props: Props) {
                 </div>
                 <div className="ButtonContainer">
                     <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
+                    <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
                 </div>
                 <div className="Links">
                     <Link className="link" to={"/"}>back</Link>
