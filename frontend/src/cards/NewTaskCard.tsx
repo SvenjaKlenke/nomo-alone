@@ -2,7 +2,6 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import './NewTaskCard.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import useTasks from '../hook/useTasks';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
@@ -18,7 +17,6 @@ function NewTaskCard() {
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const navigate = useNavigate();
-    const {getAllTasks} = useTasks();
     const handleDateChange = (date: Date | null) => {
         setSelectedDate(date);
     };
