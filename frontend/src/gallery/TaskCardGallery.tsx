@@ -32,7 +32,7 @@ function TaskCardGallery(props: Props) {
             </div>
             <div className="Taskcardgallery">
                 {props.allTasks.length === 0 ? (
-                    <p>No tasks available.</p>
+                    <p>There are no tasks available yet. <br/>You can add a task by clicking the "New Task" button.</p>
                 ) : (
                     props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)
                 )}

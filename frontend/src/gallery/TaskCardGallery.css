@@ -41,3 +41,19 @@ h1 {
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
 }
+
+p {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #FF9B71;
+    background: #F2F2F2;
+    width: 300px;
+    height: 120px;
+    border-radius: 35px;
+
+}
