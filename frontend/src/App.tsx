@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import useTasks from "./hook/useTasks";
 import DetailsTaskCard from "./cards/DetailsTaskCard";
 import NewTaskCard from "./cards/NewTaskCard";
+import EditTaskCard from "./cards/EditTaskCard";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             }/>
             <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
             <Route path="new" element={<NewTaskCard/>}/>
+            <Route path="edit" element={<EditTaskCard/>}/>
         </Routes>
 
     </div>

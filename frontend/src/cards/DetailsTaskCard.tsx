@@ -23,9 +23,7 @@ function DetailsTaskCard(props: Props) {
     }
 
     function clickForEdit() {
-        axios.put("/tasks/" + actualTask?.id)
-            .then(r => navigate("/edit"))
-
+            navigate("/edit/" + actualTask?.id);
     }
 
     return (
