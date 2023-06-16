@@ -50,8 +50,6 @@ function NewTaskCard() {
         }
     }
 
-    // ...
-
     function addNewTask() {
         if (
             inputTaskName.trim() === '' ||
