@@ -34,7 +34,7 @@ function EditTaskCard(props: Props) {
             setInputTaskName(actualTask.name);
             setInputCreator(actualTask.creator);
             setInputCategory(actualTask.category);
-            setSelectedDate(new Date(actualTask.deadline));
+            setSelectedDate(null);
             setInputDescription(actualTask.text);
             setInputAmoundOfPeople(actualTask.amoundOfPeople);
         }
