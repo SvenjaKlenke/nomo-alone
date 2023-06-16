@@ -23,7 +23,7 @@ function App() {
             }/>
             <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
             <Route path="new" element={<NewTaskCard/>}/>
-            <Route path="edit" element={<EditTaskCard taskModels={tasksList}/>}/>
+            <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList}/>}/>
         </Routes>
 
     </div>

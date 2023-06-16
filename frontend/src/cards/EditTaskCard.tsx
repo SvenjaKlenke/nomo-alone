@@ -6,7 +6,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
-import {format} from 'date-fns';
+import {format} from "date-fns";
 
 type Props = {
     taskModels: TaskModel[];
@@ -29,7 +29,21 @@ function EditTaskCard(props: Props) {
 
     useEffect(() => {
         setCreatedate(getTodayDate());
-    }, []);
+
+        if (actualTask) {
+            setInputTaskName(actualTask.name);
+            setInputCreator(actualTask.creator);
+            setInputCategory(actualTask.category);
+            setSelectedDate(new Date(actualTask.deadline));
+            setInputDescription(actualTask.text);
+            setInputAmoundOfPeople(actualTask.amoundOfPeople);
+        }
+    }, [actualTask]);
+
+    const handleDateChange = (date: Date | null) => {
+        setSelectedDate(date);
+    };
+
 
     function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {
         const {name, value} = event.target;
@@ -73,10 +87,11 @@ function EditTaskCard(props: Props) {
             category: inputCategory,
             name: inputTaskName,
             createDate: createdate,
-            deadline: format(selectedDate, 'dd.MM.yyyy'),
+            deadline: selectedDate ? format(selectedDate, 'dd.MM.yyyy') : '',
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
         };
+
 
         axios.put('/tasks', updatedTask).then(r => navigate("/"))
     }
@@ -137,7 +152,7 @@ function EditTaskCard(props: Props) {
                 <label htmlFor="deadline">Deadline</label>
                 <DatePicker
                     selected={selectedDate}
-                    onChange={(date: Date | null) => setSelectedDate(date)}
+                    onChange={handleDateChange}
                     placeholderText="Select Deadline"
                     dateFormat="dd.MM.yyyy"
                     className="custom-datepicker"
