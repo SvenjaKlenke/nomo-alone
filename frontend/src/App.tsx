@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={
                 <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
             }/>
-            <Route path="task/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
+            <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
             <Route path="new" element={<NewTaskCard/>}/>
         </Routes>
 

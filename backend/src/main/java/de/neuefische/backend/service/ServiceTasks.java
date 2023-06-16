@@ -23,4 +23,8 @@ public class ServiceTasks {
         taskModel.setId(generadeUUID.getUUID());
         return repoTasks.save(taskModel);
     }
+
+    public void deleteById(String id) {
+        repoTasks.deleteById(id);
+    }
 }

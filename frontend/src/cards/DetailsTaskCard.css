@@ -78,7 +78,6 @@
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 1000;
-    font-size: 12px;
     text-align: center;
     color: #FF9B71;
     outline: none;
@@ -86,19 +85,24 @@
     transition: 300ms ease-in-out;
 }
 
-.Buttons {
+.ButtonContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ButtonsDetailsCard {
+    display: flex;
+    justify-content: center;
     width: 131px;
-    height: 16px;
-    left: 206px;
-    top: 419px;
+    height: auto;
+    margin-top: 10px;
     background: #B6D7A8;
     border: 1px solid #274E13;
     border-radius: 35px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 20px;
     text-align: center;
     color: #274E13;
     outline: none;

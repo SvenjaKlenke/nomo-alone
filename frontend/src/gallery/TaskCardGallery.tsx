@@ -9,18 +9,17 @@ type Props = {
     getAllTasks: () => void
 }
 
-function TaskCardGallery(props:Props) {
+function TaskCardGallery(props: Props) {
 
     const navigate = useNavigate();
 
-
     useEffect(() => {
-        props.getAllTasks()
+        props.getAllTasks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     function clickToNewTask() {
-        navigate("/new")
+        navigate("/new");
     }
 
     return (
@@ -31,8 +30,13 @@ function TaskCardGallery(props:Props) {
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
             </div>
-            <div className={"Taskcardgallery"}>
-                {props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)}
+            <div className="Taskcardgallery">
+                {props.allTasks.length === 0 ? (
+                    <h6>There are no tasks available yet. <br/>You can add a task by clicking the "New Task" button.
+                    </h6>
+                ) : (
+                    props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)
+                )}
             </div>
         </div>
     );

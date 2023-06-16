@@ -23,4 +23,9 @@ public class ControllerTasks {
     public TaskModel addNewTask(@RequestBody TaskModel taskModel) {
         return serviceTasks.addNewTask(taskModel);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable String id) {
+        serviceTasks.deleteById(id);
+    }
 }

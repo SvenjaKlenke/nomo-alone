@@ -15,7 +15,7 @@ class ServiceTasksTest {
     RepoTasks repoTasks = mock(RepoTasks.class);
     GeneradeUUID generadeUUID = new GeneradeUUID();
 
-    TaskModel taskModel = new TaskModel(
+    TaskModel taskModel1 = new TaskModel(
             "1",
             "Svenja",
             Category.PLAYDATE,
@@ -26,28 +26,51 @@ class ServiceTasksTest {
             "This ist a Test!"
     );
 
+    TaskModel taskModel2 = new TaskModel(
+            "2",
+            "Amelie",
+            Category.PLAYDATE,
+            "Schach",
+            "12.06.2023",
+            "15.06.2023",
+            2,
+            "This ist a Test, too!"
+    );
+
     ServiceTasks serviceTasks = new ServiceTasks(generadeUUID, repoTasks);
 
     @Test
     void getAllTasks_shouldReturnAListOfAllTasks() {
         //GIVEN
-        when(repoTasks.findAll()).thenReturn(List.of(taskModel));
+        when(repoTasks.findAll()).thenReturn(List.of(taskModel1));
         //WHEN
         List<TaskModel> actual = serviceTasks.getAllTasks();
         //THEN
         verify(repoTasks).findAll();
-        assertEquals(actual, List.of(taskModel));
+        assertEquals(actual, List.of(taskModel1));
+    }
+
+    @Test
+    void deleteById_verify() {
+        // GIVEN
+        String taskId = "123";
+
+        // WHEN
+        serviceTasks.deleteById(taskId);
+
+        // THEN
+        verify(repoTasks).deleteById(taskId);
     }
 
     @Test
     void addNewTask_returnTheTaskModel() {
         //GIVEN
-        when(repoTasks.save(taskModel)).thenReturn(taskModel);
+        when(repoTasks.save(taskModel1)).thenReturn(taskModel1);
         //WHEN
-        TaskModel actual = serviceTasks.addNewTask(taskModel);
+        TaskModel actual = serviceTasks.addNewTask(taskModel1);
         //THEN
-        assertEquals(taskModel, actual);
-        verify(repoTasks).save(taskModel);
+        assertEquals(taskModel1, actual);
+        verify(repoTasks).save(taskModel1);
     }
 
 }

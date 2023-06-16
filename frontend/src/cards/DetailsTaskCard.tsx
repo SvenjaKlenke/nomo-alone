@@ -1,7 +1,8 @@
 import React from 'react';
 import './DetailsTaskCard.css';
 import {TaskModel} from "../model/TaskModel";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import axios from "axios";
 
 type Props = {
     allTasks: TaskModel [];
@@ -13,6 +14,13 @@ function DetailsTaskCard(props: Props) {
     const id: string | undefined = params.id;
 
     const actualTask: TaskModel | undefined = props.allTasks.find(currentTask => currentTask.id === id);
+
+    const navigate = useNavigate();
+
+    function clickForDelete() {
+        axios.delete("/tasks/" + actualTask?.id)
+            .then(r => navigate("/"))
+    }
 
     return (
         <div>
@@ -33,10 +41,13 @@ function DetailsTaskCard(props: Props) {
                     </div>
                 </div>
                 <div className="Textblock">
-                    <h2>Text: <br/>{actualTask?.text}</h2>
+                    <h2>{actualTask?.text}</h2>
                 </div>
                 <div className="Smallline">
                     <h2>Amount of People: {actualTask?.amoundOfPeople}</h2>
+                </div>
+                <div className="ButtonContainer">
+                    <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
                 </div>
                 <div className="Links">
                     <Link className="link" to={"/"}>back</Link>
