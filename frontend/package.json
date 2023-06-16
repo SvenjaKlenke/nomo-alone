@@ -9,6 +9,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.9",
+    "@types/react-datepicker": "^4.11.2",
     "@types/react-dom": "^18.2.4",
     "axios": "^1.4.0",
     "dom": "^0.0.3",
@@ -45,8 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080",
-  "devDependencies": {
-    "@types/react-datepicker": "^4.11.2"
-  }
+  "proxy": "http://localhost:8080"
 }
