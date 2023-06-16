@@ -93,7 +93,7 @@ function EditTaskCard(props: Props) {
         };
 
 
-        axios.put('/tasks', updatedTask).then(r => navigate("/"))
+        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => navigate("/"))
     }
 
     function cancelUpdateTask() {
