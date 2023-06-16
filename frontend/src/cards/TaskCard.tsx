@@ -1,10 +1,10 @@
 import React from 'react';
-import {Task} from "../model/TaskModel";
+import {TaskModel} from "../model/TaskModel";
 import './TaskCard.css';
 import {useNavigate} from "react-router-dom";
 
 type Props = {
-    task: Task
+    task: TaskModel
 }
 
 function TaskCard(props:Props) {

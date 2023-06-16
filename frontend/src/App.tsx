@@ -5,6 +5,7 @@ import TaskCardGallery from "./gallery/TaskCardGallery";
 import {Route, Routes} from "react-router-dom";
 import useTasks from "./hook/useTasks";
 import DetailsTaskCard from "./cards/DetailsTaskCard";
+import NewTaskCard from "./cards/NewTaskCard";
 
 function App() {
 
@@ -17,12 +18,10 @@ function App() {
       </header>
         <Routes>
             <Route path="/" element={
-                <>
-                    <h1>All Tasks</h1>
-                    <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
-                </>
+                <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
             }/>
             <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
+            <Route path="new" element={<NewTaskCard/>}/>
         </Routes>
 
     </div>

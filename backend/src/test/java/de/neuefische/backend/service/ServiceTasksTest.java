@@ -1,7 +1,7 @@
 package de.neuefische.backend.service;
 
+import de.neuefische.backend.model.Category;
 import de.neuefische.backend.model.TaskModel;
-import de.neuefische.backend.model.category;
 import de.neuefische.backend.repository.RepoTasks;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +13,12 @@ import static org.mockito.Mockito.*;
 class ServiceTasksTest {
 
     RepoTasks repoTasks = mock(RepoTasks.class);
+    GeneradeUUID generadeUUID = new GeneradeUUID();
 
     TaskModel taskModel1 = new TaskModel(
             "1",
             "Svenja",
-            category.PLAYDATE,
+            Category.PLAYDATE,
             "Skat",
             "12.06.2023",
             "15.06.2023",
@@ -36,7 +37,7 @@ class ServiceTasksTest {
             "This ist a Test, too!"
     );
 
-    ServiceTasks serviceTasks = new ServiceTasks(repoTasks);
+    ServiceTasks serviceTasks = new ServiceTasks(generadeUUID, repoTasks);
 
     @Test
     void getAllTasks_shouldReturnAListOfAllTasks() {
@@ -44,7 +45,6 @@ class ServiceTasksTest {
         when(repoTasks.findAll()).thenReturn(List.of(taskModel1));
         //WHEN
         List<TaskModel> actual = serviceTasks.getAllTasks();
-
         //THEN
         verify(repoTasks).findAll();
         assertEquals(actual, List.of(taskModel1));
@@ -61,4 +61,16 @@ class ServiceTasksTest {
         // THEN
         verify(repoTasks).deleteById(taskId);
     }
+
+    @Test
+    void addNewTask_returnTheTaskModel() {
+        //GIVEN
+        when(repoTasks.save(taskModel)).thenReturn(taskModel);
+        //WHEN
+        TaskModel actual = serviceTasks.addNewTask(taskModel);
+        //THEN
+        assertEquals(taskModel, actual);
+        verify(repoTasks).save(taskModel);
+    }
+
 }

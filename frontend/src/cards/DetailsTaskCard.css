@@ -7,11 +7,14 @@
     width: 333px;
     height: 480px;
     background: #B6D7A8;
-    border: 1px solid #000000;
+    border: 1px solid #274E13;
     border-radius: 35px;
     margin: auto;
     font-size: 20px;
     color: #FF9B71;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
 }
 
 .DateContainer {
@@ -29,12 +32,15 @@
     width: 278px;
     height: 44px;
     background: #F2F2F2;
-    border: 1px solid #000000;
+    border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 1000;
     text-align: center;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
 }
 
 .Smallline2 {
@@ -46,13 +52,16 @@
     width: 130px;
     height: 44px;
     background: #F2F2F2;
-    border: 1px solid #000000;
+    border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 1000;
     text-align: center;
     color: #FF9B71;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
 }
 
 .Textblock {
@@ -64,13 +73,16 @@
     height: 145px;
     margin-top: 10px;
     background: #F2F2F2;
-    border: 1px solid #000000;
+    border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 1000;
     text-align: center;
     color: #FF9B71;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
 }
 
 .ButtonContainer {
@@ -85,7 +97,7 @@
     height: auto;
     margin-top: 10px;
     background: #B6D7A8;
-    border: 1px solid #000000;
+    border: 1px solid #274E13;
     border-radius: 35px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -93,6 +105,9 @@
     font-size: 20px;
     text-align: center;
     color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
 }
 
 h1 {

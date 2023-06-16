@@ -12,10 +12,16 @@ import java.util.List;
 
 public class ServiceTasks {
 
+    private final GeneradeUUID generadeUUID;
     private final RepoTasks repoTasks;
 
     public List<TaskModel> getAllTasks() {
         return repoTasks.findAll();
+    }
+
+    public TaskModel addNewTask(TaskModel taskModel) {
+        taskModel.setId(generadeUUID.getUUID());
+        return repoTasks.save(taskModel);
     }
 
     public void deleteById(String id) {

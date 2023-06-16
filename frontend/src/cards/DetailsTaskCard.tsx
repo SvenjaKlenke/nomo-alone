@@ -1,11 +1,11 @@
 import React from 'react';
 import './DetailsTaskCard.css';
-import {Task} from "../model/TaskModel";
+import {TaskModel} from "../model/TaskModel";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 type Props = {
-    allTasks: Task [];
+    allTasks: TaskModel [];
 }
 
 function DetailsTaskCard(props: Props) {
@@ -13,7 +13,7 @@ function DetailsTaskCard(props: Props) {
     const params = useParams();
     const id: string | undefined = params.id;
 
-    const actualTask: Task | undefined = props.allTasks.find(currentTask => currentTask.id === id);
+    const actualTask: TaskModel | undefined = props.allTasks.find(currentTask => currentTask.id === id);
 
     const navigate = useNavigate();
 
