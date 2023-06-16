@@ -1,6 +1,6 @@
 package de.neuefische.backend.model;
 
-public enum category {
+public enum Category {
     PLAYDATE,
     APPOINTMENT,
     VISIT,

@@ -1,0 +1,109 @@
+.ButtonsContainer {
+    margin-bottom: 10px;
+
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+label {
+    margin-top: auto;
+    color: #274E13;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+textarea {
+    height: 30px;
+    background: #F2F2F2;
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    padding: 5px 10px;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+textarea:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+    -13px -13px 100px #ffffff;
+}
+
+select {
+    height: 30px;
+    background: #F2F2F2;
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    padding: 5px 10px;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+
+.custom-datepicker {
+    height: 30px;
+    background: #F2F2F2;
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    padding: 5px;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    text-align: center;
+}
+
+.custom-datepicker:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+    -13px -13px 100px #ffffff;
+}
+
+.alert-message {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 16px;
+    padding: 10px;
+    background-color: #FF9B71;
+    color: #274E13;
+    border: 1px solid #274E13;
+    border-radius: 5px;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+
+.alert-message.alert-visible {
+    display: block;
+}
+
+
+
+
+
