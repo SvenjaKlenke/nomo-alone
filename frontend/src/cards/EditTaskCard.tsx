@@ -82,7 +82,7 @@ function EditTaskCard(props: Props) {
             return;
         }
         const updatedTask: TaskModel = {
-            id: '',
+            id: actualTask?.id || '',
             creator: inputCreator,
             category: inputCategory,
             name: inputTaskName,

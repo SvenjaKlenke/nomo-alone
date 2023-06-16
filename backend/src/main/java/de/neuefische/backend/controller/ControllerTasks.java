@@ -3,9 +3,7 @@ package de.neuefische.backend.controller;
 import de.neuefische.backend.model.TaskModel;
 import de.neuefische.backend.service.ServiceTasks;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -33,9 +31,6 @@ public class ControllerTasks {
 
     @PutMapping({"/{id}"})
     public TaskModel editTask(@PathVariable String id, @RequestBody TaskModel taskModel) {
-        if (!taskModel.getId().equals(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The id in the url does not match the request body's id");
-        }
         return serviceTasks.editTask(taskModel);
     }
 }

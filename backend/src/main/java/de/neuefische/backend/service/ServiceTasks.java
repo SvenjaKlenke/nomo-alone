@@ -29,7 +29,11 @@ public class ServiceTasks {
     }
 
     public TaskModel editTask(TaskModel taskModel) {
+        if (taskModel.getId() == null || taskModel.getId().isEmpty()) {
+            throw new IllegalArgumentException("ID of the task must be provided.");
+        }
         return repoTasks.save(taskModel);
     }
+
 
 }
