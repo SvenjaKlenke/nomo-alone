@@ -16,6 +16,7 @@ function NewTaskCard() {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [inputDescription, setInputDescription] = useState('');
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const navigate = useNavigate();
     const {getAllTasks} = useTasks();
     const handleDateChange = (date: Date | null) => {
@@ -26,7 +27,7 @@ function NewTaskCard() {
         setCreatedate(getTodayDate());
     }, []);
 
-    function useTextInput(event: ChangeEvent<HTMLTextAreaElement>) {
+    function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {
         const {name, value} = event.target;
 
         switch (name) {
@@ -59,10 +60,7 @@ function NewTaskCard() {
             inputDescription.trim() === '' ||
             inputAmoundOfPeople === null
         ) {
-            const alertMessage = document.getElementById('alert-message');
-            if (alertMessage) {
-                alertMessage.classList.add('alert-visible');
-            }
+            setIsAlertVisible(true);
             return;
         }
         const newTask: TaskModel = {
@@ -94,9 +92,11 @@ function NewTaskCard() {
     return (
         <div>
             <h1>New Task</h1>
-            <div id="alert-message" className="alert-message">
-                Please fill in all fields.
-            </div>
+            {isAlertVisible && (
+                <div className="alert-message">
+                    Please fill in all fields.
+                </div>
+            )}
             <div className="Detailstaskcard">
                 <label htmlFor="taskName">Task Name</label>
                 <textarea
@@ -104,7 +104,7 @@ function NewTaskCard() {
                     name="taskName"
                     placeholder="Give your task a name"
                     value={inputTaskName}
-                    onChange={useTextInput}
+                    onChange={handleInputChange}
                 ></textarea>
 
                 <label htmlFor="creator">Creator</label>
@@ -113,7 +113,7 @@ function NewTaskCard() {
                     name="creator"
                     placeholder="Creator"
                     value={inputCreator}
-                    onChange={useTextInput}
+                    onChange={handleInputChange}
                 ></textarea>
 
                 <label htmlFor="category">Category</label>
@@ -145,7 +145,7 @@ function NewTaskCard() {
                     name="description"
                     placeholder="Give your task a Description"
                     value={inputDescription}
-                    onChange={useTextInput}
+                    onChange={handleInputChange}
                 ></textarea>
 
                 <label htmlFor="amoundOfPeople">Amount of People</label>

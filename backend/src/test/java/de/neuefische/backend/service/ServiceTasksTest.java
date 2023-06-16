@@ -1,7 +1,7 @@
 package de.neuefische.backend.service;
 
+import de.neuefische.backend.model.Category;
 import de.neuefische.backend.model.TaskModel;
-import de.neuefische.backend.model.category;
 import de.neuefische.backend.repository.RepoTasks;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ class ServiceTasksTest {
     TaskModel taskModel = new TaskModel(
             "1",
             "Svenja",
-            category.PLAYDATE,
+            Category.PLAYDATE,
             "Skat",
             "12.06.2023",
             "15.06.2023",
