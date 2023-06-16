@@ -5,11 +5,10 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 type Props = {
-    allTasks: TaskModel [];
+    allTasks: TaskModel[];
 }
 
 function DetailsTaskCard(props: Props) {
-
     const params = useParams();
     const id: string | undefined = params.id;
 
@@ -23,7 +22,7 @@ function DetailsTaskCard(props: Props) {
     }
 
     function clickForEdit() {
-            navigate("/edit/" + actualTask?.id);
+        navigate("/edit/" + actualTask?.id);
     }
 
     return (
