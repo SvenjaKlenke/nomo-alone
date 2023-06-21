@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import './NewTaskCard.css';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
 import {format} from "date-fns";
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
+import CardComponents from "../element/CardComponents";
 
 type Props = {
     taskModels: TaskModel[];
@@ -22,13 +22,10 @@ function EditTaskCard(props: Props) {
     const {getTodayDate} = useToday();
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
-        handleDateChange,
-        handleInputChange,
         setInputTaskName,
         setInputCreator,
         setInputCategory,
-        setInputDescription
-        ,
+        setInputDescription,
         setSelectedDate,
         setInputAmoundOfPeople,
         selectedDate,
@@ -91,80 +88,14 @@ function EditTaskCard(props: Props) {
                     Please fill in all fields.
                 </div>
             )}
-            <div className="Detailstaskcard">
-                <label htmlFor="taskName">Task Name</label>
-                <textarea
-                    id="taskName"
-                    name="taskName"
-                    placeholder="Give your task a name"
-                    value={inputTaskName}
-                    onChange={handleInputChange}
-                ></textarea>
-
-                <label htmlFor="creator">Creator</label>
-                <textarea
-                    id="creator"
-                    name="creator"
-                    placeholder="Creator"
-                    value={inputCreator}
-                    onChange={handleInputChange}
-                ></textarea>
-
-                <label htmlFor="category">Category</label>
-                <select
-                    id="category"
-                    name="category"
-                    value={inputCategory}
-                    onChange={(event) => setInputCategory(event.target.value)}
-                >
-                    <option value="">Select Category</option>
-                    <option value="PLAYDATE">Playdate</option>
-                    <option value="APPOINTMENT">Appointment</option>
-                    <option value="VISIT">Visit</option>
-                    <option value="SHOPPING">Shopping</option>
-                </select>
-
-                <label htmlFor="deadline">Deadline</label>
-                <DatePicker
-                    selected={selectedDate}
-                    onChange={handleDateChange}
-                    placeholderText="Select Deadline"
-                    dateFormat="dd.MM.yyyy"
-                    className="custom-datepicker"
-                />
-
-                <label htmlFor="description">Description</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    placeholder="Give your task a Description"
-                    value={inputDescription}
-                    onChange={handleInputChange}
-                ></textarea>
-
-                <label htmlFor="amoundOfPeople">Amount of People</label>
-                <select
-                    id="amoundOfPeople"
-                    name="amoundOfPeople"
-                    value={inputAmoundOfPeople || ''}
-                    onChange={(event) => setInputAmoundOfPeople(Number(event.target.value))}
-                >
-                    <option value="">How many people do you need?</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-
-                <div className="ButtonsContainer">
-                    <button className="Buttons" onClick={updatedTask}>
-                        Update
-                    </button>
-                    <button className="Buttons" onClick={cancelUpdateTask}>
-                        Cancel
-                    </button>
-                </div>
+            <CardComponents/>
+            <div className="ButtonsContainer">
+                <button className="Buttons" onClick={updatedTask}>
+                    Update
+                </button>
+                <button className="Buttons" onClick={cancelUpdateTask}>
+                    Cancel
+                </button>
             </div>
         </div>
     );

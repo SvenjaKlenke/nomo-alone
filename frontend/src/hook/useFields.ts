@@ -44,8 +44,7 @@ function UseFields() {
         setInputTaskName,
         setInputCreator,
         setInputCategory,
-        setInputDescription
-        ,
+        setInputDescription,
         setSelectedDate,
         setInputAmoundOfPeople,
         selectedDate,
