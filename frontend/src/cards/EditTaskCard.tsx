@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
 import {format} from "date-fns";
+import useToday from "../hook/useToday";
 
 type Props = {
     taskModels: TaskModel[];
@@ -20,16 +21,14 @@ function EditTaskCard(props: Props) {
     const [inputTaskName, setInputTaskName] = useState('');
     const [inputCreator, setInputCreator] = useState('');
     const [inputCategory, setInputCategory] = useState('');
-    const [createdate, setCreatedate] = useState<string>(getTodayDate());
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [inputDescription, setInputDescription] = useState('');
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const navigate = useNavigate();
+    const {getTodayDate} = useToday();
 
     useEffect(() => {
-        setCreatedate(getTodayDate());
-
         if (actualTask) {
             setInputTaskName(actualTask.name);
             setInputCreator(actualTask.creator);
@@ -86,7 +85,7 @@ function EditTaskCard(props: Props) {
             creator: inputCreator,
             category: inputCategory,
             name: inputTaskName,
-            createDate: createdate,
+            createDate: getTodayDate(),
             deadline: selectedDate ? format(selectedDate, 'dd.MM.yyyy') : '',
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
@@ -100,13 +99,6 @@ function EditTaskCard(props: Props) {
         navigate("/tasks/" + actualTask?.id);
     }
 
-    function getTodayDate(): string {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-        return `${day}.${month}.${year}`;
-    }
 
     return (
         <div>
