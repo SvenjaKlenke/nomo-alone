@@ -26,16 +26,7 @@ class ServiceTasksTest {
             "This ist a Test!"
     );
 
-    TaskModel taskModel2 = new TaskModel(
-            "2",
-            "Amelie",
-            Category.PLAYDATE,
-            "Schach",
-            "12.06.2023",
-            "15.06.2023",
-            2,
-            "This ist a Test, too!"
-    );
+
 
     ServiceTasks serviceTasks = new ServiceTasks(generadeUUID, repoTasks);
 
@@ -68,6 +59,17 @@ class ServiceTasksTest {
         when(repoTasks.save(taskModel1)).thenReturn(taskModel1);
         //WHEN
         TaskModel actual = serviceTasks.addNewTask(taskModel1);
+        //THEN
+        assertEquals(taskModel1, actual);
+        verify(repoTasks).save(taskModel1);
+    }
+
+    @Test
+    void editTask_returnTheNewTaskModel() {
+        //GIVEN
+        when(repoTasks.save(taskModel1)).thenReturn(taskModel1);
+        //WHEN
+        TaskModel actual = serviceTasks.editTask(taskModel1);
         //THEN
         assertEquals(taskModel1, actual);
         verify(repoTasks).save(taskModel1);
