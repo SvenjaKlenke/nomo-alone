@@ -17,11 +17,7 @@ function NewTaskCard() {
     const {
         handleDateChange,
         handleInputChange,
-        setInputTaskName,
-        setInputCreator,
         setInputCategory,
-        setInputDescription,
-        setSelectedDate,
         setInputAmoundOfPeople,
         selectedDate,
         inputAmoundOfPeople,
