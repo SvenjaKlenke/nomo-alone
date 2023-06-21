@@ -75,7 +75,7 @@ function CardComponents(props: Props) {
                 <select
                     id="amoundOfPeople"
                     name="amoundOfPeople"
-                    value={props.inputAmoundOfPeople || ''}
+                    value={props.inputAmoundOfPeople ?? ''}
                     onChange={(event) => props.setInputAmoundOfPeople(Number(event.target.value))}
                 >
                     <option value="">How many people do you need?</option>
