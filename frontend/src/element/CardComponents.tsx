@@ -1,22 +1,22 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import DatePicker from "react-datepicker";
-import useFields from "../hook/useFields";
 import '../cards/NewTaskCard.css';
 
-function CardComponents() {
+type Props = {
+    handleDateChange: (date: Date | null) => void,
+    handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void
+    setInputCategory: (value: string) => void,
+    setInputAmoundOfPeople: (number: number) => void,
+    selectedDate: Date | null,
+    inputAmoundOfPeople: number | null,
+    inputCreator: string,
+    inputCategory: string,
+    inputDescription: string,
+    inputTaskName: string
+}
 
-    const {
-        handleDateChange,
-        handleInputChange,
-        setInputCategory,
-        setInputAmoundOfPeople,
-        selectedDate,
-        inputAmoundOfPeople,
-        inputCreator,
-        inputCategory,
-        inputDescription,
-        inputTaskName
-    } = useFields();
+function CardComponents(props: Props) {
+
 
     return (
         <div>
@@ -26,8 +26,8 @@ function CardComponents() {
                     id="taskName"
                     name="taskName"
                     placeholder="Give your task a name"
-                    value={inputTaskName}
-                    onChange={handleInputChange}
+                    value={props.inputTaskName}
+                    onChange={props.handleInputChange}
                 ></textarea>
 
                 <label htmlFor="creator">Creator</label>
@@ -35,16 +35,16 @@ function CardComponents() {
                     id="creator"
                     name="creator"
                     placeholder="Creator"
-                    value={inputCreator}
-                    onChange={handleInputChange}
+                    value={props.inputCreator}
+                    onChange={props.handleInputChange}
                 ></textarea>
 
                 <label htmlFor="category">Category</label>
                 <select
                     id="category"
                     name="category"
-                    value={inputCategory}
-                    onChange={(event) => setInputCategory(event.target.value)}
+                    value={props.inputCategory}
+                    onChange={(event) => props.setInputCategory(event.target.value)}
                 >
                     <option value="">Select Category</option>
                     <option value="PLAYDATE">Playdate</option>
@@ -55,8 +55,8 @@ function CardComponents() {
 
                 <label htmlFor="deadline">Deadline</label>
                 <DatePicker
-                    selected={selectedDate}
-                    onChange={handleDateChange}
+                    selected={props.selectedDate}
+                    onChange={props.handleDateChange}
                     placeholderText="Select Deadline"
                     dateFormat="dd.MM.yyyy"
                     className="custom-datepicker"
@@ -67,16 +67,16 @@ function CardComponents() {
                     id="description"
                     name="description"
                     placeholder="Give your task a Description"
-                    value={inputDescription}
-                    onChange={handleInputChange}
+                    value={props.inputDescription}
+                    onChange={props.handleInputChange}
                 ></textarea>
 
                 <label htmlFor="amoundOfPeople">Amount of People</label>
                 <select
                     id="amoundOfPeople"
                     name="amoundOfPeople"
-                    value={inputAmoundOfPeople || ''}
-                    onChange={(event) => setInputAmoundOfPeople(Number(event.target.value))}
+                    value={props.inputAmoundOfPeople || ''}
+                    onChange={(event) => props.setInputAmoundOfPeople(Number(event.target.value))}
                 >
                     <option value="">How many people do you need?</option>
                     <option value="1">1</option>

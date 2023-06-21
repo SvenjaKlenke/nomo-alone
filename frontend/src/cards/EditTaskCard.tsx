@@ -22,6 +22,8 @@ function EditTaskCard(props: Props) {
     const {getTodayDate} = useToday();
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
+        handleInputChange,
+        handleDateChange,
         setInputTaskName,
         setInputCreator,
         setInputCategory,
@@ -88,7 +90,11 @@ function EditTaskCard(props: Props) {
                     Please fill in all fields.
                 </div>
             )}
-            <CardComponents/>
+            <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
+                            inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
+                            inputCreator={inputCreator} inputDescription={inputDescription}
+                            inputTaskName={inputTaskName} selectedDate={selectedDate}
+                            setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
             <div className="ButtonsContainer">
                 <button className="Buttons" onClick={updatedTask}>
                     Update
