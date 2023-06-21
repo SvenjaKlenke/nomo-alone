@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './NewTaskCard.css';
 import './EditTaskCard.css';
 import {useNavigate, useParams} from 'react-router-dom';
@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
 import {format} from "date-fns";
 import useToday from "../hook/useToday";
+import useFields from "../hook/useFields";
 
 type Props = {
     taskModels: TaskModel[];
@@ -18,15 +19,26 @@ function EditTaskCard(props: Props) {
     const params = useParams();
     const id: string | undefined = params.id;
     const actualTask: TaskModel | undefined = props.taskModels.find(currentTask => currentTask.id === id);
-    const [inputTaskName, setInputTaskName] = useState('');
-    const [inputCreator, setInputCreator] = useState('');
-    const [inputCategory, setInputCategory] = useState('');
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [inputDescription, setInputDescription] = useState('');
-    const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
+    const {
+        handleDateChange,
+        handleInputChange,
+        setInputTaskName,
+        setInputCreator,
+        setInputCategory,
+        setInputDescription
+        ,
+        setSelectedDate,
+        setInputAmoundOfPeople,
+        selectedDate,
+        inputAmoundOfPeople,
+        inputCreator,
+        inputCategory,
+        inputDescription,
+        inputTaskName
+    } = useFields();
 
     useEffect(() => {
         if (actualTask) {
@@ -39,34 +51,6 @@ function EditTaskCard(props: Props) {
         }
     }, [actualTask]);
 
-    const handleDateChange = (date: Date | null) => {
-        setSelectedDate(date);
-    };
-
-
-    function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {
-        const {name, value} = event.target;
-
-        switch (name) {
-            case 'taskName':
-                setInputTaskName(value);
-                break;
-            case 'creator':
-                setInputCreator(value);
-                break;
-            case 'category':
-                setInputCategory(value);
-                break;
-            case 'description':
-                setInputDescription(value);
-                break;
-            case 'amoundOfPeople':
-                setInputAmoundOfPeople(Number(value));
-                break;
-            default:
-                break;
-        }
-    }
 
     function updatedTask() {
         if (

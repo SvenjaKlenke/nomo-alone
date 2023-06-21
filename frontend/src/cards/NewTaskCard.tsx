@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import './NewTaskCard.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -7,45 +7,25 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
 import {format} from 'date-fns';
 import useToday from "../hook/useToday";
+import useFields from "../hook/useFields";
 
 function NewTaskCard() {
-    const [inputTaskName, setInputTaskName] = useState('');
-    const [inputCreator, setInputCreator] = useState('');
-    const [inputCategory, setInputCategory] = useState('');
-    const {getTodayDate} = useToday();
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [inputDescription, setInputDescription] = useState('');
-    const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
+
     const navigate = useNavigate();
-    const handleDateChange = (date: Date | null) => {
-        setSelectedDate(date);
-    };
-
-
-    function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {
-        const {name, value} = event.target;
-
-        switch (name) {
-            case 'taskName':
-                setInputTaskName(value);
-                break;
-            case 'creator':
-                setInputCreator(value);
-                break;
-            case 'category':
-                setInputCategory(value);
-                break;
-            case 'description':
-                setInputDescription(value);
-                break;
-            case 'amoundOfPeople':
-                setInputAmoundOfPeople(Number(value));
-                break;
-            default:
-                break;
-        }
-    }
+    const {getTodayDate} = useToday();
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
+    const {
+        handleDateChange,
+        handleInputChange,
+        setInputCategory,
+        setInputAmoundOfPeople,
+        selectedDate,
+        inputAmoundOfPeople,
+        inputCreator,
+        inputCategory,
+        inputDescription,
+        inputTaskName
+    } = useFields();
 
     function addNewTask() {
         if (
