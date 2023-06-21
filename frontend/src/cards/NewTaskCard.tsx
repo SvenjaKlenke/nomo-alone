@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './NewTaskCard.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -6,12 +6,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
 import {format} from 'date-fns';
+import useToday from "../hook/useToday";
 
 function NewTaskCard() {
     const [inputTaskName, setInputTaskName] = useState('');
     const [inputCreator, setInputCreator] = useState('');
     const [inputCategory, setInputCategory] = useState('');
-    const [createdate, setCreatedate] = useState<string>(getTodayDate());
+    const {getTodayDate} = useToday();
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [inputDescription, setInputDescription] = useState('');
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
@@ -21,9 +22,6 @@ function NewTaskCard() {
         setSelectedDate(date);
     };
 
-    useEffect(() => {
-        setCreatedate(getTodayDate());
-    }, []);
 
     function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {
         const {name, value} = event.target;
@@ -66,7 +64,7 @@ function NewTaskCard() {
             creator: inputCreator,
             category: inputCategory,
             name: inputTaskName,
-            createDate: createdate,
+            createDate: getTodayDate(),
             deadline: format(selectedDate, 'dd.MM.yyyy'),
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
@@ -76,14 +74,6 @@ function NewTaskCard() {
     }
     function cancelAddNewTask() {
         navigate('/');
-    }
-
-    function getTodayDate(): string {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-        return `${day}.${month}.${year}`;
     }
 
     return (
