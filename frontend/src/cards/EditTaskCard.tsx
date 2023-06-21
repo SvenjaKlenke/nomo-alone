@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import './NewTaskCard.css';
-import './EditTaskCard.css';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
@@ -65,7 +64,7 @@ function EditTaskCard(props: Props) {
             return;
         }
         const updatedTask: TaskModel = {
-            id: actualTask?.id || '',
+            id: actualTask?.id ?? '',
             creator: inputCreator,
             category: inputCategory,
             name: inputTaskName,
