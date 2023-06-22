@@ -1,0 +1,51 @@
+
+.App-header {
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative;
+}
+
+.App-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #B6D7A8;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.App-logo {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    left: 0;
+    top: 9px
+}
+
+
+.App-header p {
+    color: #274E13;
+}
+
+.LinkHeader {
+    text-decoration: none;
+    color: #274E13;
+    font-size: 16px;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.LinkHeader:hover {
+    font-size: 24px;
+}

@@ -47,6 +47,7 @@ function EditTaskCard(props: Props) {
             setInputDescription(actualTask.text);
             setInputAmoundOfPeople(actualTask.amoundOfPeople);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [actualTask]);
 
 
