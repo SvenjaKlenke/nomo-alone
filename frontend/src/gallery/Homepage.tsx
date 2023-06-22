@@ -9,17 +9,16 @@ function Homepage() {
         navigate('/tasks');
 
     }
-
     function clickForTasksPlaydate() {
-        navigate('/tasks/playdate');
+        navigate('/playdate');
     }
 
     function clickForTasksAppointment() {
-        navigate('/tasks/appointment');
+        navigate('/appointment');
     }
 
     function clickForTasksVisit() {
-        navigate('/tasks/visit');
+        navigate('/visit');
     }
 
     function clickForTasksShopping() {
