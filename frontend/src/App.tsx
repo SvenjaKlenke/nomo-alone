@@ -7,6 +7,7 @@ import DetailsTaskCard from "./cards/DetailsTaskCard";
 import NewTaskCard from "./cards/NewTaskCard";
 import EditTaskCard from "./cards/EditTaskCard";
 import Header from "./element/Header";
+import Homepage from "./gallery/Homepage";
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
     <div className="App">
         <Header/>
         <Routes>
-            <Route path="/" element={
+            <Route path="/" element={<Homepage/>}/>
+            <Route path="/tasks" element={
                 <TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}/>
             }/>
             <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
