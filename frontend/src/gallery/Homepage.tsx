@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import './Homepage.css'
 
 function Homepage() {
 
@@ -27,11 +28,14 @@ function Homepage() {
 
     return (
         <div>
-            <button className="Buttons" onClick={clickForTasksPlaydate}>Playdate</button>
-            <button className="Buttons" onClick={clickForTasksAppointment}>Appointment</button>
-            <button className="Buttons" onClick={clickForTasksVisit}>Visit</button>
-            <button className="Buttons" onClick={clickForTasksShopping}>Shopping</button>
-            <button className="Buttons" onClick={clickForAllTasks}>All Tasks</button>
+            <h1>Choose a Category</h1>
+            <div className="ButtonContainerHomepage">
+                <button className="ButtonsHomepage" onClick={clickForTasksPlaydate}>Playdate</button>
+                <button className="ButtonsHomepage" onClick={clickForTasksAppointment}>Appointment</button>
+                <button className="ButtonsHomepage" onClick={clickForTasksVisit}>Visit</button>
+                <button className="ButtonsHomepage" onClick={clickForTasksShopping}>Shopping</button>
+                <button className="ButtonsHomepage" onClick={clickForAllTasks}>All Tasks</button>
+            </div>
         </div>
     );
 }
