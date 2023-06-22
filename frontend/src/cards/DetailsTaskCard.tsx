@@ -5,11 +5,10 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 type Props = {
-    allTasks: TaskModel [];
+    allTasks: TaskModel[];
 }
 
 function DetailsTaskCard(props: Props) {
-
     const params = useParams();
     const id: string | undefined = params.id;
 
@@ -20,6 +19,10 @@ function DetailsTaskCard(props: Props) {
     function clickForDelete() {
         axios.delete("/tasks/" + actualTask?.id)
             .then(r => navigate("/"))
+    }
+
+    function clickForEdit() {
+        navigate("/edit/" + actualTask?.id);
     }
 
     return (
@@ -48,6 +51,7 @@ function DetailsTaskCard(props: Props) {
                 </div>
                 <div className="ButtonContainer">
                     <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
+                    <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
                 </div>
                 <div className="Links">
                     <Link className="link" to={"/"}>back</Link>

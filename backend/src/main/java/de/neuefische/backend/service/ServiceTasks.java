@@ -27,4 +27,10 @@ public class ServiceTasks {
     public void deleteById(String id) {
         repoTasks.deleteById(id);
     }
+
+    public TaskModel editTask(TaskModel taskModel) {
+        return repoTasks.save(taskModel);
+    }
+
+
 }

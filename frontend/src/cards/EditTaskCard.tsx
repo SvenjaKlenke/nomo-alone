@@ -1,23 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './NewTaskCard.css';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
-import {format} from 'date-fns';
+import {format} from "date-fns";
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
 
-function NewTaskCard() {
+type Props = {
+    taskModels: TaskModel[];
+};
 
+function EditTaskCard(props: Props) {
+
+    const params = useParams();
+    const id: string | undefined = params.id;
+    const actualTask: TaskModel | undefined = props.taskModels.find(currentTask => currentTask.id === id);
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
-        handleDateChange,
         handleInputChange,
+        handleDateChange,
+        setInputTaskName,
+        setInputCreator,
         setInputCategory,
+        setInputDescription,
+        setSelectedDate,
         setInputAmoundOfPeople,
         selectedDate,
         inputAmoundOfPeople,
@@ -27,7 +38,19 @@ function NewTaskCard() {
         inputTaskName
     } = useFields();
 
-    function addNewTask() {
+    useEffect(() => {
+        if (actualTask) {
+            setInputTaskName(actualTask.name);
+            setInputCreator(actualTask.creator);
+            setInputCategory(actualTask.category);
+            setSelectedDate(null);
+            setInputDescription(actualTask.text);
+            setInputAmoundOfPeople(actualTask.amoundOfPeople);
+        }
+    }, [actualTask]);
+
+
+    function updatedTask() {
         if (
             inputTaskName.trim() === '' ||
             inputCreator.trim() === '' ||
@@ -39,27 +62,29 @@ function NewTaskCard() {
             setIsAlertVisible(true);
             return;
         }
-        const newTask: TaskModel = {
-            id: '',
+        const updatedTask: TaskModel = {
+            id: actualTask?.id ?? '',
             creator: inputCreator,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
-            deadline: format(selectedDate, 'dd.MM.yyyy'),
+            deadline: selectedDate ? format(selectedDate, 'dd.MM.yyyy') : '',
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
         };
 
-        axios.post('/tasks', newTask).then(r => navigate("/"))
+
+        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => navigate("/"))
     }
 
-    function cancelAddNewTask() {
-        navigate('/');
+    function cancelUpdateTask() {
+        navigate("/tasks/" + actualTask?.id);
     }
+
 
     return (
         <div>
-            <h1>New Task</h1>
+            <h1>Edit Task</h1>
             {isAlertVisible && (
                 <div className="alert-message">
                     Please fill in all fields.
@@ -71,16 +96,15 @@ function NewTaskCard() {
                             inputTaskName={inputTaskName} selectedDate={selectedDate}
                             setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
             <div className="ButtonsContainer">
-                <button className="Buttons" onClick={addNewTask}>
-                    Add
+                <button className="Buttons" onClick={updatedTask}>
+                    Update
                 </button>
-                <button className="Buttons" onClick={cancelAddNewTask}>
+                <button className="Buttons" onClick={cancelUpdateTask}>
                     Cancel
                 </button>
             </div>
         </div>
-
     );
 }
 
-export default NewTaskCard;
+export default EditTaskCard;

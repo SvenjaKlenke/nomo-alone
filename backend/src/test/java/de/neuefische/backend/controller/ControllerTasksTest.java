@@ -62,7 +62,7 @@ class ControllerTasksTest {
 
     @Test
     @DirtiesContext
-    void deleteToDo_thenReturn200OK_andReturnEmptyList() throws Exception {
+    void deleteTask_thenReturn200OK_andReturnEmptyList() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
@@ -90,5 +90,61 @@ class ControllerTasksTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
+    }
+
+    @Test
+    @DirtiesContext
+    void editTask_thenReturn200OK_andReturnTheEditTask() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                                                            
+                                                  "creator": "Svenja",
+                                                  "name":"Test1",
+                                                  "category":"PLAYDATE",
+                                                  "createDate": "15.06.2023",
+                                                  "deadline": "16.06.2023",
+                                                  "amoundOfPeople": 2,
+                                                  "text": "Test tester Test"
+                                }
+                                """))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        TaskModel taskModel = objectMapper.readValue(content, TaskModel.class);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/tasks/" + taskModel.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                                  
+                                                  "id": "<id>",                          
+                                                  "creator": "Svenja",
+                                                  "name":"Test1",
+                                                  "category":"PLAYDATE",
+                                                  "createDate": "15.06.2023",
+                                                  "deadline": "16.06.2023",
+                                                  "amoundOfPeople": 1,
+                                                  "text": "Test tester Test"
+                                }
+                                """.replace("<id>", taskModel.getId())))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                                                                            
+                                                  "creator": "Svenja",
+                                                  "name":"Test1",
+                                                  "category":"PLAYDATE",
+                                                  "createDate": "15.06.2023",
+                                                  "deadline": "16.06.2023",
+                                                  "amoundOfPeople": 1,
+                                                  "text": "Test tester Test"
+                                }
+                        """));
+
     }
 }
