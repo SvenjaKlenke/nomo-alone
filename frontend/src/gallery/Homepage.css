@@ -5,9 +5,8 @@
 
 .ButtonsHomepage {
     width: 300px;
-    height: 100px;
+    height: 80px;
     margin: 20px;
-    background: #B6D7A8;
     border: 1px solid #274E13;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -17,12 +16,12 @@
     outline: none;
     cursor: pointer;
     border-radius: 35px;
-    box-shadow: 0 20px 30px -6px #274E13;
+    box-shadow: 0 10px 15px -6px #274E13;
     font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to top, #274E13 0%, #B6D7A8 80%, #274E13 100%);
+    background: #B6D7A8 linear-gradient(to top, #274E13 0%, #B6D7A8 80%, #274E13 100%);
     transition: all 0.2s ease;
     text-shadow: 0 1px #274E13;
 }
