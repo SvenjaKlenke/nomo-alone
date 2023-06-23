@@ -23,7 +23,7 @@ function Homepage() {
     }
 
     function clickForTasksShopping() {
-        navigate('/tasks/shopping');
+        navigate('/shopping');
     }
 
     return (

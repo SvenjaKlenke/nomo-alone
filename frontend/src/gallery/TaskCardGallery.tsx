@@ -6,15 +6,14 @@ import {useNavigate, useParams} from "react-router-dom";
 
 type Props = {
     allTasks: TaskModel[],
-    getAllTasks: () => void
+    getAllTasks: () => void,
+    category: string | undefined
 }
 
 function TaskCardGallery(props: Props) {
 
     const navigate = useNavigate();
     const params = useParams();
-    const category: string | undefined = params.category?.toUpperCase();
-
 
     useEffect(() => {
         props.getAllTasks();
@@ -23,10 +22,10 @@ function TaskCardGallery(props: Props) {
 
     let tasksToDisplay: TaskModel[] = [];
 
-    if (category === undefined || category === "TASKS") {
+    if (props.category === undefined || props.category === "TASKS") {
         tasksToDisplay = props.allTasks;
-    } else if (["VISIT", "APPOINTMENT", "SHOPPING", "PLAYDATE"].includes(category)) {
-        tasksToDisplay = props.allTasks.filter(currentTask => currentTask.category === category);
+    } else if (["VISIT", "APPOINTMENT", "SHOPPING", "PLAYDATE"].includes(props.category)) {
+        tasksToDisplay = props.allTasks.filter(currentTask => currentTask.category === props.category);
     }
 
     function clickToNewTask() {
@@ -36,7 +35,7 @@ function TaskCardGallery(props: Props) {
     return (
         <div>
             <div className="Headline">
-                <h1>All Tasks</h1>
+                <h1>{props.category === "tasks" ? "All Tasks" : props.category}</h1>
                 <div className="ButtonContainerRoundButton">
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
