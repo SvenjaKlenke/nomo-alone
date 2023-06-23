@@ -39,6 +39,10 @@ function TaskCardGallery(props: Props) {
         navigate("/new");
     }
 
+    function goBack() {
+        navigate("/");
+    }
+
     return (
         <div>
             <div className="Headline">
@@ -54,6 +58,9 @@ function TaskCardGallery(props: Props) {
                 ) : (
                     tasksToDisplay.map(task => <TaskCard key={task.id} task={task}/>)
                 )}
+            </div>
+            <div className="BackButton">
+                <button className="RoundButton" onClick={goBack}>Back</button>
             </div>
         </div>
     );
