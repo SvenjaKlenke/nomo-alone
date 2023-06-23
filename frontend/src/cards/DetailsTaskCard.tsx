@@ -1,7 +1,7 @@
 import React from 'react';
 import './DetailsTaskCard.css';
 import {TaskModel} from "../model/TaskModel";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 type Props = {
@@ -18,7 +18,7 @@ function DetailsTaskCard(props: Props) {
 
     function clickForDelete() {
         axios.delete("/tasks/" + actualTask?.id)
-            .then(r => navigate("/"))
+            .then(r => navigate(-1))
     }
 
     function clickForEdit() {
@@ -54,7 +54,7 @@ function DetailsTaskCard(props: Props) {
                     <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
                 </div>
                 <div className="Links">
-                    <Link className="link" to={"/"}>back</Link>
+                    <button className="ButtonsDetailsCard" onClick={() => navigate(-1)}>back</button>
                 </div>
             </div>
         </div>

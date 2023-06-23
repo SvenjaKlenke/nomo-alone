@@ -35,7 +35,7 @@ function TaskCardGallery(props: Props) {
     return (
         <div>
             <div className="Headline">
-                <h1>{props.category === "tasks" ? "All Tasks" : props.category}</h1>
+                <h1>{props.category === "tasks" ? "All Tasks" : props.category ? props.category.charAt(0).toUpperCase() + props.category.slice(1).toLowerCase() : ""}</h1>
                 <div className="ButtonContainerRoundButton">
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
