@@ -27,6 +27,14 @@ function TaskCardGallery(props: Props) {
         tasksToDisplay = props.allTasks.filter(currentTask => currentTask.category === props.category);
     }
 
+    let categoryText = "";
+
+    if (props.category === "tasks") {
+        categoryText = "All Tasks";
+    } else if (props.category) {
+        categoryText = props.category.charAt(0).toUpperCase() + props.category.slice(1).toLowerCase();
+    }
+
     function clickToNewTask() {
         navigate("/new");
     }
@@ -34,7 +42,7 @@ function TaskCardGallery(props: Props) {
     return (
         <div>
             <div className="Headline">
-                <h1>{props.category === "tasks" ? "All Tasks" : props.category ? props.category.charAt(0).toUpperCase() + props.category.slice(1).toLowerCase() : ""}</h1>
+                <h1>{categoryText}</h1>
                 <div className="ButtonContainerRoundButton">
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
