@@ -1,0 +1,34 @@
+.ButtonContainerHomepage {
+    display: inline-grid;
+}
+
+.ButtonsHomepage {
+    width: 300px;
+    height: 80px;
+    margin: 10px;
+    background: #B6D7A8;
+    border: 1px solid #274E13;
+    border-radius: 35px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+}
+
+.ButtonsHomepage:hover {
+    box-shadow: 0 4px 3px 1px #B6D7A8, 0 6px 8px #274E13, 0 -4px 4px #274E13, 0 -6px 4px #B6D7A8, inset 0 0 3px 3px #B6D7A8;
+}
+
+.ButtonsHomepage:active {
+    box-shadow: 0 4px 3px 1px #B6D7A8, 0 6px 8px #274E13, 0 -4px 4px #274E13, 0 -6px 4px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+.ButtonsHomepage:focus {
+    box-shadow: 0 4px 3px 1px #B6D7A8, 0 6px 8px #274E13, 0 -4px 4px #274E13, 0 -6px 4px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+

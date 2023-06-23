@@ -112,7 +112,7 @@
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 h2 {
@@ -122,13 +122,13 @@ h2 {
 }
 
 .Links {
+    text-decoration: none;
     color: #274E13;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    font-size: 24px;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.Links:hover {
+    font-size: 24px;
 }
 

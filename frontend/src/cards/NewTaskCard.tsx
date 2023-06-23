@@ -50,11 +50,11 @@ function NewTaskCard() {
             text: inputDescription
         };
 
-        axios.post('/tasks', newTask).then(r => navigate("/"))
+        axios.post('/tasks', newTask).then(r => navigate(-1))
     }
 
     function cancelAddNewTask() {
-        navigate('/');
+        navigate(-1);
     }
 
     return (

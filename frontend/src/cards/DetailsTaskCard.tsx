@@ -18,7 +18,7 @@ function DetailsTaskCard(props: Props) {
 
     function clickForDelete() {
         axios.delete("/tasks/" + actualTask?.id)
-            .then(r => navigate("/"))
+            .then(r => navigate(-1))
     }
 
     function clickForEdit() {
@@ -53,8 +53,8 @@ function DetailsTaskCard(props: Props) {
                     <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
                     <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
                 </div>
-                <div className="Links">
-                    <Link className="link" to={"/"}>back</Link>
+                <div>
+                    <Link className="Links" to={`/${actualTask?.category}`}>back</Link>
                 </div>
             </div>
         </div>

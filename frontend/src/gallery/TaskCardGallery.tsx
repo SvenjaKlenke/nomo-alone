@@ -6,7 +6,8 @@ import {useNavigate} from "react-router-dom";
 
 type Props = {
     allTasks: TaskModel[],
-    getAllTasks: () => void
+    getAllTasks: () => void,
+    category: string | undefined
 }
 
 function TaskCardGallery(props: Props) {
@@ -18,25 +19,48 @@ function TaskCardGallery(props: Props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    let tasksToDisplay: TaskModel[] = [];
+
+    if (props.category === undefined || props.category === "TASKS") {
+        tasksToDisplay = props.allTasks;
+    } else if (["VISIT", "APPOINTMENT", "SHOPPING", "PLAYDATE"].includes(props.category)) {
+        tasksToDisplay = props.allTasks.filter(currentTask => currentTask.category === props.category);
+    }
+
+    let categoryText = "";
+
+    if (props.category === "tasks") {
+        categoryText = "All Tasks";
+    } else if (props.category) {
+        categoryText = props.category.charAt(0).toUpperCase() + props.category.slice(1).toLowerCase();
+    }
+
     function clickToNewTask() {
         navigate("/new");
+    }
+
+    function goBack() {
+        navigate("/");
     }
 
     return (
         <div>
             <div className="Headline">
-                <h1>All Tasks</h1>
+                <h1>{categoryText}</h1>
                 <div className="ButtonContainerRoundButton">
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
             </div>
             <div className="Taskcardgallery">
-                {props.allTasks.length === 0 ? (
+                {tasksToDisplay.length === 0 ? (
                     <h6>There are no tasks available yet. <br/>You can add a task by clicking the "New Task" button.
                     </h6>
                 ) : (
-                    props.allTasks.map(task => <TaskCard key={task.id} task={task}/>)
+                    tasksToDisplay.map(task => <TaskCard key={task.id} task={task}/>)
                 )}
+            </div>
+            <div className="BackButton">
+                <button className="RoundButton" onClick={goBack}>Back</button>
             </div>
         </div>
     );
