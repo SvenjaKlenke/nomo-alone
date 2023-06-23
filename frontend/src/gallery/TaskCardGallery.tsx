@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {TaskModel} from "../model/TaskModel";
 import TaskCard from "../cards/TaskCard";
 import './TaskCardGallery.css';
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     allTasks: TaskModel[],
@@ -13,7 +13,6 @@ type Props = {
 function TaskCardGallery(props: Props) {
 
     const navigate = useNavigate();
-    const params = useParams();
 
     useEffect(() => {
         props.getAllTasks();

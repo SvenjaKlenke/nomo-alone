@@ -1,7 +1,7 @@
 import React from 'react';
 import './DetailsTaskCard.css';
 import {TaskModel} from "../model/TaskModel";
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 type Props = {
@@ -53,8 +53,8 @@ function DetailsTaskCard(props: Props) {
                     <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
                     <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
                 </div>
-                <div className="Links">
-                    <button className="ButtonsDetailsCard" onClick={() => navigate(-1)}>back</button>
+                <div>
+                    <Link className="Links" to={`/${actualTask?.category}`}>back</Link>
                 </div>
             </div>
         </div>
