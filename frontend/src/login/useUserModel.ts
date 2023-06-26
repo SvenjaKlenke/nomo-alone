@@ -24,7 +24,7 @@ function UseUserModel() {
             username = response.data;
             if (username === "anonymousUser" || username === undefined) {
                 nav("/login")
-            } else nav("/all-expense-categories")
+            } else nav("/")
         }).then(() => {
         })
             .catch(error => {
