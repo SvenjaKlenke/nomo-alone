@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TaskModel} from "../model/TaskModel";
 import TaskCard from "../cards/TaskCard";
 import './TaskCardGallery.css';
@@ -11,8 +11,8 @@ type Props = {
 }
 
 function TaskCardGallery(props: Props) {
-
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         props.getAllTasks();
@@ -43,6 +43,12 @@ function TaskCardGallery(props: Props) {
         navigate("/");
     }
 
+    useEffect(() => {
+        if (props.allTasks.length > 0) {
+            setIsLoading(false);
+        }
+    }, [props.allTasks])
+
     return (
         <div>
             <div className="Headline">
@@ -51,17 +57,23 @@ function TaskCardGallery(props: Props) {
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
             </div>
-            <div className="Taskcardgallery">
-                {tasksToDisplay.length === 0 ? (
-                    <h6>There are no tasks available yet. <br/>You can add a task by clicking the "New Task" button.
-                    </h6>
-                ) : (
-                    tasksToDisplay.map(task => <TaskCard key={task.id} task={task}/>)
-                )}
-            </div>
-            <div className="BackButton">
-                <button className="RoundButton" onClick={goBack}>Back</button>
-            </div>
+            {isLoading ? (
+                <div className="loader">Loading...</div>
+            ) : (
+                <div>
+                    <div className="Taskcardgallery">
+                        {tasksToDisplay.length === 0 ? (
+                            <h6>There are no tasks available yet. <br/>You can add a task by clicking the "New Task"
+                                button.</h6>
+                        ) : (
+                            tasksToDisplay.map(task => <TaskCard key={task.id} task={task}/>)
+                        )}
+                    </div>
+                    <div className="BackButton">
+                        <button className="RoundButton" onClick={goBack}>Back</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
