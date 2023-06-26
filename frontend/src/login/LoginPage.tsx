@@ -1,5 +1,6 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import './LoginPage.css';
 
 type Props = {
     login: (username: string, password: string) => Promise<void>
@@ -32,10 +33,17 @@ function LoginPage(props: Props) {
 
     return (
         <div>
-            <form onSubmit={loginOnSubmit}>
-                <input type="Username" onChange={onChangeHandlerUsername}/>
-                <input type="Password" onChange={onChangeHandlerPassword}/>
-                <button>LOGIN</button>
+            <form className="form" onSubmit={loginOnSubmit}>
+                <div className="flex">
+                    <div className="login color">Login</div>
+                    <label className="color">Username :</label>
+                    <input type="text" className="input" onChange={onChangeHandlerUsername}/>
+                    <label className="color">Password :</label>
+                    <input type="password" className="input" onChange={onChangeHandlerPassword}/>
+                    <button className="">Log-in</button>
+                    <br/>
+                    <div className="color align">Don't have an account? <span className="span">Sign-Up</span></div>
+                </div>
             </form>
         </div>
     );
