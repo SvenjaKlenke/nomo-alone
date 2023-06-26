@@ -97,10 +97,10 @@ function EditTaskCard(props: Props) {
                             inputTaskName={inputTaskName} selectedDate={selectedDate}
                             setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
             <div className="ButtonsContainer">
-                <button className="Buttons" onClick={updatedTask}>
+                <button className="ButtonsNewEdit" onClick={updatedTask}>
                     Update
                 </button>
-                <button className="Buttons" onClick={cancelUpdateTask}>
+                <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
                     Cancel
                 </button>
             </div>

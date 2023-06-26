@@ -64,3 +64,29 @@ h6 {
     right: 20px;
     z-index: 9999;
 }
+
+.loader {
+    width: 12em;
+    height: 1em;
+    border-radius: 8px;
+    background-color: #274E13;
+}
+
+.loader div {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #B6D7A8;
+    animation: width7435 5s linear infinite;
+    transition: all;
+}
+
+@keyframes width7435 {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}

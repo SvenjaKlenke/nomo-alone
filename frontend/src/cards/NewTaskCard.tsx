@@ -71,10 +71,10 @@ function NewTaskCard() {
                             inputTaskName={inputTaskName} selectedDate={selectedDate}
                             setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
             <div className="ButtonsContainer">
-                <button className="Buttons" onClick={addNewTask}>
+                <button className="ButtonsNewEdit" onClick={addNewTask}>
                     Add
                 </button>
-                <button className="Buttons" onClick={cancelAddNewTask}>
+                <button className="ButtonsNewEdit" onClick={cancelAddNewTask}>
                     Cancel
                 </button>
             </div>
