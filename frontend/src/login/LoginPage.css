@@ -5,9 +5,16 @@
     padding: 40px;
     border-radius: 10px;
     margin: 20px;
+    max-width: 400px;
     width: 240px;
     height: 350px;
+}
 
+@media screen and (max-width: 480px) {
+    .form {
+        padding: 20px;
+        height: auto;
+    }
 }
 
 .login {
@@ -74,3 +81,5 @@
 .align {
     text-align: center;
 }
+
+
