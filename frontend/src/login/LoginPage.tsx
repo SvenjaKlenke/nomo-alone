@@ -1,6 +1,7 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import './LoginPage.css';
+import logo from "../Logo.png";
 
 type Props = {
     login: (username: string, password: string) => Promise<void>
@@ -33,6 +34,9 @@ function LoginPage(props: Props) {
 
     return (
         <div>
+            <div className="LoginLogo">
+                <img src={logo} alt="Logo"/>
+            </div>
             <form className="form" onSubmit={loginOnSubmit}>
                 <div className="flex">
                     <div className="login color">Login</div>

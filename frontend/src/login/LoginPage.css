@@ -82,4 +82,20 @@
     text-align: center;
 }
 
+.LoginLogo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.LoginLogo img {
+    width: 320px;
+    height: auto;
+    max-width: 100%;
+}
+
+
+
+
+
 

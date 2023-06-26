@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import TaskCardGallery from "./gallery/TaskCardGallery";
 import {Route, Routes} from "react-router-dom";
@@ -15,7 +15,9 @@ import ProtectedRoutes from "./login/ProtectedRoutes";
 function App() {
 
     const {getAllTasks, tasksList} = useTasks()
-    const {login, user} = useUserModel()
+    const {login, user, getUsername} = useUserModel()
+
+    useEffect(() => getUsername, [])
 
     return (
         <div className="App">
