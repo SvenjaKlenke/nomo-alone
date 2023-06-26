@@ -17,6 +17,7 @@ function App() {
     const {getAllTasks, tasksList} = useTasks()
     const {login, user, getUsername} = useUserModel()
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => getUsername, [])
 
     return (
