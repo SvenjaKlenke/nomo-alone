@@ -10,7 +10,7 @@ function Header() {
 
     function logoutUser() {
         return axios.post("/user/logout")
-            .then(r => navigate("/"))
+            .then(r => navigate("/login"))
 
     }
 
