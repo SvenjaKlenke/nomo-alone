@@ -12,9 +12,10 @@ type Props = {
 
 function TaskCardGallery(props: Props) {
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         props.getAllTasks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
