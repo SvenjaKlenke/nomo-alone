@@ -132,7 +132,7 @@ class ControllerTasksTest {
                         .content("""
                                 {
                                                   
-                                                  "id": "<id>",                          
+                                                  "id": "<id>",
                                                   "creator": "Svenja",
                                                   "name":"Test1",
                                                   "category":"PLAYDATE",
