@@ -1,10 +1,16 @@
 import React from 'react';
 import logo from "../Logo.png";
 import './Header.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import axios from "axios";
 
 function Header() {
+
+    const navigate = useNavigate()
+
     function logoutUser() {
+        return axios.post("/user/logout")
+            .then(r => navigate("/"))
 
     }
 
