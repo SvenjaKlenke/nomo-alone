@@ -25,16 +25,19 @@ public class ServiceUser implements UserDetailsService {
         return new User(userModel.getUsername(), userModel.getPassword(), List.of());
     }
 
-    public UserModel addNewUser(UserModelDTO userModelDTO) {
-        UserModel userModel = new UserModel();
+    public UserModelDTO addNewUser(UserModel userModel) {
         userModel.setId(generadeUUID.getUUID());
-        userModel.setUsername(userModelDTO.getUsername());
-        userModel.setName(userModelDTO.getName());
-        userModel.setLastname(userModelDTO.getLastname());
-        userModel.setEmail(userModelDTO.getEmail());
         String hashedPassword = passwordEncoder.encode(userModel.getPassword());
         userModel.setPassword(hashedPassword);
+        repoUser.save(userModel);
 
-        return repoUser.save(userModel);
+        UserModelDTO userModelDTO = new UserModelDTO();
+        userModelDTO.setId(userModel.getId());
+        userModelDTO.setUsername(userModel.getUsername());
+        userModelDTO.setName(userModel.getName());
+        userModelDTO.setLastname(userModel.getLastname());
+        userModelDTO.setEmail(userModel.getEmail());
+
+        return userModelDTO;
     }
 }
