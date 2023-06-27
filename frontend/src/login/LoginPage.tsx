@@ -1,27 +1,19 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react';
-import {useNavigate} from "react-router-dom";
 import './LoginPage.css';
 import logo from "../Logo.png";
 
 type Props = {
-    login: (username: string, password: string) => Promise<void>
+    login: (username: string, password: string) => void
 }
 
 function LoginPage(props: Props) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const nav = useNavigate();
 
     function loginOnSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         props.login(username, password)
-            .then(() => {
-                nav("/")
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
     }
 
     function onChangeHandlerUsername(e: ChangeEvent<HTMLInputElement>) {
