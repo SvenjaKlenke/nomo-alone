@@ -54,7 +54,7 @@
 }
 
 .form button:hover {
-    box-shadow: 2px 2px 12px white;
+    box-shadow: 2px 2px 12px #F2F2F2;
 }
 
 .input {

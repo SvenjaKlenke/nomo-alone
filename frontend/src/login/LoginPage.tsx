@@ -44,7 +44,7 @@ function LoginPage(props: Props) {
                     <input type="text" className="input" onChange={onChangeHandlerUsername}/>
                     <label className="color">Password :</label>
                     <input type="password" className="input" onChange={onChangeHandlerPassword}/>
-                    <button className="">Log-in</button>
+                    <button className="">Login</button>
                     <br/>
                     <div className="color align">Don't have an account? <span className="span">Sign-Up</span></div>
                 </div>

@@ -22,7 +22,7 @@ function App() {
 
     return (
         <div className="App">
-            {user === "" || user === "anonymousUser" ? <> </> : <Header/>}
+            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header/>}
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route element={<ProtectedRoutes user={user}/>}>
