@@ -2,8 +2,8 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import './LoginPage.css';
 import logo from "../Logo.png";
 import {Link, useNavigate} from "react-router-dom";
-import {UserModel} from './UserModel'
-import axios from "axios/index";
+import {UserModel} from './UserModel';
+import axios from "axios";
 
 function RegisterPage() {
     const [userModel, setUserModel] = useState<UserModel>({
@@ -13,6 +13,7 @@ function RegisterPage() {
         email: "",
         password: ""
     });
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
 
     const navigate = useNavigate();
 
@@ -23,9 +24,19 @@ function RegisterPage() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        axios.post('/user', userModel).then(r => navigate("/login"))
+        if (validateFormFields()) {
+            axios.post('/user', userModel)
+                .then(() => navigate("/login"));
+        }
     }
 
+    function validateFormFields(): boolean {
+        if (!userModel.username || !userModel.name || !userModel.lastname || !userModel.email || !userModel.password) {
+            setIsAlertVisible(true);
+            return false;
+        }
+        return true;
+    }
 
     return (
         <div>
@@ -35,6 +46,11 @@ function RegisterPage() {
             <form className="form" onSubmit={handleSubmit}>
                 <div className="flex">
                     <div className="login color">Register</div>
+                    {isAlertVisible && (
+                        <div className="alert-message">
+                            Please fill in all fields.
+                        </div>
+                    )}
                     <label className="color">Username :</label>
                     <input
                         type="text"
