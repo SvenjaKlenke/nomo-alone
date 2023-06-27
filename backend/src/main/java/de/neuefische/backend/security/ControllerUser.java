@@ -1,5 +1,6 @@
 package de.neuefische.backend.security;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,5 +20,12 @@ public class ControllerUser {
 
     @PostMapping("/login")
     public void login() {
+    }
+
+    @PostMapping("/logout")
+    String logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        SecurityContextHolder.clearContext();
+        return "logged out";
     }
 }

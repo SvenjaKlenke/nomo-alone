@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import TaskCardGallery from "./gallery/TaskCardGallery";
 import {Route, Routes} from "react-router-dom";
@@ -15,11 +15,14 @@ import ProtectedRoutes from "./login/ProtectedRoutes";
 function App() {
 
     const {getAllTasks, tasksList} = useTasks()
-    const {login, user} = useUserModel()
+    const {login, user, getUsername} = useUserModel()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => getUsername, [])
 
     return (
         <div className="App">
-            {user === "" || user === "anonymousUser" ? <> </> : <Header/>}
+            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header/>}
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route element={<ProtectedRoutes user={user}/>}>

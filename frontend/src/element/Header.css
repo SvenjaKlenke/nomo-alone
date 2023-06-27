@@ -6,12 +6,13 @@
     background-size: cover;
     min-height: 18vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: calc(10px + 2vmin);
     color: white;
     position: relative;
+    padding: 0 20px;
 }
 
 .App-header::before {
@@ -32,6 +33,31 @@
     height: 120px;
     left: 0;
     top: 1px
+}
+
+.ButtonContainerHeader {
+    display: flex;
+    align-items: center;
+
+}
+
+.RoundButtonHeader {
+    padding: 5px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #B6D7A8;
+    border: 1px solid #274E13;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    margin-left: 10px;
 }
 
 
