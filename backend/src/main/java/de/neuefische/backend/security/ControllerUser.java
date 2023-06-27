@@ -30,19 +30,8 @@ public class ControllerUser {
 
     @PostMapping("/register")
     public UserModel addNewUser(@RequestBody UserModelDTO userModelDTO) {
-        UserModel userModel = convertToUserModel(userModelDTO);
-        return serviceUser.addNewUser(userModel);
+        return serviceUser.addNewUser(userModelDTO);
     }
 
-    private UserModel convertToUserModel(UserModelDTO userModelDTO) {
-        UserModel userModel = new UserModel();
-        userModel.setId(userModelDTO.getId());
-        userModel.setUsername(userModelDTO.getUsername());
-        userModel.setName(userModelDTO.getName());
-        userModel.setLastname(userModelDTO.getLastname());
-        userModel.setEmail(userModelDTO.getEmail());
-        userModel.setId(userModelDTO.getId());
-        return userModel;
-    }
 
 }
