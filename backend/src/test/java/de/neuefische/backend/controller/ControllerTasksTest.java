@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -23,6 +25,7 @@ class ControllerTasksTest {
 
 
     @Test
+    @WithMockUser(username = "user", password = "123")
     void getAllTasks_returnAllTasksAsList_andStatusCode200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))
                 .andExpect(status().isOk())
@@ -30,6 +33,7 @@ class ControllerTasksTest {
     }
     @Test
     @DirtiesContext
+    @WithMockUser(username = "user", password = "123")
     void addNewTask_whenAddNewTask_then200OK() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -44,7 +48,8 @@ class ControllerTasksTest {
                                           "amoundOfPeople": 2,
                                           "text": "Test tester Test"
                                 }
-                                """))
+                                """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {
@@ -62,6 +67,7 @@ class ControllerTasksTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser(username = "user", password = "123")
     void deleteTask_thenReturn200OK_andReturnEmptyList() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -76,7 +82,8 @@ class ControllerTasksTest {
                                                   "amoundOfPeople": 2,
                                                   "text": "Test tester Test"
                                 }
-                                """))
+                                """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -85,7 +92,8 @@ class ControllerTasksTest {
         ObjectMapper objectMapper = new ObjectMapper();
         TaskModel taskModel = objectMapper.readValue(content, TaskModel.class);
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/" + taskModel.getId()))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/" + taskModel.getId())
+                        .with(csrf()))
                 .andExpect(status().isOk());
         mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))
                 .andExpect(status().isOk())
@@ -94,6 +102,7 @@ class ControllerTasksTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser(username = "user", password = "123")
     void editTask_thenReturn200OK_andReturnTheEditTask() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -108,7 +117,8 @@ class ControllerTasksTest {
                                                   "amoundOfPeople": 2,
                                                   "text": "Test tester Test"
                                 }
-                                """))
+                                """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -122,7 +132,7 @@ class ControllerTasksTest {
                         .content("""
                                 {
                                                   
-                                                  "id": "<id>",                          
+                                                  "id": "<id>",
                                                   "creator": "Svenja",
                                                   "name":"Test1",
                                                   "category":"PLAYDATE",
@@ -131,7 +141,8 @@ class ControllerTasksTest {
                                                   "amoundOfPeople": 1,
                                                   "text": "Test tester Test"
                                 }
-                                """.replace("<id>", taskModel.getId())))
+                                """.replace("<id>", taskModel.getId()))
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {
