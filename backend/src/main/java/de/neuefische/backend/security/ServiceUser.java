@@ -20,24 +20,24 @@ public class ServiceUser implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserModel userModel = repoUser.findUserByUsername(username)
+        UserModelDTO userModel = repoUser.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
         return new User(userModel.getUsername(), userModel.getPassword(), List.of());
     }
 
-    public UserModelDTO addNewUser(UserModel userModel) {
-        userModel.setId(generadeUUID.getUUID());
-        String hashedPassword = passwordEncoder.encode(userModel.getPassword());
-        userModel.setPassword(hashedPassword);
-        repoUser.save(userModel);
+    public UserModel addNewUser(UserModelDTO userModelDTO) {
+        userModelDTO.setId(generadeUUID.getUUID());
+        String hashedPassword = passwordEncoder.encode(userModelDTO.getPassword());
+        userModelDTO.setPassword(hashedPassword);
+        repoUser.save(userModelDTO);
 
-        UserModelDTO userModelDTO = new UserModelDTO();
-        userModelDTO.setId(userModel.getId());
-        userModelDTO.setUsername(userModel.getUsername());
-        userModelDTO.setName(userModel.getName());
-        userModelDTO.setLastname(userModel.getLastname());
-        userModelDTO.setEmail(userModel.getEmail());
+        UserModel userModel = new UserModel();
+        userModel.setId(userModelDTO.getId());
+        userModel.setUsername(userModelDTO.getUsername());
+        userModel.setName(userModelDTO.getName());
+        userModel.setLastname(userModelDTO.getLastname());
+        userModel.setEmail(userModelDTO.getEmail());
 
-        return userModelDTO;
+        return userModel;
     }
 }
