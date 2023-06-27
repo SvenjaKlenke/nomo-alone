@@ -3,5 +3,5 @@ export type UserModel = {
     name: string,
     lastname: string,
     email: string,
-    password: number,
+    password: string,
 }
