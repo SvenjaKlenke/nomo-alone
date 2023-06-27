@@ -32,7 +32,6 @@ public class ServiceUser implements UserDetailsService {
         repoUser.save(userModel);
 
         UserModelDTO userModelDTO = new UserModelDTO();
-        userModelDTO.setId(userModel.getId());
         userModelDTO.setUsername(userModel.getUsername());
         userModelDTO.setName(userModel.getName());
         userModelDTO.setLastname(userModel.getLastname());
