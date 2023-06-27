@@ -25,7 +25,7 @@ function RegisterPage() {
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if (validateFormFields()) {
-            axios.post('/user', userModel)
+            axios.post('/user/register', userModel)
                 .then(() => navigate("/login"));
         }
     }

@@ -28,7 +28,7 @@ public class ControllerUser {
         return "logged out";
     }
 
-    @PostMapping()
+    @PostMapping("/register")
     public UserModel addNewUser(@RequestBody UserModel userModel) {
         return serviceUser.addNewUser(userModel);
     }
