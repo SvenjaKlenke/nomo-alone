@@ -11,6 +11,7 @@ import Homepage from "./gallery/Homepage";
 import LoginPage from "./login/LoginPage";
 import useUserModel from "./login/useUserModel";
 import ProtectedRoutes from "./login/ProtectedRoutes";
+import RegisterPage from "./login/RegisterPage";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header/>}
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
+                <Route path={"/register"} element={<RegisterPage/>}/>
                 <Route element={<ProtectedRoutes user={user}/>}>
                     <Route path="/" element={<Homepage/>}/>
                     <Route path="/tasks"
