@@ -2,11 +2,11 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import './LoginPage.css';
 import logo from "../Logo.png";
 import {Link, useNavigate} from "react-router-dom";
-import {UserModel} from './UserModel';
 import axios from "axios";
+import {UserModelRequest} from "./UserModelRequest";
 
 function RegisterPage() {
-    const [userModel, setUserModel] = useState<UserModel>({
+    const [userModelRequest, setUserModelRequest] = useState<UserModelRequest>({
         username: "",
         name: "",
         lastname: "",
@@ -19,19 +19,19 @@ function RegisterPage() {
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const {name, value} = e.target;
-        setUserModel(newUser => ({...newUser, [name]: value}));
+        setUserModelRequest(newUser => ({...newUser, [name]: value}));
     }
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if (validateFormFields()) {
-            axios.post('/user/register', userModel)
+            axios.post('/user/register', userModelRequest)
                 .then(() => navigate("/login"));
         }
     }
 
     function validateFormFields(): boolean {
-        if (!userModel.username || !userModel.name || !userModel.lastname || !userModel.email || !userModel.password) {
+        if (!userModelRequest.username || !userModelRequest.name || !userModelRequest.lastname || !userModelRequest.email || !userModelRequest.password) {
             setIsAlertVisible(true);
             return false;
         }
@@ -56,7 +56,7 @@ function RegisterPage() {
                         type="text"
                         className="inputRegister"
                         name="username"
-                        value={userModel.username}
+                        value={userModelRequest.username}
                         onChange={handleChange}
                     />
                     <label className="color">Name :</label>
@@ -64,7 +64,7 @@ function RegisterPage() {
                         type="text"
                         className="inputRegister"
                         name="name"
-                        value={userModel.name}
+                        value={userModelRequest.name}
                         onChange={handleChange}
                     />
                     <label className="color">Lastname :</label>
@@ -72,7 +72,7 @@ function RegisterPage() {
                         type="text"
                         className="inputRegister"
                         name="lastname"
-                        value={userModel.lastname}
+                        value={userModelRequest.lastname}
                         onChange={handleChange}
                     />
                     <label className="color">E-Mail :</label>
@@ -80,7 +80,7 @@ function RegisterPage() {
                         type="text"
                         className="inputRegister"
                         name="email"
-                        value={userModel.email}
+                        value={userModelRequest.email}
                         onChange={handleChange}
                     />
                     <label className="color">Password :</label>
@@ -88,7 +88,7 @@ function RegisterPage() {
                         type="password"
                         className="inputRegister"
                         name="password"
-                        value={userModel.password}
+                        value={userModelRequest.password}
                         onChange={handleChange}
                     />
                     <button className="">Register</button>
