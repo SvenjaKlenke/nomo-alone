@@ -1,7 +1,9 @@
-export type UserModelDTO = {
-    id: string,
+export type UserModelRequest = {
+
     username: string,
     name: string,
     lastname: string,
     email: string,
+    password: string
+
 }
