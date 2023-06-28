@@ -29,8 +29,8 @@ public class ControllerUser {
     }
 
     @PostMapping("/register")
-    public UserModelDTO addNewUser(@RequestBody UserModel userModel) {
-        return serviceUser.addNewUser(userModel);
+    public UserModelDTO addNewUser(@RequestBody UserModelRequest userModelRequest) {
+        return serviceUser.addNewUser(userModelRequest);
     }
 
 
