@@ -26,10 +26,17 @@ function RegisterPage() {
         e.preventDefault();
         if (validateFormFields()) {
             axios.post('/user/register', userModelRequest)
-                .then(() => navigate("/login"));
-            toast.success("Register successful! Please Login.");
+                .then(() => {
+                    navigate("/login");
+                    toast.success("Register successful! Please Login.");
+                })
+                .catch(error => {
+                    const errorMessage = error.response.data.message;
+                    toast.error(errorMessage);
+                });
         }
     }
+
 
     function validateFormFields(): boolean {
         if (!userModelRequest.username || !userModelRequest.name || !userModelRequest.lastname || !userModelRequest.email || !userModelRequest.password) {
