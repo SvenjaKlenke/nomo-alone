@@ -12,26 +12,25 @@ import LoginPage from "./login/LoginPage";
 import useUserModel from "./login/useUserModel";
 import ProtectedRoutes from "./login/ProtectedRoutes";
 import RegisterPage from "./login/RegisterPage";
+import {ToastContainer} from "react-toastify";
 
 function App() {
 
     const {getAllTasks, tasksList} = useTasks()
-    const {login, user, getUsername} = useUserModel()
+    const {login, logout, user, getUsername} = useUserModel()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => getUsername, [])
 
     return (
         <div className="App">
-            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header/>}
+            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header logout={logout}/>}
+            <ToastContainer/>
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route path={"/register"} element={<RegisterPage/>}/>
                 <Route element={<ProtectedRoutes user={user}/>}>
                     <Route path="/" element={<Homepage/>}/>
-                    <Route path="/tasks"
-                           element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
-                                                     category="TASKS"/>}/>
                     <Route path="/visit"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
                                                      category="VISIT"/>}/>

@@ -4,6 +4,7 @@ import logo from "../Logo.png";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {UserModelRequest} from "./UserModelRequest";
+import {toast} from "react-toastify";
 
 function RegisterPage() {
     const [userModelRequest, setUserModelRequest] = useState<UserModelRequest>({
@@ -13,7 +14,6 @@ function RegisterPage() {
         email: "",
         password: ""
     });
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
 
     const navigate = useNavigate();
 
@@ -27,12 +27,13 @@ function RegisterPage() {
         if (validateFormFields()) {
             axios.post('/user/register', userModelRequest)
                 .then(() => navigate("/login"));
+            toast.success("Register successful! Please Login.");
         }
     }
 
     function validateFormFields(): boolean {
         if (!userModelRequest.username || !userModelRequest.name || !userModelRequest.lastname || !userModelRequest.email || !userModelRequest.password) {
-            setIsAlertVisible(true);
+            toast.error('Please fill in all fields.')
             return false;
         }
         return true;
@@ -46,11 +47,6 @@ function RegisterPage() {
             <form className="form" onSubmit={handleSubmit}>
                 <div className="flex">
                     <div className="login color">Register</div>
-                    {isAlertVisible && (
-                        <div className="alert-message">
-                            Please fill in all fields.
-                        </div>
-                    )}
                     <label className="color">Username :</label>
                     <input
                         type="text"

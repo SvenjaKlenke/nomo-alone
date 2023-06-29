@@ -1,18 +1,13 @@
 import React from 'react';
 import logo from "../Logo.png";
 import './Header.css';
-import {NavLink, useNavigate} from "react-router-dom";
-import axios from "axios";
+import {NavLink} from "react-router-dom";
 
-function Header() {
+type Props = {
+    logout: () => void
+}
 
-    const navigate = useNavigate()
-
-    function logoutUser() {
-        return axios.post("/user/logout")
-            .then(r => navigate("/login"))
-
-    }
+function Header(props: Props) {
 
     return (
         <div>
@@ -21,7 +16,7 @@ function Header() {
                     <img src={logo} className="App-logo" alt="logo"/>
                 </NavLink>
                 <div className="ButtonContainerHeader">
-                    <button className="RoundButtonHeader" onClick={logoutUser}>Logout</button>
+                    <button className="RoundButtonHeader" onClick={props.logout}>Logout</button>
                 </div>
             </header>
         </div>

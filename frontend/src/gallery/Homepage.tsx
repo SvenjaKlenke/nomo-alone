@@ -5,11 +5,6 @@ import './Homepage.css'
 function Homepage() {
 
     const navigate = useNavigate();
-
-    function clickForAllTasks() {
-        navigate('/tasks');
-
-    }
     function clickForTasksPlaydate() {
         navigate('/playdate');
     }
@@ -34,7 +29,6 @@ function Homepage() {
                 <button className="ButtonsHomepage" onClick={clickForTasksAppointment}>Appointment</button>
                 <button className="ButtonsHomepage" onClick={clickForTasksVisit}>Visit</button>
                 <button className="ButtonsHomepage" onClick={clickForTasksShopping}>Shopping</button>
-                <button className="ButtonsHomepage" onClick={clickForAllTasks}>All Tasks</button>
             </div>
         </div>
     );

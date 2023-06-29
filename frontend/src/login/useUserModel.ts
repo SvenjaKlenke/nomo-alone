@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function UseUserModel() {
 
@@ -10,11 +12,19 @@ function UseUserModel() {
     function login(username: string, password: string) {
         return axios.post("/user/login", undefined, {auth: {username, password}})
             .then((response) => {
-                getUsername()
+                getUsername();
+                toast.success("Login successful!");
             }).catch((error) => {
-                console.log(error)
+                toast.error('Please check Username/Password!')
             })
-
+    }
+    function logout() {
+        return axios.post("/user/logout")
+            .then(() => {
+                setUser("");
+                toast.success("Logout successful!");
+                nav("/login");
+            })
     }
 
     function getUsername() {
@@ -32,7 +42,7 @@ function UseUserModel() {
             })
     }
 
-    return {login, getUsername, user}
+    return {login, logout, getUsername, user}
 }
 
 export default UseUserModel;
