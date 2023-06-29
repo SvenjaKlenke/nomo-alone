@@ -30,12 +30,8 @@ function RegisterPage() {
                 toast.success("Register successful! Please Login.");
             })
             .catch(error => {
-                if (error.response && error.response.data && error.response.data.message) {
-                    const errorMessage: string = error.response.data.message;
-                    toast.error(errorMessage);
-                } else {
-                    toast.error("An error occurred. Please try again.");
-                }
+                const errorMessage: string = error?.response?.data?.message || "An error occurred. Please try again.";
+                toast.error(errorMessage);
             });
     }
 
