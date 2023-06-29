@@ -16,11 +16,9 @@ function UseUserModel() {
             })
 
     }
-
     function logout() {
         return axios.post("/user/logout")
             .then(() => setUser(""))
-            .then(r => nav("/login"))
     }
 
     function getUsername() {
