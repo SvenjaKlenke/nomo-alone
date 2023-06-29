@@ -12,15 +12,19 @@ function UseUserModel() {
     function login(username: string, password: string) {
         return axios.post("/user/login", undefined, {auth: {username, password}})
             .then((response) => {
-                getUsername()
+                getUsername();
+                toast.success("Login successful!");
             }).catch((error) => {
                 toast.error('Please check Username/Password!')
             })
     }
     function logout() {
         return axios.post("/user/logout")
-            .then(() => setUser(""))
-            .then(r => nav("/login"))
+            .then(() => {
+                setUser("");
+                toast.success("Logout successful!");
+                nav("/login");
+            })
     }
 
     function getUsername() {

@@ -114,9 +114,7 @@
     font-weight: bold;
 }
 
-.custom-toast .Toastify__toast--error::before {
-    content: "×";
-}
+
 
 
 

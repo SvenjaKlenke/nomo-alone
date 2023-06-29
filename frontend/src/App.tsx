@@ -12,6 +12,7 @@ import LoginPage from "./login/LoginPage";
 import useUserModel from "./login/useUserModel";
 import ProtectedRoutes from "./login/ProtectedRoutes";
 import RegisterPage from "./login/RegisterPage";
+import {ToastContainer} from "react-toastify";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     return (
         <div className="App">
             {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header logout={logout}/>}
+            <ToastContainer toastClassName="custom-toast"/>
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route path={"/register"} element={<RegisterPage/>}/>
