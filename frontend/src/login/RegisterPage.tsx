@@ -4,6 +4,7 @@ import logo from "../Logo.png";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {UserModelRequest} from "./UserModelRequest";
+import {toast} from "react-toastify";
 
 function RegisterPage() {
     const [userModelRequest, setUserModelRequest] = useState<UserModelRequest>({
@@ -27,6 +28,7 @@ function RegisterPage() {
         if (validateFormFields()) {
             axios.post('/user/register', userModelRequest)
                 .then(() => navigate("/login"));
+            toast.success("Register successful! Please Login.");
         }
     }
 
