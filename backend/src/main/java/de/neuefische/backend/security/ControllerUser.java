@@ -44,14 +44,18 @@ public class ControllerUser {
             List<String> errorMessages = new ArrayList<>();
 
             for (FieldError error : fieldErrors) {
-                if (error.getField().equals("email") && Objects.equals(error.getCode(), "email")) {
+                String field = error.getField();
+                String errorCode = error.getCode();
+
+                if (Objects.equals(field, "email") && Objects.equals(errorCode, "email")) {
                     String errorMessage = "Email address does not have a valid format.";
-                    bindingResult.rejectValue("email", error.getCode(), errorMessage);
+                    bindingResult.rejectValue(field, errorCode, errorMessage);
                     errorMessages.add(errorMessage);
                 }
-                if (error.getField().equals("password") && Objects.equals(error.getCode(), "password")) {
+
+                if (Objects.equals(field, "password") && Objects.equals(errorCode, "password")) {
                     String errorMessage = "Password must have at least 8 characters, including uppercase and lowercase letters, at least one number, and one special character.";
-                    bindingResult.rejectValue("password", error.getCode(), errorMessage);
+                    bindingResult.rejectValue(field, errorCode, errorMessage);
                     errorMessages.add(errorMessage);
                 }
             }
