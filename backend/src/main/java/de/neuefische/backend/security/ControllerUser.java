@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,21 +40,27 @@ public class ControllerUser {
     public ResponseEntity<?> addNewUser(@Valid @RequestBody UserModelRequest userModelRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+            List<String> errorMessages = new ArrayList<>();
+
             for (FieldError error : fieldErrors) {
                 if (error.getField().equals("email") && Objects.equals(error.getCode(), "email")) {
                     String errorMessage = "Email address does not have a valid format.";
                     bindingResult.rejectValue("email", error.getCode(), errorMessage);
+                    errorMessages.add(errorMessage);
                 }
                 if (error.getField().equals("password") && Objects.equals(error.getCode(), "password")) {
                     String errorMessage = "Password must have at least 8 characters, including uppercase and lowercase letters, at least one number, and one special character.";
                     bindingResult.rejectValue("password", error.getCode(), errorMessage);
+                    errorMessages.add(errorMessage);
                 }
             }
-            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
+
+            if (!errorMessages.isEmpty()) {
+                return ResponseEntity.badRequest().body(errorMessages);
+            }
         }
+
         UserModelDTO userModelDTO = serviceUser.addNewUser(userModelRequest);
         return ResponseEntity.ok(userModelDTO);
     }
-
-
 }

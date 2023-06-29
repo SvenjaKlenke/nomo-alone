@@ -24,35 +24,21 @@ function RegisterPage() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        if (validateFormFields()) {
-            axios.post('/user/register', userModelRequest)
-                .then(response => {
-                    navigate("/login");
-                    toast.success("Register successful! Please Login.");
-                })
-                .catch(error => {
-                    if (error.response && error.response.data) {
-                        const errors = error.response.data;
-                        if (Array.isArray(errors)) {
-                            errors.forEach(err => toast.error(err.defaultMessage));
-                        } else {
-                            toast.error(errors.message);
-                        }
-                    } else {
-                        toast.error("An error occurred. Please try again.");
-                    }
-                });
-        }
+        axios.post('/user/register', userModelRequest)
+            .then(response => {
+                navigate("/login");
+                toast.success("Register successful! Please Login.");
+            })
+            .catch(error => {
+                if (error.response && error.response.data && error.response.data.message) {
+                    const errorMessage: string = error.response.data.message;
+                    toast.error(errorMessage);
+                } else {
+                    toast.error("An error occurred. Please try again.");
+                }
+            });
     }
 
-
-    function validateFormFields(): boolean {
-        if (!userModelRequest.username || !userModelRequest.name || !userModelRequest.lastname || !userModelRequest.email || !userModelRequest.password) {
-            toast.error('Please fill in all fields.')
-            return false;
-        }
-        return true;
-    }
 
     return (
         <div>
