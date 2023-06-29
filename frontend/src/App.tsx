@@ -29,9 +29,6 @@ function App() {
                 <Route path={"/register"} element={<RegisterPage/>}/>
                 <Route element={<ProtectedRoutes user={user}/>}>
                     <Route path="/" element={<Homepage/>}/>
-                    <Route path="/tasks"
-                           element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
-                                                     category="TASKS"/>}/>
                     <Route path="/visit"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
                                                      category="VISIT"/>}/>
