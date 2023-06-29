@@ -17,6 +17,12 @@ function UseUserModel() {
 
     }
 
+    function logout() {
+        return axios.post("/user/logout")
+            .then(() => setUser(""))
+            .then(r => nav("/login"))
+    }
+
     function getUsername() {
         let username = undefined;
         axios.get("/user/me").then((response) => {
@@ -32,7 +38,7 @@ function UseUserModel() {
             })
     }
 
-    return {login, getUsername, user}
+    return {login, logout, getUsername, user}
 }
 
 export default UseUserModel;

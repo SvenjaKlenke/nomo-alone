@@ -16,14 +16,14 @@ import RegisterPage from "./login/RegisterPage";
 function App() {
 
     const {getAllTasks, tasksList} = useTasks()
-    const {login, user, getUsername} = useUserModel()
+    const {login, logout, user, getUsername} = useUserModel()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => getUsername, [])
 
     return (
         <div className="App">
-            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header/>}
+            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header logout={logout}/>}
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route path={"/register"} element={<RegisterPage/>}/>
