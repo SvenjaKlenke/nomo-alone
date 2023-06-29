@@ -2,6 +2,7 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import './LoginPage.css';
 import logo from "../Logo.png";
 import {Link} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 
 type Props = {
     login: (username: string, password: string) => void
@@ -39,6 +40,7 @@ function LoginPage(props: Props) {
                     <input type="password" className="input" onChange={onChangeHandlerPassword}/>
                     <button className="">Login</button>
                     <br/>
+                    <ToastContainer toastClassName="custom-toast"/>
                     <div className="color align">Don't have an account? <Link className="LinkRegister" to={`/register`}>Sign
                         in</Link></div>
                 </div>

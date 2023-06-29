@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function UseUserModel() {
 
@@ -12,12 +14,13 @@ function UseUserModel() {
             .then((response) => {
                 getUsername()
             }).catch((error) => {
-                console.log(error.message)
+                toast.error('Please check Username/Password!')
             })
     }
     function logout() {
         return axios.post("/user/logout")
             .then(() => setUser(""))
+            .then(r => nav("/login"))
     }
 
     function getUsername() {
