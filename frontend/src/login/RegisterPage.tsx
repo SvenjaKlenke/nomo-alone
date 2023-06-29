@@ -26,13 +26,21 @@ function RegisterPage() {
         e.preventDefault();
         if (validateFormFields()) {
             axios.post('/user/register', userModelRequest)
-                .then(() => {
+                .then(response => {
                     navigate("/login");
                     toast.success("Register successful! Please Login.");
                 })
                 .catch(error => {
-                    const errorMessage = error.response.data.message;
-                    toast.error(errorMessage);
+                    if (error.response && error.response.data) {
+                        const errors = error.response.data;
+                        if (Array.isArray(errors)) {
+                            errors.forEach(err => toast.error(err.defaultMessage));
+                        } else {
+                            toast.error(errors.message);
+                        }
+                    } else {
+                        toast.error("An error occurred. Please try again.");
+                    }
                 });
         }
     }
