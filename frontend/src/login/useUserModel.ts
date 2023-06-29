@@ -12,9 +12,8 @@ function UseUserModel() {
             .then((response) => {
                 getUsername()
             }).catch((error) => {
-                console.log(error)
+                console.log(error.message)
             })
-
     }
     function logout() {
         return axios.post("/user/logout")
