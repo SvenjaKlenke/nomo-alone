@@ -14,7 +14,6 @@ function RegisterPage() {
         email: "",
         password: ""
     });
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
 
     const navigate = useNavigate();
 
@@ -34,7 +33,7 @@ function RegisterPage() {
 
     function validateFormFields(): boolean {
         if (!userModelRequest.username || !userModelRequest.name || !userModelRequest.lastname || !userModelRequest.email || !userModelRequest.password) {
-            setIsAlertVisible(true);
+            toast.error('Please fill in all fields.')
             return false;
         }
         return true;
@@ -48,11 +47,6 @@ function RegisterPage() {
             <form className="form" onSubmit={handleSubmit}>
                 <div className="flex">
                     <div className="login color">Register</div>
-                    {isAlertVisible && (
-                        <div className="alert-message">
-                            Please fill in all fields.
-                        </div>
-                    )}
                     <label className="color">Username :</label>
                     <input
                         type="text"
