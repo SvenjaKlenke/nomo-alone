@@ -3,6 +3,7 @@ package de.neuefische.backend.security;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -35,7 +36,7 @@ public class ControllerUser {
     }
 
     @PostMapping("/register")
-    public UserModelDTO addNewUser(@Valid @RequestBody UserModelRequest userModelRequest, BindingResult bindingResult) {
+    public ResponseEntity<?> addNewUser(@Valid @RequestBody UserModelRequest userModelRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
             for (FieldError error : fieldErrors) {
@@ -48,8 +49,10 @@ public class ControllerUser {
                     bindingResult.rejectValue("password", error.getCode(), errorMessage);
                 }
             }
+            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         }
-        return serviceUser.addNewUser(userModelRequest);
+        UserModelDTO userModelDTO = serviceUser.addNewUser(userModelRequest);
+        return ResponseEntity.ok(userModelDTO);
     }
 
 
