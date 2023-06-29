@@ -25,7 +25,7 @@ function App() {
     return (
         <div className="App">
             {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header logout={logout}/>}
-            <ToastContainer toastClassName="custom-toast"/>
+            <ToastContainer/>
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route path={"/register"} element={<RegisterPage/>}/>
