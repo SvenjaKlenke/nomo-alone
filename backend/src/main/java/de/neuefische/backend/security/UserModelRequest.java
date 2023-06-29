@@ -18,7 +18,7 @@ public class UserModelRequest {
     @Size(min = 4, max = 20)
     private String username;
     @NotEmpty
-    @Pattern(regexp = "^[^0-9]*$")
+    @Pattern(regexp = "\\D")
     private String name;
     @NotEmpty
     private String lastname;
