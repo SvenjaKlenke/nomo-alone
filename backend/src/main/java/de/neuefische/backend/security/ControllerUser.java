@@ -2,6 +2,7 @@ package de.neuefische.backend.security;
 
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
