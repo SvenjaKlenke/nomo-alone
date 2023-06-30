@@ -30,11 +30,18 @@ function RegisterPage() {
                 toast.success("Register successful! Please Login.");
             })
             .catch(error => {
-                const errorMessage: string = error?.response?.data?.message || "An error occurred. Please try again.";
-                toast.error(errorMessage);
+                const errorData = error?.response?.data;
+                if (errorData) {
+                    const errorMessages: string[] = Object.values(errorData);
+                    errorMessages.forEach((errorMessage: string) => {
+                        toast.error(errorMessage);
+                        console.log(errorMessage);
+                    });
+                } else {
+                    toast.error("An error occurred. Please try again.");
+                }
             });
     }
-
 
     return (
         <div>
