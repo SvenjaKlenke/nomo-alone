@@ -21,6 +21,7 @@ public class UserModelRequest {
     @Pattern(regexp = "\\D")
     private String name;
     @NotEmpty
+    @Pattern(regexp = "\\D")
     private String lastname;
     @NotEmpty
     @Email
