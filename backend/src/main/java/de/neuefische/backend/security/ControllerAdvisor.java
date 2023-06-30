@@ -28,11 +28,11 @@ public class ControllerAdvisor {
         if (fieldName.equals("username")) {
             return "Username must have at least 4 characters and maximum 20 characters";
         }
-        if (fieldName.equals("name")) {
-            return "The name must not contain any numbers.";
-        }
         if (fieldName.equals("lastname")) {
             return "The Lastname must not contain any numbers.";
+        }
+        if (fieldName.equals("name")) {
+            return "The name and lastname must not contain any numbers.";
         }
         if (fieldName.equals("email")) {
             return "Email address does not have a valid format.";

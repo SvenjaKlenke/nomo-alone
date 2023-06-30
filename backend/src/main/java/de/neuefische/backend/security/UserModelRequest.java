@@ -18,10 +18,10 @@ public class UserModelRequest {
     @Size(min = 4, max = 20)
     private String username;
     @NotEmpty
-    @Pattern(regexp = "\\D")
+    @Pattern(regexp = "^[^0-9]+$")
     private String name;
     @NotEmpty
-    @Pattern(regexp = "\\D")
+    @Pattern(regexp = "^[^0-9]+$")
     private String lastname;
     @NotEmpty
     @Email

@@ -26,11 +26,11 @@ class ControllerUserTest {
                         .content("""
                                 {
                                                                             
-                                                  "username": "Sve",
-                                                  "name":"Test1",
-                                                  "lastname":"Test1",
-                                                  "email": "test",
-                                                  "passwort": "123"
+                                                  "username": "Svenja",
+                                                  "name":"Test",
+                                                  "lastname":"Test",
+                                                  "email": "test@test.de",
+                                                  "password": "Password123!"
                                        
                                 }
                                 """)
