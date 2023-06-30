@@ -35,7 +35,6 @@ function RegisterPage() {
                     const errorMessages: string[] = Object.values(errorData);
                     errorMessages.forEach((errorMessage: string) => {
                         toast.error(errorMessage);
-                        console.log(errorMessage);
                     });
                 } else {
                     toast.error("An error occurred. Please try again.");
