@@ -38,8 +38,9 @@ public class SecurityConfig {
                                         HttpStatus.UNAUTHORIZED.getReasonPhrase()
                                 )))
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(
-                            ("/user/**")).permitAll();
+                    auth.requestMatchers("/user/**").permitAll();
+                    auth.requestMatchers("/tasks/**").authenticated();
+                    auth.requestMatchers("/").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .build();
