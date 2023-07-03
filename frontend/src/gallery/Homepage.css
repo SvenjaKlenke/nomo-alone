@@ -32,3 +32,35 @@
     box-shadow: 0 4px 3px 1px #B6D7A8, 0 6px 8px #274E13, 0 -4px 4px #274E13, 0 -6px 4px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
+.AddButton {
+    position: fixed;
+    right: 10px;
+    z-index: 9999;
+}
+
+.loader {
+    width: 12em;
+    height: 1em;
+    border-radius: 8px;
+    background-color: #274E13;
+}
+
+.loader div {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #B6D7A8;
+    animation: width7435 5s linear infinite;
+    transition: all;
+}
+
+@keyframes width7435 {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
