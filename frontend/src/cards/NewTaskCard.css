@@ -1,10 +1,36 @@
+.NewEditCard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 333px;
+    height: 480px;
+    background: #B6D7A8;
+    border: 1px solid #274E13;
+    border-radius: 35px;
+    margin: auto;
+    font-size: 20px;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+}
+
+.CardComponents {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+
 .ButtonsContainer {
     margin: 5px;
-
+    display: flex;
 }
 
 .ButtonsNewEdit {
-    margin: 10px;
+    margin: 5px;
     width: 150px;
     height: 50px;
     background: #B6D7A8;
@@ -29,9 +55,10 @@ h1 {
 }
 
 label {
-    margin-top: auto;
+    margin: 2px;
     color: #274E13;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 20px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
@@ -43,6 +70,7 @@ textarea {
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
+    font-size: 20px;
     padding: 5px 10px;
     color: #274E13;
     outline: none;
@@ -61,12 +89,13 @@ textarea:focus {
 }
 
 select {
-    height: 30px;
+    height: 40px;
     background: #F2F2F2;
     border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
+    font-size: 18px;
     padding: 5px 10px;
     color: #274E13;
     outline: none;
@@ -78,7 +107,6 @@ select {
     margin-bottom: 10px;
 
 }
-
 
 .custom-datepicker {
     height: 30px;

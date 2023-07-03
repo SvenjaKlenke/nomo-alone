@@ -89,18 +89,20 @@ function EditTaskCard(props: Props) {
     return (
         <div>
             <h1>Edit Task</h1>
-            <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
-                            inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
-                            inputDescription={inputDescription}
-                            inputTaskName={inputTaskName} selectedDate={selectedDate}
-                            setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
-            <div className="ButtonsContainer">
-                <button className="ButtonsNewEdit" onClick={updatedTask}>
-                    Update
-                </button>
-                <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
-                    Cancel
-                </button>
+            <div className="NewEditCard">
+                <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
+                                inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
+                                inputDescription={inputDescription}
+                                inputTaskName={inputTaskName} selectedDate={selectedDate}
+                                setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
+                <div className="ButtonsContainer">
+                    <button className="ButtonsNewEdit" onClick={updatedTask}>
+                        Update
+                    </button>
+                    <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
+                        Cancel
+                    </button>
+                </div>
             </div>
         </div>
     );

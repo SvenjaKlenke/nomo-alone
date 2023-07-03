@@ -18,64 +18,62 @@ function CardComponents(props: Props) {
 
 
     return (
-        <div>
-            <div className="Detailstaskcard">
-                <label htmlFor="taskName">Task Name</label>
-                <textarea
-                    id="taskName"
-                    name="taskName"
-                    placeholder="Give your task a name"
-                    value={props.inputTaskName}
-                    onChange={props.handleInputChange}
-                ></textarea>
+        <div className="CardComponents">
+            <label htmlFor="taskName">Task Name</label>
+            <textarea
+                id="taskName"
+                name="taskName"
+                placeholder="Give your task a name"
+                value={props.inputTaskName}
+                onChange={props.handleInputChange}
+            ></textarea>
 
-                <label htmlFor="category">Category</label>
-                <select
-                    id="category"
-                    name="category"
-                    value={props.inputCategory}
-                    onChange={(event) => props.setInputCategory(event.target.value)}
-                >
-                    <option value="">Select Category</option>
-                    <option value="PLAYDATE">Playdate</option>
-                    <option value="APPOINTMENT">Appointment</option>
-                    <option value="VISIT">Visit</option>
-                    <option value="SHOPPING">Shopping</option>
-                </select>
+            <label htmlFor="category">Category</label>
+            <select
+                id="category"
+                name="category"
+                value={props.inputCategory}
+                onChange={(event) => props.setInputCategory(event.target.value)}
+            >
+                <option value="">Select Category</option>
+                <option value="PLAYDATE">Playdate</option>
+                <option value="APPOINTMENT">Appointment</option>
+                <option value="VISIT">Visit</option>
+                <option value="SHOPPING">Shopping</option>
+            </select>
 
-                <label htmlFor="deadline">Deadline</label>
-                <DatePicker
-                    selected={props.selectedDate}
-                    onChange={props.handleDateChange}
-                    placeholderText="Select Deadline"
-                    dateFormat="dd.MM.yyyy"
-                    className="custom-datepicker"
-                />
+            <label htmlFor="deadline">Deadline</label>
+            <DatePicker
+                selected={props.selectedDate}
+                onChange={props.handleDateChange}
+                placeholderText="Select Deadline"
+                dateFormat="dd.MM.yyyy"
+                className="custom-datepicker"
+            />
 
-                <label htmlFor="description">Description</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    placeholder="Give your task a Description"
-                    value={props.inputDescription}
-                    onChange={props.handleInputChange}
-                ></textarea>
+            <label htmlFor="description">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                placeholder="Give your task a Description"
+                value={props.inputDescription}
+                onChange={props.handleInputChange}
+            ></textarea>
 
-                <label htmlFor="amoundOfPeople">Amount of People</label>
-                <select
-                    id="amoundOfPeople"
-                    name="amoundOfPeople"
-                    value={props.inputAmoundOfPeople ?? ''}
-                    onChange={(event) => props.setInputAmoundOfPeople(Number(event.target.value))}
-                >
-                    <option value="">How many people do you need?</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
+            <label htmlFor="amoundOfPeople">Amount of People</label>
+            <select
+                id="amoundOfPeople"
+                name="amoundOfPeople"
+                value={props.inputAmoundOfPeople ?? ''}
+                onChange={(event) => props.setInputAmoundOfPeople(Number(event.target.value))}
+            >
+                <option value="">How many people do you need?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
         </div>
     );
 }
