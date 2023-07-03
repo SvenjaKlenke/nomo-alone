@@ -40,7 +40,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/user/**").permitAll();
                     auth.requestMatchers("/tasks/**").authenticated();
-                    auth.anyRequest().permitAll();
+                    auth.requestMatchers("/").permitAll();
+                    auth.anyRequest().authenticated();
                 })
                 .build();
     }
