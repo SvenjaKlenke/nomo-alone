@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './NewTaskCard.css';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
@@ -8,10 +8,11 @@ import {format} from "date-fns";
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
-import useUserModel from "../login/useUserModel";
+import {toast} from "react-toastify";
 
 type Props = {
     taskModels: TaskModel[];
+    username: string
 };
 
 function EditTaskCard(props: Props) {
@@ -21,8 +22,6 @@ function EditTaskCard(props: Props) {
     const actualTask: TaskModel | undefined = props.taskModels.find(currentTask => currentTask.id === id);
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
-    const {user} = useUserModel();
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
         handleInputChange,
         handleDateChange,
@@ -60,12 +59,12 @@ function EditTaskCard(props: Props) {
             inputDescription.trim() === '' ||
             inputAmoundOfPeople === null
         ) {
-            setIsAlertVisible(true);
+            toast.error('Please fill in all fields.');
             return;
         }
         const updatedTask: TaskModel = {
             id: actualTask?.id ?? '',
-            creator: user || '',
+            creator: props.username,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
@@ -75,7 +74,11 @@ function EditTaskCard(props: Props) {
         };
 
 
-        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => navigate(-1))
+        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => {
+            navigate(-1);
+            toast.success("Update successful!");
+        })
+
     }
 
     function cancelUpdateTask() {
@@ -86,11 +89,6 @@ function EditTaskCard(props: Props) {
     return (
         <div>
             <h1>Edit Task</h1>
-            {isAlertVisible && (
-                <div className="alert-message">
-                    Please fill in all fields.
-                </div>
-            )}
             <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
                             inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
                             inputDescription={inputDescription}
