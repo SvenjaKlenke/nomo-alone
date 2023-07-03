@@ -1,7 +1,7 @@
 import React from 'react';
 import './DetailsTaskCard.css';
 import {TaskModel} from "../model/TaskModel";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 type Props = {
@@ -24,6 +24,11 @@ function DetailsTaskCard(props: Props) {
     function clickForEdit() {
         navigate("/edit/" + actualTask?.id);
     }
+
+    function goBack() {
+        navigate("/" + actualTask?.category);
+    }
+
 
     return (
         <div>
@@ -53,8 +58,8 @@ function DetailsTaskCard(props: Props) {
                     <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
                     <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
                 </div>
-                <div>
-                    <Link className="Links" to={`/${actualTask?.category}`}>back</Link>
+                <div className="BackButton">
+                    <button className="RoundButton" onClick={goBack}>Back</button>
                 </div>
             </div>
         </div>

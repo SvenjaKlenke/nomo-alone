@@ -27,12 +27,13 @@
 .ButtonsContainer {
     margin: 5px;
     display: flex;
+    justify-content: center
 }
 
 .ButtonsNewEdit {
     margin: 5px;
-    width: 150px;
-    height: 50px;
+    width: 135px;
+    height: 35px;
     background: #B6D7A8;
     border: 1px solid #274E13;
     border-radius: 35px;

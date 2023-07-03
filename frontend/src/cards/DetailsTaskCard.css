@@ -1,9 +1,8 @@
 .Detailstaskcard {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    align-items: center;
+    justify-content: flex-end;
     width: 333px;
     height: 480px;
     background: #B6D7A8;
@@ -88,15 +87,13 @@
 
 .ButtonContainer {
     display: flex;
-    justify-content: space-around;
+    margin: 5px;
 }
 
 .ButtonsDetailsCard {
-    display: flex;
-    justify-content: center;
-    width: 131px;
-    height: auto;
-    margin-top: 10px;
+    margin: 5px;
+    width: 135px;
+    height: 35px;
     background: #B6D7A8;
     border: 1px solid #274E13;
     border-radius: 35px;
@@ -109,6 +106,7 @@
     outline: none;
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
+    cursor: pointer;
 }
 
 h1 {
@@ -116,7 +114,7 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 17px;
     white-space: pre-wrap;
     overflow-wrap: break-word;
 }
