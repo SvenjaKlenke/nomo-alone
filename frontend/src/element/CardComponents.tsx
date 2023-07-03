@@ -9,7 +9,6 @@ type Props = {
     setInputAmoundOfPeople: (number: number) => void,
     selectedDate: Date | null,
     inputAmoundOfPeople: number | null,
-    inputCreator: string,
     inputCategory: string,
     inputDescription: string,
     inputTaskName: string
@@ -27,15 +26,6 @@ function CardComponents(props: Props) {
                     name="taskName"
                     placeholder="Give your task a name"
                     value={props.inputTaskName}
-                    onChange={props.handleInputChange}
-                ></textarea>
-
-                <label htmlFor="creator">Creator</label>
-                <textarea
-                    id="creator"
-                    name="creator"
-                    placeholder="Creator"
-                    value={props.inputCreator}
                     onChange={props.handleInputChange}
                 ></textarea>
 

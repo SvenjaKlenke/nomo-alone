@@ -8,6 +8,7 @@ import {format} from "date-fns";
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
+import useUserModel from "../login/useUserModel";
 
 type Props = {
     taskModels: TaskModel[];
@@ -20,6 +21,7 @@ function EditTaskCard(props: Props) {
     const actualTask: TaskModel | undefined = props.taskModels.find(currentTask => currentTask.id === id);
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
+    const {user} = useUserModel();
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
         handleInputChange,
@@ -32,7 +34,6 @@ function EditTaskCard(props: Props) {
         setInputAmoundOfPeople,
         selectedDate,
         inputAmoundOfPeople,
-        inputCreator,
         inputCategory,
         inputDescription,
         inputTaskName
@@ -54,7 +55,6 @@ function EditTaskCard(props: Props) {
     function updatedTask() {
         if (
             inputTaskName.trim() === '' ||
-            inputCreator.trim() === '' ||
             inputCategory.trim() === '' ||
             selectedDate === null ||
             inputDescription.trim() === '' ||
@@ -65,7 +65,7 @@ function EditTaskCard(props: Props) {
         }
         const updatedTask: TaskModel = {
             id: actualTask?.id ?? '',
-            creator: inputCreator,
+            creator: user || '',
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
@@ -93,7 +93,7 @@ function EditTaskCard(props: Props) {
             )}
             <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
                             inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
-                            inputCreator={inputCreator} inputDescription={inputDescription}
+                            inputDescription={inputDescription}
                             inputTaskName={inputTaskName} selectedDate={selectedDate}
                             setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
             <div className="ButtonsContainer">

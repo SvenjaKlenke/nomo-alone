@@ -8,11 +8,13 @@ import {format} from 'date-fns';
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
+import useUserModel from "../login/useUserModel";
 
 function NewTaskCard() {
 
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
+    const {user} = useUserModel();
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
         handleDateChange,
@@ -21,7 +23,6 @@ function NewTaskCard() {
         setInputAmoundOfPeople,
         selectedDate,
         inputAmoundOfPeople,
-        inputCreator,
         inputCategory,
         inputDescription,
         inputTaskName
@@ -30,7 +31,6 @@ function NewTaskCard() {
     function addNewTask() {
         if (
             inputTaskName.trim() === '' ||
-            inputCreator.trim() === '' ||
             inputCategory.trim() === '' ||
             selectedDate === null ||
             inputDescription.trim() === '' ||
@@ -41,7 +41,7 @@ function NewTaskCard() {
         }
         const newTask: TaskModel = {
             id: '',
-            creator: inputCreator,
+            creator: user || '',
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
@@ -67,7 +67,7 @@ function NewTaskCard() {
             )}
             <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
                             inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
-                            inputCreator={inputCreator} inputDescription={inputDescription}
+                            inputDescription={inputDescription}
                             inputTaskName={inputTaskName} selectedDate={selectedDate}
                             setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
             <div className="ButtonsContainer">
