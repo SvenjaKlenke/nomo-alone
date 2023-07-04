@@ -7,7 +7,8 @@ import {useNavigate} from "react-router-dom";
 type Props = {
     allTasks: TaskModel[],
     getAllTasks: () => void,
-    category: string | undefined
+    category: string | undefined,
+    user: string | undefined
 }
 
 function TaskCardGallery(props: Props) {
@@ -22,16 +23,16 @@ function TaskCardGallery(props: Props) {
 
     let tasksToDisplay: TaskModel[] = [];
 
-    if (props.category === undefined || props.category === "TASKS") {
-        tasksToDisplay = props.allTasks;
+    if (props.category === undefined || props.category === "mytasks") {
+        tasksToDisplay = props.allTasks.filter(currentTask => currentTask.creator === props.user);
     } else if (["VISIT", "APPOINTMENT", "SHOPPING", "PLAYDATE"].includes(props.category)) {
         tasksToDisplay = props.allTasks.filter(currentTask => currentTask.category === props.category);
     }
 
     let categoryText = "";
 
-    if (props.category === "tasks") {
-        categoryText = "All Tasks";
+    if (props.category === "mytasks") {
+        categoryText = "My Tasks";
     } else if (props.category) {
         categoryText = props.category.charAt(0).toUpperCase() + props.category.slice(1).toLowerCase();
     }
