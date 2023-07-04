@@ -16,6 +16,7 @@ function RegisterPage() {
     });
 
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const {name, value} = e.target;
@@ -40,6 +41,10 @@ function RegisterPage() {
                     toast.error("An error occurred. Please try again.");
                 }
             });
+    }
+
+    function toggleShowPassword() {
+        setShowPassword(!showPassword);
     }
 
     return (
@@ -83,13 +88,22 @@ function RegisterPage() {
                         onChange={handleChange}
                     />
                     <label className="color">Password :</label>
-                    <input
-                        type="password"
-                        className="inputRegister"
-                        name="password"
-                        value={userModelRequest.password}
-                        onChange={handleChange}
-                    />
+                    <div className="password-input">
+                        <input
+                            type="password"
+                            className="input password"
+                            name="password"
+                            value={userModelRequest.password}
+                            onChange={handleChange}
+                        />
+                        <button
+                            type="button"
+                            className="show-password-button"
+                            onClick={toggleShowPassword}
+                        >
+                            {showPassword ? "Hide" : "Show"}
+                        </button>
+                    </div>
                     <button className="">Register</button>
                 </div>
                 <div>
