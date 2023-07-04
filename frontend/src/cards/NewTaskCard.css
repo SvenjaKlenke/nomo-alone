@@ -1,12 +1,38 @@
+.NewEditCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: center;
+    width: 333px;
+    height: 480px;
+    background: #B6D7A8;
+    border: 1px solid #274E13;
+    border-radius: 35px;
+    margin: auto;
+    font-size: 20px;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+}
+
+.CardComponents {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
 .ButtonsContainer {
     margin: 5px;
-
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .ButtonsNewEdit {
-    margin: 10px;
-    width: 150px;
-    height: 50px;
+    margin: 5px;
+    width: 135px;
+    height: 35px;
     background: #B6D7A8;
     border: 1px solid #274E13;
     border-radius: 35px;
@@ -20,6 +46,8 @@
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
     cursor: pointer;
+    flex: 1 0 135px;
+    max-width: 135px;
 }
 
 h1 {
@@ -29,9 +57,10 @@ h1 {
 }
 
 label {
-    margin-top: auto;
+    margin: 5px;
     color: #274E13;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 22px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
@@ -43,6 +72,7 @@ textarea {
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
+    font-size: 20px;
     padding: 5px 10px;
     color: #274E13;
     outline: none;
@@ -61,12 +91,13 @@ textarea:focus {
 }
 
 select {
-    height: 30px;
+    height: 40px;
     background: #F2F2F2;
     border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
+    font-size: 18px;
     padding: 5px 10px;
     color: #274E13;
     outline: none;
@@ -78,7 +109,6 @@ select {
     margin-bottom: 10px;
 
 }
-
 
 .custom-datepicker {
     height: 30px;
@@ -101,29 +131,4 @@ select {
     box-shadow: 13px 13px 100px #969696,
     -13px -13px 100px #ffffff;
 }
-
-.alert-message {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 16px;
-    padding: 10px;
-    background-color: #FF9B71;
-    color: #274E13;
-    border: 1px solid #274E13;
-    border-radius: 5px;
-    box-shadow: inset 2px 5px 10px #274E13;
-    transition: 300ms ease-in-out;
-    text-align: center;
-    margin: 0 auto 10px;
-}
-
-.alert-message.alert-visible {
-    display: block;
-}
-
-
-
-
 

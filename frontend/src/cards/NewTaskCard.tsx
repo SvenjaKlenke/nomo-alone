@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './NewTaskCard.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -8,12 +8,16 @@ import {format} from 'date-fns';
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
+import {toast} from "react-toastify";
 
-function NewTaskCard() {
+type Props = {
+    username: string
+};
+
+function NewTaskCard(props: Props) {
 
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
         handleDateChange,
         handleInputChange,
@@ -21,7 +25,6 @@ function NewTaskCard() {
         setInputAmoundOfPeople,
         selectedDate,
         inputAmoundOfPeople,
-        inputCreator,
         inputCategory,
         inputDescription,
         inputTaskName
@@ -30,18 +33,17 @@ function NewTaskCard() {
     function addNewTask() {
         if (
             inputTaskName.trim() === '' ||
-            inputCreator.trim() === '' ||
             inputCategory.trim() === '' ||
             selectedDate === null ||
             inputDescription.trim() === '' ||
             inputAmoundOfPeople === null
         ) {
-            setIsAlertVisible(true);
+            toast.error('Please fill in all fields.')
             return;
         }
         const newTask: TaskModel = {
             id: '',
-            creator: inputCreator,
+            creator: props.username,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
@@ -50,7 +52,10 @@ function NewTaskCard() {
             text: inputDescription
         };
 
-        axios.post('/tasks', newTask).then(r => navigate(-1))
+        axios.post('/tasks', newTask).then(r => {
+            navigate(-1);
+            toast.success("New task has been added!");
+        })
     }
 
     function cancelAddNewTask() {
@@ -60,23 +65,20 @@ function NewTaskCard() {
     return (
         <div>
             <h1>New Task</h1>
-            {isAlertVisible && (
-                <div className="alert-message">
-                    Please fill in all fields.
+            <div className="NewEditCard">
+                <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
+                                inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
+                                inputDescription={inputDescription}
+                                inputTaskName={inputTaskName} selectedDate={selectedDate}
+                                setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
+                <div className="ButtonsContainer">
+                    <button className="ButtonsNewEdit" onClick={addNewTask}>
+                        Add
+                    </button>
+                    <button className="ButtonsNewEdit" onClick={cancelAddNewTask}>
+                        Cancel
+                    </button>
                 </div>
-            )}
-            <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
-                            inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
-                            inputCreator={inputCreator} inputDescription={inputDescription}
-                            inputTaskName={inputTaskName} selectedDate={selectedDate}
-                            setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
-            <div className="ButtonsContainer">
-                <button className="ButtonsNewEdit" onClick={addNewTask}>
-                    Add
-                </button>
-                <button className="ButtonsNewEdit" onClick={cancelAddNewTask}>
-                    Cancel
-                </button>
             </div>
         </div>
 

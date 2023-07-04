@@ -54,7 +54,7 @@ function TaskCardGallery(props: Props) {
         <div>
             <div className="Headline">
                 <h1>{categoryText}</h1>
-                <div className="ButtonContainerRoundButton">
+                <div className="AddButton">
                     <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
                 </div>
             </div>

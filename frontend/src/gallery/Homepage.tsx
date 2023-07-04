@@ -21,9 +21,16 @@ function Homepage() {
         navigate('/shopping');
     }
 
+    function clickToNewTask() {
+        navigate("/new");
+    }
+
     return (
         <div>
             <h1>Choose a Category</h1>
+            <div className="AddButton">
+                <button className="RoundButton" onClick={clickToNewTask}>New Task</button>
+            </div>
             <div className="ButtonContainerHomepage">
                 <button className="ButtonsHomepage" onClick={clickForTasksPlaydate}>Playdate</button>
                 <button className="ButtonsHomepage" onClick={clickForTasksAppointment}>Appointment</button>

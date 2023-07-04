@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './NewTaskCard.css';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
@@ -8,9 +8,11 @@ import {format} from "date-fns";
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
+import {toast} from "react-toastify";
 
 type Props = {
     taskModels: TaskModel[];
+    username: string
 };
 
 function EditTaskCard(props: Props) {
@@ -20,7 +22,6 @@ function EditTaskCard(props: Props) {
     const actualTask: TaskModel | undefined = props.taskModels.find(currentTask => currentTask.id === id);
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
-    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const {
         handleInputChange,
         handleDateChange,
@@ -32,7 +33,6 @@ function EditTaskCard(props: Props) {
         setInputAmoundOfPeople,
         selectedDate,
         inputAmoundOfPeople,
-        inputCreator,
         inputCategory,
         inputDescription,
         inputTaskName
@@ -54,18 +54,17 @@ function EditTaskCard(props: Props) {
     function updatedTask() {
         if (
             inputTaskName.trim() === '' ||
-            inputCreator.trim() === '' ||
             inputCategory.trim() === '' ||
             selectedDate === null ||
             inputDescription.trim() === '' ||
             inputAmoundOfPeople === null
         ) {
-            setIsAlertVisible(true);
+            toast.error('Please fill in all fields.');
             return;
         }
         const updatedTask: TaskModel = {
             id: actualTask?.id ?? '',
-            creator: inputCreator,
+            creator: props.username,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
@@ -75,7 +74,11 @@ function EditTaskCard(props: Props) {
         };
 
 
-        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => navigate(-1))
+        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => {
+            navigate(-1);
+            toast.success("Update successful!");
+        })
+
     }
 
     function cancelUpdateTask() {
@@ -86,23 +89,20 @@ function EditTaskCard(props: Props) {
     return (
         <div>
             <h1>Edit Task</h1>
-            {isAlertVisible && (
-                <div className="alert-message">
-                    Please fill in all fields.
+            <div className="NewEditCard">
+                <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
+                                inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
+                                inputDescription={inputDescription}
+                                inputTaskName={inputTaskName} selectedDate={selectedDate}
+                                setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
+                <div className="ButtonsContainer">
+                    <button className="ButtonsNewEdit" onClick={updatedTask}>
+                        Update
+                    </button>
+                    <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
+                        Cancel
+                    </button>
                 </div>
-            )}
-            <CardComponents handleDateChange={handleDateChange} handleInputChange={handleInputChange}
-                            inputAmoundOfPeople={inputAmoundOfPeople} inputCategory={inputCategory}
-                            inputCreator={inputCreator} inputDescription={inputDescription}
-                            inputTaskName={inputTaskName} selectedDate={selectedDate}
-                            setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
-            <div className="ButtonsContainer">
-                <button className="ButtonsNewEdit" onClick={updatedTask}>
-                    Update
-                </button>
-                <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
-                    Cancel
-                </button>
             </div>
         </div>
     );

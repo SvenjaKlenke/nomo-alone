@@ -45,8 +45,8 @@ function App() {
                                                      category="SHOPPING"/>}/>
 
                     <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
-                    <Route path="new" element={<NewTaskCard/>}/>
-                    <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList}/>}/>
+                    <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
+                    <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList} username={user || ''}/>}/>
                 </Route>
             </Routes>
         </div>
