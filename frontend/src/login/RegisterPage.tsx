@@ -55,9 +55,6 @@ function RegisterPage() {
         setShowPassword(!showPassword);
     }
 
-    function goBack() {
-        navigate("/login");
-    }
 
     return (
         <div>
@@ -120,7 +117,7 @@ function RegisterPage() {
                         <button>Register</button>
                     </div>
                     <div className="BackButton">
-                        <button className="RoundButton" onClick={goBack}>Back</button>
+                        <button className="RoundButton" onClick={() => navigate('/login')}>Back</button>
                     </div>
                 </form>
             </div>
