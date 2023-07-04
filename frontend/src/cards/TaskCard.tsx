@@ -17,13 +17,13 @@ function TaskCard(props:Props) {
 
     return (
         <div className="Taskcard">
-            <label htmlFor="creator">Creator:</label>
-            <div className="Smallcard">
-                <p>{props.task.creator}</p>
-            </div>
             <label htmlFor="taskName">Taskname:</label>
             <div className="Smallcard">
                 <p>{props.task.name}</p>
+            </div>
+            <label htmlFor="creator">Creator:</label>
+            <div className="Smallcard">
+                <p>{props.task.creator}</p>
             </div>
             <label htmlFor="deadline">Deadline:</label>
             <div className="Smallcard">
