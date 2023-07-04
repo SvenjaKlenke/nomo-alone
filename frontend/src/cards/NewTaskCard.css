@@ -4,12 +4,12 @@
     justify-content: flex-end;
     align-content: center;
     width: 333px;
-    height: 480px;
+    height: 430px;
     background: #B6D7A8;
     border: 1px solid #274E13;
     border-radius: 35px;
     margin: auto;
-    font-size: 20px;
+    font-size: 18px;
     color: #274E13;
     outline: none;
     box-shadow: inset 2px 5px 10px #274E13;
@@ -23,7 +23,6 @@
 }
 
 .ButtonsContainer {
-    margin: 5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -39,7 +38,7 @@
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: #274E13;
     outline: none;
@@ -60,7 +59,7 @@ label {
     margin: 5px;
     color: #274E13;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 18px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
@@ -72,7 +71,7 @@ textarea {
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-size: 20px;
+    font-size: 18px;
     padding: 5px 10px;
     color: #274E13;
     outline: none;
@@ -106,8 +105,6 @@ select {
     text-align: center;
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 10px;
-
 }
 
 .custom-datepicker {
