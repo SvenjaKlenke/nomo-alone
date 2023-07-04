@@ -6,6 +6,7 @@ import axios from "axios";
 
 type Props = {
     allTasks: TaskModel[];
+    user: string | undefined;
 }
 
 function DetailsTaskCard(props: Props) {
@@ -15,6 +16,7 @@ function DetailsTaskCard(props: Props) {
     const actualTask: TaskModel | undefined = props.allTasks.find(currentTask => currentTask.id === id);
 
     const navigate = useNavigate();
+    const authorizedUser = actualTask?.creator === props.user;
 
     function clickForDelete() {
         axios.delete("/tasks/" + actualTask?.id)
@@ -55,8 +57,12 @@ function DetailsTaskCard(props: Props) {
                     <h2>Amount of People: {actualTask?.amoundOfPeople}</h2>
                 </div>
                 <div className="ButtonContainer">
-                    <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
-                    <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
+                    {authorizedUser && (
+                        <button className="ButtonsDetailsCard" onClick={clickForDelete}>Delete</button>
+                    )}
+                    {authorizedUser && (
+                        <button className="ButtonsDetailsCard" onClick={clickForEdit}>Edit</button>
+                    )}
                 </div>
                 <div className="BackButton">
                     <button className="RoundButton" onClick={goBack}>Back</button>
