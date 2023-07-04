@@ -26,9 +26,7 @@ function Homepage() {
     }
 
     function clickForMyTasks() {
-        {
             navigate("/mytasks");
-        }
     }
 
     return (
