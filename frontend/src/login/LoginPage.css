@@ -35,21 +35,6 @@
     transition: 300ms ease-in-out;
 }
 
-.input {
-    flex: 1;
-    height: 30px;
-    outline: none;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #274E13;
-    font-weight: bold;
-    font-size: 15px;
-    box-shadow: 2px 2px 12px inset black;
-    color: #274E13;
-    background: #DADADA;
-}
-
-
 .form-container {
     display: flex;
     justify-content: center;
@@ -68,11 +53,6 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-}
-
-.flex {
-    display: flex;
-    flex-direction: column;
 }
 
 .form label {
