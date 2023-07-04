@@ -43,7 +43,9 @@ function App() {
                     <Route path="/shopping"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
                                                      category="SHOPPING"/>}/>
-
+                    <Route path="/mytasks"
+                           element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
+                                                     category="mytasks"/>}/>
                     <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
                     <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList} username={user || ''}/>}/>
