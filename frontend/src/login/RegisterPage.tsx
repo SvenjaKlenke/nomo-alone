@@ -48,7 +48,7 @@ function RegisterPage() {
     }
 
     function goBack() {
-        navigate("/");
+        navigate("/login");
     }
 
     return (
