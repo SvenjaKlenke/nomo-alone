@@ -1,14 +1,60 @@
 .form {
-    display: inline-grid;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     background: linear-gradient(to right, #274E13, #B6D7A8);
     padding: 40px;
     border-radius: 10px;
     margin: 20px;
-    max-width: 400px;
-    width: 240px;
-    height: auto;
+    max-width: 275px;
+    width: 100%;
 }
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.form button {
+    flex: 1;
+    margin-top: 25px;
+    margin-bottom: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background: #B6D7A8;
+    border: 1px solid #274E13;
+    border-radius: 35px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #274E13;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+}
+
+.input {
+    flex: 1;
+    height: 30px;
+    outline: none;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #274E13;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 2px 2px 12px inset black;
+    color: #274E13;
+    background: #DADADA;
+}
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
 
 @media screen and (max-width: 480px) {
     .form {
@@ -27,25 +73,6 @@
 .flex {
     display: flex;
     flex-direction: column;
-}
-
-.form button {
-    margin-top: 25px;
-    margin-bottom: 6px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background: #B6D7A8;
-    border: 1px solid #274E13;
-    border-radius: 35px;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    text-align: center;
-    color: #274E13;
-    outline: none;
-    box-shadow: inset 2px 5px 10px #274E13;
-    transition: 300ms ease-in-out;
 }
 
 .form label {
@@ -114,11 +141,21 @@
     font-weight: bold;
 }
 
+.password-input {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
 
+.input.password {
+    flex: 1;
+    width: 180px;
+}
 
-
-
-
-
-
-
+.show-password-button {
+    font-size: 14px;
+    height: 65px;
+    margin-left: 5px;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+}
