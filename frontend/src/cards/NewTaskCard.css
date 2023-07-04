@@ -5,9 +5,9 @@
     align-content: center;
     width: 333px;
     height: 430px;
-    background: #B6D7A8;
+    background: linear-gradient(to right, #356B1C, #B6D7A8);
     border: 1px solid #274E13;
-    border-radius: 35px;
+    border-radius: 10px;
     margin: auto;
     font-size: 18px;
     color: #274E13;
@@ -59,7 +59,7 @@ label {
     margin: 5px;
     color: #274E13;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
