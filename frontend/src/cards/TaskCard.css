@@ -1,7 +1,7 @@
 .Taskcard {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 158px;
     height: 300px;
     background: #B6D7A8;
@@ -18,16 +18,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 15px 2px 0 0;
-    width: 67px;
-    height: 103px;
+    width: 135px;
+    height: 55px;
     background: #F2F2F2;
     border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 1000;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 17px;
     line-height: 10px;
     text-align: center;
     color: #274E13;
@@ -39,24 +38,18 @@
 .Buttons {
     width: 131px;
     height: 30px;
-    left: 206px;
-    top: 419px;
+    margin: 5px;
     background: #B6D7A8;
     border: 1px solid #274E13;
     border-radius: 35px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: #274E13;
     outline: none;
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
     cursor: pointer;
-}
-
-p {
-    display: block;
-    margin-bottom: 10px;
 }

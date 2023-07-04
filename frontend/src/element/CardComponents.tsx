@@ -19,7 +19,7 @@ function CardComponents(props: Props) {
 
     return (
         <div className="CardComponents">
-            <label htmlFor="taskName">Task Name:</label>
+            <label htmlFor="taskName">Taskname:</label>
             <textarea
                 id="taskName"
                 name="taskName"
