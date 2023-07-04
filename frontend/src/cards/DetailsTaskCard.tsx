@@ -17,6 +17,7 @@ function DetailsTaskCard(props: Props) {
 
     const navigate = useNavigate();
     const authorizedUser = actualTask?.creator === props.user;
+    const dontShowButtons = actualTask?.creator !== props.user;
 
     function clickForDelete() {
         axios.delete("/tasks/" + actualTask?.id)
@@ -35,7 +36,7 @@ function DetailsTaskCard(props: Props) {
     return (
         <div>
             <h1>{actualTask?.name}</h1>
-            <div className="Detailstaskcard">
+            <div className={`Detailstaskcard ${dontShowButtons ? 'without-buttons' : ''}`}>
                 <div className="Smallline">
                     <h2>Creator: {actualTask?.creator}</h2>
                 </div>
