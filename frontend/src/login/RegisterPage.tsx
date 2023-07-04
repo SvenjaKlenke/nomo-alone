@@ -117,7 +117,7 @@ function RegisterPage() {
                                 {showPassword ? "Hide" : "Show"}
                             </button>
                         </div>
-                        <button className="">Register</button>
+                        <button>Register</button>
                     </div>
                     <div className="BackButton">
                         <button className="RoundButton" onClick={goBack}>Back</button>
