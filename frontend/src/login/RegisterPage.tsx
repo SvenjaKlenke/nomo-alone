@@ -25,23 +25,31 @@ function RegisterPage() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        axios.post('/user/register', userModelRequest)
-            .then(response => {
-                navigate("/login");
-                toast.success("Register successful! Please Login.");
-            })
-            .catch(error => {
-                const errorData = error?.response?.data;
-                if (errorData) {
-                    const errorMessages: string[] = Object.values(errorData);
-                    errorMessages.forEach((errorMessage: string) => {
-                        toast.error(errorMessage);
-                    });
-                } else {
-                    toast.error("An error occurred. Please try again.");
-                }
-            });
+
+        const submitButton = e.nativeEvent.target as HTMLFormElement;
+        if (submitButton.name === 'register') {
+            axios
+                .post('/user/register', userModelRequest)
+                .then(response => {
+                    navigate("/login");
+                    toast.success("Register successful! Please Login.");
+                })
+                .catch(error => {
+                    const errorData = error?.response?.data;
+                    if (errorData) {
+                        const errorMessages: string[] = Object.values(errorData);
+                        errorMessages.forEach((errorMessage: string) => {
+                            toast.error(errorMessage);
+                        });
+                    } else {
+                        toast.error("An error occurred. Please try again.");
+                    }
+                });
+        } else {
+            navigate("/login");
+        }
     }
+
 
     function toggleShowPassword() {
         setShowPassword(!showPassword);
