@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react';
 import './LoginPage.css';
 import logo from "../Logo.png";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {UserModelRequest} from "./UserModelRequest";
 import {toast} from "react-toastify";
@@ -45,6 +45,10 @@ function RegisterPage() {
 
     function toggleShowPassword() {
         setShowPassword(!showPassword);
+    }
+
+    function goBack() {
+        navigate("/");
     }
 
     return (
@@ -106,8 +110,8 @@ function RegisterPage() {
                     </div>
                     <button className="">Register</button>
                 </div>
-                <div>
-                    <Link className="Links" to={`/login`}>back</Link>
+                <div className="BackButton">
+                    <button className="RoundButton" onClick={goBack}>Back</button>
                 </div>
             </form>
         </div>
