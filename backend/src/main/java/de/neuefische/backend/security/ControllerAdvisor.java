@@ -23,23 +23,30 @@ public class ControllerAdvisor {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handleIllegalArgumentException(IllegalArgumentException ex) {
+        String errorMessage = ex.getMessage();
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("message", errorMessage);
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
 
     private String getErrorMessage(String fieldName) {
         if (fieldName.equals("username")) {
             return "Username must have at least 4 characters and maximum 20 characters";
         }
         if (fieldName.equals("lastname")) {
-            return "The Lastname must not contain any numbers.";
+            return "The Lastname must not contain any numbers";
         }
         if (fieldName.equals("name")) {
-            return "The name and lastname must not contain any numbers.";
+            return "The name and lastname must not contain any numbers";
         }
         if (fieldName.equals("email")) {
-            return "Email address does not have a valid format.";
+            return "Email address does not have a valid format";
         }
         if (fieldName.equals("password")) {
-            return "Password must have at least 8 characters, including uppercase and lowercase letters, at least one number, and one special character.";
+            return "Password must have at least 8 characters, including uppercase and lowercase letters, at least one number, and one special character";
         }
-        return "Invalid field value.";
+        return "Invalid field value";
     }
 }
