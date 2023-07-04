@@ -26,6 +26,13 @@ public class ServiceUser implements UserDetailsService {
     }
 
     public UserModelDTO addNewUser(UserModelRequest userModelRequest) {
+        if (repoUser.findUserByUsername(userModelRequest.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+        if (repoUser.findUserByEmail(userModelRequest.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("Email address already exists");
+        }
+
         UserModel userModel = new UserModel();
         userModel.setId(generadeUUID.getUUID());
         userModel.setUsername(userModelRequest.getUsername());
