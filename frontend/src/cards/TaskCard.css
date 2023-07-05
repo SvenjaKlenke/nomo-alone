@@ -49,7 +49,7 @@
     text-align: center;
     color: #274E13;
     outline: none;
-    box-shadow: rgba(39, 78, 19, 0.7) 4px 4px 0 0;
+    box-shadow: rgba(39, 78, 19, 0.7) 2px 2px 0 0;
     transition: all .3s ease-in-out;
     z-index: 1;
     overflow: hidden;
