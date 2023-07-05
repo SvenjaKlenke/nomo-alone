@@ -7,7 +7,7 @@
     min-height: 18vh;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
     color: #DADADA;
@@ -42,6 +42,7 @@
 }
 
 .RoundButtonHeader {
+    margin-top: 10px;
     padding: 5px;
     width: 75px;
     height: 35px;
@@ -55,8 +56,11 @@
     text-align: center;
     color: #274E13;
     outline: none;
-    box-shadow: 2px 5px 10px #274E13;
-    transition: 300ms ease-in-out;
+    box-shadow: rgba(39, 78, 19, 0.7) 4px 4px 0 0;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
     margin-left: 10px;
 }
 

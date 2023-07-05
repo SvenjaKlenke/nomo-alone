@@ -38,8 +38,11 @@ h1 {
     text-align: center;
     color: #274E13;
     outline: none;
-    box-shadow: 2px 5px 10px #274E13;
-    transition: 300ms ease-in-out;
+    box-shadow: rgba(39, 78, 19, 0.7) 4px 4px 0 0;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 h6 {
