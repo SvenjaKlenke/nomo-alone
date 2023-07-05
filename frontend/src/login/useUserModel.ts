@@ -19,7 +19,7 @@ function UseUserModel() {
             })
     }
     function logout() {
-        return axios.post("/user/logout")
+        return axios.post("/api/user/logout")
             .then(() => {
                 setUser("");
                 toast.success("Logout successful!");
