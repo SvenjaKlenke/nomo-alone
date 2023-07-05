@@ -109,10 +109,10 @@ function RegisterPage() {
                         </div>
                         <button>Register</button>
                     </div>
-                    <div className="BackButton">
-                        <button className="RoundButton" onClick={() => navigate('/login')}>Back</button>
-                    </div>
                 </form>
+                <div className="BackButton">
+                    <button className="RoundButton" onClick={() => navigate(-1)}>Back</button>
+                </div>
             </div>
         </div>
     );
