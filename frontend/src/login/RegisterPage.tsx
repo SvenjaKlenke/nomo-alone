@@ -25,7 +25,7 @@ function RegisterPage() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        axios.post('/user/register', userModelRequest)
+        axios.post('/api/user/register', userModelRequest)
             .then(response => {
                 navigate("/login");
                 toast.success("Register successful! Please Login.");

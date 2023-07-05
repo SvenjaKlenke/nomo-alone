@@ -10,7 +10,7 @@ function UseUserModel() {
     const nav = useNavigate()
 
     function login(username: string, password: string) {
-        return axios.post("/user/login", undefined, {auth: {username, password}})
+        return axios.post("/api/user/login", undefined, {auth: {username, password}})
             .then((response) => {
                 getUsername();
                 toast.success("Login successful!");
@@ -29,7 +29,7 @@ function UseUserModel() {
 
     function getUsername() {
         let username = undefined;
-        axios.get("/user/me").then((response) => {
+        axios.get("/api/user/me").then((response) => {
             setUser(response.data);
             username = response.data;
             if (username === "anonymousUser" || username === undefined) {

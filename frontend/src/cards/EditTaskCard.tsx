@@ -74,7 +74,7 @@ function EditTaskCard(props: Props) {
         };
 
 
-        axios.put('/tasks/' + actualTask?.id, updatedTask).then(r => {
+        axios.put('/api/tasks/' + actualTask?.id, updatedTask).then(r => {
             navigate(-1);
             toast.success("Update successful!");
         })

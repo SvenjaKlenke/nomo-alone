@@ -22,7 +22,7 @@ function DetailsTaskCard(props: Props) {
     const dontShowButtons = actualTask?.creator !== props.user;
 
     function clickForDelete() {
-        axios.delete('/tasks/' + actualTask?.id).then(r => navigate(-1));
+        axios.delete('/api/tasks/' + actualTask?.id).then(r => navigate(-1));
     }
 
     function clickForEdit() {
