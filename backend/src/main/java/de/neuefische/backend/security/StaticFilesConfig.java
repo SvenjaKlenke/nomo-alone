@@ -1,4 +1,4 @@
-package de.neuefische.backend.config;
+package de.neuefische.backend.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -35,14 +35,3 @@ public class StaticFilesConfig implements WebMvcConfigurer {
                 });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
