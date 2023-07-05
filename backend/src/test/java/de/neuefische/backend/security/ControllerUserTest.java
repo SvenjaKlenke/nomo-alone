@@ -21,7 +21,7 @@ class ControllerUserTest {
 
     @Test
     void addNewUser() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/user/register")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
