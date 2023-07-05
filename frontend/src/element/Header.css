@@ -33,21 +33,22 @@
 }
 
 .App-logo {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
+    width: 120px;
+    height: 120px;
+    margin-top: 5px;
 }
 
 .ButtonContainerHeader {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .RoundButtonHeader {
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 5px;
     width: 75px;
-    height: 35px;
+    height: 45px;
     border-radius: 10px;
     background: #B6D7A8;
     border: 1px solid #274E13;
