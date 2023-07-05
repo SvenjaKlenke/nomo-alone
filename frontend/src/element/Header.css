@@ -45,17 +45,17 @@
 }
 
 .RoundButtonHeader {
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 5px;
-    width: 75px;
-    height: 45px;
+    width: 80px;
+    height: 40px;
     border-radius: 10px;
     background: #B6D7A8;
     border: 1px solid #C7E8B9;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
     color: #274E13;
     outline: none;
