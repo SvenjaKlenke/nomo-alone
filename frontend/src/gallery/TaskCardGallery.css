@@ -38,7 +38,7 @@ h1 {
     text-align: center;
     color: #274E13;
     outline: none;
-    box-shadow: inset 2px 5px 10px #274E13;
+    box-shadow: 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
 }
 
