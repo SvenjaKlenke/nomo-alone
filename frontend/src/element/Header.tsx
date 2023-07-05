@@ -12,9 +12,11 @@ function Header(props: Props) {
     return (
         <div>
             <header className="App-header">
-                <NavLink to="/" className="LinkHeader">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                </NavLink>
+                <div className="LogoContainer">
+                    <NavLink to="/" className="LinkHeader">
+                        <img src={logo} className="App-logo" alt="logo"/>
+                    </NavLink>
+                </div>
                 <div className="ButtonContainerHeader">
                     <button className="RoundButtonHeader" onClick={props.logout}>Logout</button>
                 </div>

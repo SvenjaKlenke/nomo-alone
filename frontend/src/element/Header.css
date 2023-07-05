@@ -1,18 +1,18 @@
-
 .App-header {
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 18vh;
+    min-height: 12vh;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
     color: #DADADA;
     position: relative;
-    padding: 0 20px;
+    padding: 0 20px 0 10px;
 }
 
 .App-header::before {
@@ -27,18 +27,20 @@
     z-index: -1;
 }
 
+.LogoContainer {
+    display: flex;
+    align-items: center;
+}
+
 .App-logo {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 0;
-    top: 1px
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
 }
 
 .ButtonContainerHeader {
     display: flex;
     align-items: center;
-
 }
 
 .RoundButtonHeader {
@@ -61,9 +63,8 @@
     z-index: 1;
     overflow: hidden;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: auto;
 }
-
 
 .App-header p {
     color: #274E13;
