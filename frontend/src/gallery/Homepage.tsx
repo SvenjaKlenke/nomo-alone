@@ -25,6 +25,10 @@ function Homepage() {
         navigate("/new");
     }
 
+    function clickForMyTasks() {
+            navigate("/mytasks");
+    }
+
     return (
         <div>
             <h1>Choose a Category</h1>
@@ -36,6 +40,7 @@ function Homepage() {
                 <button className="ButtonsHomepage" onClick={clickForTasksAppointment}>Appointment</button>
                 <button className="ButtonsHomepage" onClick={clickForTasksVisit}>Visit</button>
                 <button className="ButtonsHomepage" onClick={clickForTasksShopping}>Shopping</button>
+                <button className="ButtonsHomepage" onClick={clickForMyTasks}>My Tasks</button>
             </div>
         </div>
     );

@@ -33,17 +33,19 @@ function App() {
                     <Route path="/" element={<Homepage/>}/>
                     <Route path="/visit"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
-                                                     category="VISIT"/>}/>
+                                                     category="VISIT" user={user}/>}/>
                     <Route path="/playdate"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
-                                                     category="PLAYDATE"/>}/>
+                                                     category="PLAYDATE" user={user}/>}/>
                     <Route path="/appointment"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
-                                                     category="APPOINTMENT"/>}/>
+                                                     category="APPOINTMENT" user={user}/>}/>
                     <Route path="/shopping"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
-                                                     category="SHOPPING"/>}/>
-
+                                                     category="SHOPPING" user={user}/>}/>
+                    <Route path="/mytasks"
+                           element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
+                                                     category="mytasks" user={user}/>}/>
                     <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList}/>}/>
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
                     <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList} username={user || ''}/>}/>
