@@ -4,16 +4,33 @@
     align-items: center;
     justify-content: flex-end;
     width: 333px;
-    height: 480px;
-    background: #B6D7A8;
+    height: 465px;
+    background: linear-gradient(to right, #356B1C, #B6D7A8);
     border: 1px solid #274E13;
-    border-radius: 35px;
+    border-radius: 10px;
     margin: auto;
-    font-size: 20px;
     color: #274E13;
     outline: none;
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
+}
+
+.Detailstaskcard.without-buttons {
+    height: 420px;
+}
+
+.FieldContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    margin-top: 2px;
+}
+
+.FieldContainer label {
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 .DateContainer {
@@ -22,20 +39,19 @@
     width: 280px;
 }
 
+
 .Smallline {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
     width: 278px;
-    height: 44px;
+    height: 35px;
     background: #F2F2F2;
     border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 1000;
     text-align: center;
     outline: none;
     box-shadow: inset 2px 5px 10px #274E13;
@@ -47,15 +63,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
     width: 130px;
-    height: 44px;
+    height: 35px;
     background: #F2F2F2;
     border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 1000;
     text-align: center;
     color: #274E13;
     outline: none;
@@ -69,14 +83,12 @@
     align-items: center;
     justify-content: center;
     width: 278px;
-    height: 145px;
-    margin-top: 10px;
+    height: 90px;
     background: #F2F2F2;
     border: 1px solid #274E13;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 1000;
     text-align: center;
     color: #274E13;
     outline: none;
@@ -100,7 +112,7 @@
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: #274E13;
     outline: none;
@@ -129,4 +141,3 @@ h2 {
 .Links:hover {
     font-size: 24px;
 }
-

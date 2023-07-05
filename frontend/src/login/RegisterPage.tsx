@@ -43,79 +43,78 @@ function RegisterPage() {
             });
     }
 
+
     function toggleShowPassword() {
         setShowPassword(!showPassword);
     }
 
-    function goBack() {
-        navigate("/");
-    }
 
     return (
         <div>
             <div className="LoginLogo">
                 <img src={logo} alt="Logo"/>
             </div>
-            <form className="form" onSubmit={handleSubmit}>
-                <div className="flex">
-                    <div className="login color">Register</div>
-                    <label className="color">Username :</label>
-                    <input
-                        type="text"
-                        className="inputRegister"
-                        name="username"
-                        value={userModelRequest.username}
-                        onChange={handleChange}
-                    />
-                    <label className="color">Name :</label>
-                    <input
-                        type="text"
-                        className="inputRegister"
-                        name="name"
-                        value={userModelRequest.name}
-                        onChange={handleChange}
-                    />
-                    <label className="color">Lastname :</label>
-                    <input
-                        type="text"
-                        className="inputRegister"
-                        name="lastname"
-                        value={userModelRequest.lastname}
-                        onChange={handleChange}
-                    />
-                    <label className="color">E-Mail :</label>
-                    <input
-                        type="text"
-                        className="inputRegister"
-                        name="email"
-                        value={userModelRequest.email}
-                        onChange={handleChange}
-                    />
-                    <label className="color">Password :</label>
-                    <div className="password-input">
+            <div className="form-container">
+                <form className="form" onSubmit={handleSubmit}>
+                    <div className="flex">
+                        <div className="login color">Register</div>
+                        <label className="color">Username :</label>
                         <input
-                            type="password"
-                            className="input password"
-                            name="password"
-                            value={userModelRequest.password}
+                            type="text"
+                            className="inputRegister"
+                            name="username"
+                            value={userModelRequest.username}
                             onChange={handleChange}
                         />
-                        <button
-                            type="button"
-                            className="show-password-button"
-                            onClick={toggleShowPassword}
-                        >
-                            {showPassword ? "Hide" : "Show"}
-                        </button>
+                        <label className="color">Name :</label>
+                        <input
+                            type="text"
+                            className="inputRegister"
+                            name="name"
+                            value={userModelRequest.name}
+                            onChange={handleChange}
+                        />
+                        <label className="color">Lastname :</label>
+                        <input
+                            type="text"
+                            className="inputRegister"
+                            name="lastname"
+                            value={userModelRequest.lastname}
+                            onChange={handleChange}
+                        />
+                        <label className="color">E-Mail :</label>
+                        <input
+                            type="text"
+                            className="inputRegister"
+                            name="email"
+                            value={userModelRequest.email}
+                            onChange={handleChange}
+                        />
+                        <label className="color">Password :</label>
+                        <div className="password-input">
+                            <input
+                                type="password"
+                                className="input password"
+                                name="password"
+                                value={userModelRequest.password}
+                                onChange={handleChange}
+                            />
+                            <button
+                                type="button"
+                                className="show-password-button"
+                                onClick={toggleShowPassword}
+                            >
+                                {showPassword ? "Hide" : "Show"}
+                            </button>
+                        </div>
+                        <button>Register</button>
                     </div>
-                    <button className="">Register</button>
-                </div>
+                </form>
                 <div className="BackButton">
-                    <button className="RoundButton" onClick={goBack}>Back</button>
+                    <button className="RoundButton" onClick={() => navigate(-1)}>Back</button>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }
-
 export default RegisterPage;

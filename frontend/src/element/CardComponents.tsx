@@ -19,7 +19,7 @@ function CardComponents(props: Props) {
 
     return (
         <div className="CardComponents">
-            <label htmlFor="taskName">Task Name</label>
+            <label htmlFor="taskName">Taskname:</label>
             <textarea
                 id="taskName"
                 name="taskName"
@@ -28,7 +28,7 @@ function CardComponents(props: Props) {
                 onChange={props.handleInputChange}
             ></textarea>
 
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">Category:</label>
             <select
                 id="category"
                 name="category"
@@ -42,7 +42,7 @@ function CardComponents(props: Props) {
                 <option value="SHOPPING">Shopping</option>
             </select>
 
-            <label htmlFor="deadline">Deadline</label>
+            <label htmlFor="deadline">Deadline:</label>
             <DatePicker
                 selected={props.selectedDate}
                 onChange={props.handleDateChange}
@@ -51,7 +51,7 @@ function CardComponents(props: Props) {
                 className="custom-datepicker"
             />
 
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">Description:</label>
             <textarea
                 id="description"
                 name="description"
@@ -60,7 +60,7 @@ function CardComponents(props: Props) {
                 onChange={props.handleInputChange}
             ></textarea>
 
-            <label htmlFor="amoundOfPeople">Amount of People</label>
+            <label htmlFor="amoundOfPeople">Amount of People:</label>
             <select
                 id="amoundOfPeople"
                 name="amoundOfPeople"
