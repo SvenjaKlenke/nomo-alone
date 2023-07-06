@@ -4,11 +4,11 @@
 
 .ButtonsHomepage {
     width: 300px;
-    height: 80px;
+    height: 70px;
     margin: 10px;
     background: #B6D7A8;
-    border: 1px solid #274E13;
-    border-radius: 35px;
+    border: 1px solid #C7E8B9;
+    border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -16,8 +16,11 @@
     text-align: center;
     color: #274E13;
     outline: none;
-    box-shadow: inset 2px 5px 10px #274E13;
-    transition: 300ms ease-in-out;
+    box-shadow: rgba(39, 78, 19, 0.7) 4px 4px 0 0;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .ButtonsHomepage:hover {
@@ -25,12 +28,13 @@
 }
 
 .ButtonsHomepage:active {
-    box-shadow: 0 4px 3px 1px #B6D7A8, 0 6px 8px #274E13, 0 -4px 4px #274E13, 0 -6px 4px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+    box-shadow: 0 2px 1px 0 #B6D7A8, 0 4px 6px #274E13, 0 -2px 2px #274E13, 0 -4px 2px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
 .ButtonsHomepage:focus {
-    box-shadow: 0 4px 3px 1px #B6D7A8, 0 6px 8px #274E13, 0 -4px 4px #274E13, 0 -6px 4px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+    box-shadow: 0 2px 1px 0 #B6D7A8, 0 4px 6px #274E13, 0 -2px 2px #274E13, 0 -4px 2px #B6D7A8, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
+
 
 .AddButton {
     position: fixed;

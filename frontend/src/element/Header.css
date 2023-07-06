@@ -1,18 +1,18 @@
-
 .App-header {
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 18vh;
+    min-height: 12vh;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
     color: #DADADA;
     position: relative;
-    padding: 0 20px;
+    padding: 0 20px 0 10px;
 }
 
 .App-header::before {
@@ -27,39 +27,45 @@
     z-index: -1;
 }
 
+.LogoContainer {
+    display: flex;
+    align-items: center;
+}
+
 .App-logo {
-    position: absolute;
     width: 120px;
     height: 120px;
-    left: 0;
-    top: 1px
+    margin-top: 5px;
 }
 
 .ButtonContainerHeader {
     display: flex;
+    flex-direction: column;
     align-items: center;
-
 }
 
 .RoundButtonHeader {
+    margin-top: 10px;
     padding: 5px;
     width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    height: 40px;
+    border-radius: 10px;
     background: #B6D7A8;
-    border: 1px solid #274E13;
+    border: 1px solid #C7E8B9;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     color: #274E13;
     outline: none;
-    box-shadow: inset 2px 5px 10px #274E13;
-    transition: 300ms ease-in-out;
-    margin-left: 10px;
+    box-shadow: rgba(39, 78, 19, 0.7) 2px 2px 0 0;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: auto;
 }
-
 
 .App-header p {
     color: #274E13;
