@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function UseUserModel() {
 
-    const [user, setUser] = useState<string>()
+    const [user, setUser] = useState<string | undefined>()
     const nav = useNavigate()
 
     function login(username: string, password: string) {
@@ -14,6 +14,7 @@ function UseUserModel() {
             .then((response) => {
                 getUsername();
                 toast.success("Login successful!");
+                nav("/")
             }).catch((error) => {
                 toast.error('Please check Username/Password!')
             })
@@ -34,7 +35,7 @@ function UseUserModel() {
             username = response.data;
             if (username === "anonymousUser" || username === undefined) {
                 nav("/login")
-            } else nav("/")
+            }
         }).then(() => {
         })
             .catch(error => {
