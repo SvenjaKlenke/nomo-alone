@@ -27,7 +27,7 @@ class ControllerTasksTest {
     @Test
     @WithMockUser(username = "user", password = "123")
     void getAllTasks_returnAllTasksAsList_andStatusCode200() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/tasks"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
@@ -35,7 +35,7 @@ class ControllerTasksTest {
     @DirtiesContext
     @WithMockUser(username = "user", password = "123")
     void addNewTask_whenAddNewTask_then200OK() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -69,7 +69,7 @@ class ControllerTasksTest {
     @DirtiesContext
     @WithMockUser(username = "user", password = "123")
     void deleteTask_thenReturn200OK_andReturnEmptyList() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -92,10 +92,10 @@ class ControllerTasksTest {
         ObjectMapper objectMapper = new ObjectMapper();
         TaskModel taskModel = objectMapper.readValue(content, TaskModel.class);
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/" + taskModel.getId())
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/tasks/" + taskModel.getId())
                         .with(csrf()))
                 .andExpect(status().isOk());
-        mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/tasks"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
@@ -104,7 +104,7 @@ class ControllerTasksTest {
     @DirtiesContext
     @WithMockUser(username = "user", password = "123")
     void editTask_thenReturn200OK_andReturnTheEditTask() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -127,7 +127,7 @@ class ControllerTasksTest {
         ObjectMapper objectMapper = new ObjectMapper();
         TaskModel taskModel = objectMapper.readValue(content, TaskModel.class);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/tasks/" + taskModel.getId())
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/tasks/" + taskModel.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {

@@ -22,4 +22,5 @@ public class TaskModel {
     private String deadline;
     private int amoundOfPeople;
     private String text;
+
 }

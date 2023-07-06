@@ -20,17 +20,17 @@ function App() {
     const {login, logout, user, getUsername} = useUserModel()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => getUsername, [])
+    useEffect(() => getUsername(), [])
 
-    return (
+    return user === undefined ? null : (
         <div className="App">
-            {user === "" || user === "anonymousUser" || user === undefined ? <> </> : <Header logout={logout}/>}
+            {user === "" || user === "anonymousUser" ? <> </> : <Header logout={logout}/>}
             <ToastContainer/>
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
                 <Route path={"/register"} element={<RegisterPage/>}/>
                 <Route element={<ProtectedRoutes user={user}/>}>
-                    <Route path="/" element={<Homepage/>}/>
+
                     <Route path="/visit"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
                                                      category="VISIT" user={user}/>}/>
@@ -49,6 +49,7 @@ function App() {
                     <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList} user={user}/>}/>
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
                     <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList} username={user || ''}/>}/>
+                    <Route path="/" element={<Homepage/>}/>
                 </Route>
             </Routes>
         </div>

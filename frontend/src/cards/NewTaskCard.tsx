@@ -52,7 +52,7 @@ function NewTaskCard(props: Props) {
             text: inputDescription
         };
 
-        axios.post('/tasks', newTask).then(r => {
+        axios.post('/api/tasks', newTask).then(r => {
             navigate(-1);
             toast.success("New task has been added!");
         })

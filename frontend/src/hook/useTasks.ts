@@ -8,7 +8,7 @@ function useTasks() {
     const [tasksList, setTasksList] = useState<TaskModel[]>([])
 
     function getAllTasks() {
-        axios.get("/tasks")
+        axios.get("/api/tasks")
             .then((response) => {
                 setTasksList(response.data)
             }).catch((e) => console.log(e.message))
