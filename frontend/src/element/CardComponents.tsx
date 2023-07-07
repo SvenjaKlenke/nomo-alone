@@ -7,7 +7,7 @@ type Props = {
     handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void,
     setInputCategory: (value: string) => void,
     setInputAmoundOfPeople: (number: number | null) => void,
-    selectedDate: string | null;
+    selectedDate: string;
     inputAmoundOfPeople: number | null,
     inputCategory: string,
     inputDescription: string,
