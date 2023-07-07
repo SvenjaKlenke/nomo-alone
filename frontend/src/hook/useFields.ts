@@ -5,12 +5,12 @@ function UseFields() {
     const [inputTaskName, setInputTaskName] = useState("");
     const [inputCreator, setInputCreator] = useState("");
     const [inputCategory, setInputCategory] = useState("");
-    const [selectedDate, setSelectedDate] = useState<string | null>(null);
+    const [selectedDate, setSelectedDate] = useState<string>("");
     const [inputDescription, setInputDescription] = useState("");
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
 
     const handleDateChange = (date: Date | null) => {
-        const formattedDate = date ? format(date, "dd.MM.yyyy") : null;
+        const formattedDate = date ? format(date, "dd.MM.yyyy") : "";
         setSelectedDate(formattedDate);
     };
 

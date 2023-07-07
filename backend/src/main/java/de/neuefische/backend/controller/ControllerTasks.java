@@ -1,7 +1,6 @@
 package de.neuefische.backend.controller;
 
 import de.neuefische.backend.model.TaskModel;
-import de.neuefische.backend.model.TaskModelDTO;
 import de.neuefische.backend.service.ServiceTasks;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,7 @@ public class ControllerTasks {
     }
 
     @PutMapping({"/{id}"})
-    public TaskModel editTask(@PathVariable String id, @RequestBody TaskModelDTO taskModelDTO) {
-        return serviceTasks.editTask(taskModelDTO);
+    public TaskModel editTask(@PathVariable String id, @RequestBody TaskModel taskModel) {
+        return serviceTasks.editTask(taskModel);
     }
 }

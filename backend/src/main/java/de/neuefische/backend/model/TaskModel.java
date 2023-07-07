@@ -24,7 +24,7 @@ public class TaskModel {
     private String deadline;
     private int amoundOfPeople;
     private String text;
-    private List<String> assigneeId;
+    private List<String> assigneeName;
 
 
 }

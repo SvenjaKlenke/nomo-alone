@@ -42,7 +42,9 @@ function EditTaskCard(props: Props) {
     useEffect(() => {
         if (actualTask) {
             setInputTaskName(actualTask.name);
-            setInputCreator(actualTask.creator);
+            if (actualTask.creator !== undefined) {
+                setInputCreator(actualTask.creator);
+            }
             setInputCategory(actualTask.category);
             setSelectedDate(actualTask.deadline);
             setInputDescription(actualTask.text);
@@ -65,14 +67,14 @@ function EditTaskCard(props: Props) {
         }
         const updatedTask: TaskModel = {
             id: actualTask?.id ?? '',
-            creator: props.username,
+            creator: authorizedUser ? props.username : actualTask?.creator,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
             deadline: selectedDate,
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription,
-            assignee: props.username
+            assigneeName: [props.username, ...(actualTask?.assigneeName ?? [])]
         };
 
 

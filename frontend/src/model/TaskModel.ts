@@ -1,12 +1,12 @@
 export type TaskModel = {
     id: string,
-    creator: string,
+    creator: string | undefined,
     category: string,
     name: string,
     createDate: string,
     deadline: string,
     amoundOfPeople: number,
     text: string,
-    assignee: string
+    assigneeName: string[]
 }
 
