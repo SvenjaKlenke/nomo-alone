@@ -1,6 +1,7 @@
 package de.neuefische.backend.service;
 
 import de.neuefische.backend.model.TaskModel;
+import de.neuefische.backend.model.TaskModelDTO;
 import de.neuefische.backend.repository.RepoTasks;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,9 @@ public class ServiceTasks {
         repoTasks.deleteById(id);
     }
 
-    public TaskModel editTask(TaskModel taskModel) {
+    public TaskModel editTask(TaskModelDTO taskModelDTO) {
+        TaskModel taskModel = new TaskModel();
+
         return repoTasks.save(taskModel);
     }
 

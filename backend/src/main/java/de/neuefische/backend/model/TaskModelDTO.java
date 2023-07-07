@@ -1,21 +1,13 @@
 package de.neuefische.backend.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Document("Tasks")
-public class TaskModel {
-    @Id
+public class TaskModelDTO {
     private String id;
     private String creator;
     private Category category;
@@ -24,7 +16,5 @@ public class TaskModel {
     private String deadline;
     private int amoundOfPeople;
     private String text;
-    private List<String> assigneeId;
-
-
+    private String assignee;
 }
