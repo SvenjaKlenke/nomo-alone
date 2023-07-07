@@ -7,5 +7,6 @@ export type TaskModel = {
     deadline: string,
     amoundOfPeople: number,
     text: string,
+    assignee: string
 }
 
