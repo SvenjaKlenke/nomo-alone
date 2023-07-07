@@ -28,6 +28,6 @@ public class UserModelRequest {
     private String email;
     @NotEmpty
     @Size(min = 8)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&_]{8,}$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct}).*$")
     private String password;
 }
