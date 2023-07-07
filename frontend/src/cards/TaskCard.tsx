@@ -11,7 +11,7 @@ type Props = {
 function TaskCard(props:Props) {
 
     const navigate = useNavigate();
-    const {backUrl, saveBackUrl} = useUrl()
+    const {saveBackUrl} = useUrl()
 
 
     useEffect(() => {
@@ -22,7 +22,6 @@ function TaskCard(props:Props) {
 
     function clickForDetails() {
         saveBackUrl();
-        console.log("BackURL TaskCard: ", backUrl)
         navigate("/tasks/" + props.task.id)
     }
 
