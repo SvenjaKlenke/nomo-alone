@@ -71,7 +71,8 @@ function EditTaskCard(props: Props) {
             createDate: getTodayDate(),
             deadline: selectedDate,
             amoundOfPeople: inputAmoundOfPeople,
-            text: inputDescription
+            text: inputDescription,
+            assignee: props.username
         };
 
 
