@@ -15,9 +15,6 @@
     transition: 300ms ease-in-out;
 }
 
-.Detailstaskcard.without-buttons {
-    height: 420px;
-}
 
 .FieldContainer {
     display: flex;

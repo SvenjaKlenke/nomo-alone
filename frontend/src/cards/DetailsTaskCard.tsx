@@ -21,7 +21,6 @@ function DetailsTaskCard(props: Props) {
 
     const navigate = useNavigate();
     const authorizedUser = actualTask?.creator === props.user;
-    const dontShowButtons = actualTask?.creator !== props.user;
 
     function clickForDelete() {
         axios.delete('/api/tasks/' + actualTask?.id).then(r => navigate(-1));
@@ -35,12 +34,14 @@ function DetailsTaskCard(props: Props) {
         window.location.replace(props.backUrl);
     }
 
+    function clickForJoin() {
+
+    }
+
     return (
         <div>
             <h1>{actualTask?.name}</h1>
-            <div
-                className={`Detailstaskcard ${dontShowButtons ? 'without-buttons' : ''}`}
-            >
+            <div className="Detailstaskcard">
                 <div className="FieldContainer">
                     <label htmlFor="creator">Creator:</label>
                     <div className="Smallline">
@@ -88,6 +89,11 @@ function DetailsTaskCard(props: Props) {
                     {authorizedUser && (
                         <button className="ButtonsDetailsCard" onClick={clickForEdit}>
                             Edit
+                        </button>
+                    )}
+                    {!authorizedUser && (
+                        <button className="ButtonsDetailsCard" onClick={clickForJoin}>
+                            Join
                         </button>
                     )}
                 </div>
