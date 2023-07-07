@@ -65,6 +65,9 @@ function EditTaskCard(props: Props) {
             toast.error('Please fill in all fields.');
             return;
         }
+        const assigneeName = authorizedUser
+            ? actualTask?.assigneeName ?? [] : [props.username, ...(actualTask?.assigneeName ?? [])];
+
         const updatedTask: TaskModel = {
             id: actualTask?.id ?? '',
             creator: authorizedUser ? props.username : actualTask?.creator,
@@ -74,7 +77,7 @@ function EditTaskCard(props: Props) {
             deadline: selectedDate,
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription,
-            assigneeName: [props.username, ...(actualTask?.assigneeName ?? [])]
+            assigneeName: assigneeName
         };
 
 
