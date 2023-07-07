@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
-import {format} from 'date-fns';
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
@@ -47,7 +46,7 @@ function NewTaskCard(props: Props) {
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
-            deadline: format(selectedDate, 'dd.MM.yyyy'),
+            deadline: selectedDate,
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
         };

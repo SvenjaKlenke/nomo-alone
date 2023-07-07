@@ -4,7 +4,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import {TaskModel} from "../model/TaskModel";
-import {format} from "date-fns";
 import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
@@ -20,6 +19,7 @@ function EditTaskCard(props: Props) {
     const params = useParams();
     const id: string | undefined = params.id;
     const actualTask: TaskModel | undefined = props.taskModels.find(currentTask => currentTask.id === id);
+    const authorizedUser = actualTask?.creator === props.username;
     const navigate = useNavigate();
     const {getTodayDate} = useToday();
     const {
@@ -38,12 +38,13 @@ function EditTaskCard(props: Props) {
         inputTaskName
     } = useFields();
 
+
     useEffect(() => {
         if (actualTask) {
             setInputTaskName(actualTask.name);
             setInputCreator(actualTask.creator);
             setInputCategory(actualTask.category);
-            setSelectedDate(null);
+            setSelectedDate(actualTask.deadline);
             setInputDescription(actualTask.text);
             setInputAmoundOfPeople(actualTask.amoundOfPeople);
         }
@@ -68,7 +69,7 @@ function EditTaskCard(props: Props) {
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
-            deadline: selectedDate ? format(selectedDate, 'dd.MM.yyyy') : '',
+            deadline: selectedDate,
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription
         };
@@ -96,9 +97,16 @@ function EditTaskCard(props: Props) {
                                 inputTaskName={inputTaskName} selectedDate={selectedDate}
                                 setInputAmoundOfPeople={setInputAmoundOfPeople} setInputCategory={setInputCategory}/>
                 <div className="ButtonsContainer">
-                    <button className="ButtonsNewEdit" onClick={updatedTask}>
-                        Update
-                    </button>
+                    {authorizedUser && (
+                        <button className="ButtonsNewEdit" onClick={updatedTask}>
+                            Update
+                        </button>
+                    )}
+                    {!authorizedUser && (
+                        <button className="ButtonsNewEdit" onClick={updatedTask}>
+                            Join
+                        </button>
+                    )}
                     <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
                         Cancel
                     </button>

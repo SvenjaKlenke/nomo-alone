@@ -1,36 +1,36 @@
 import {ChangeEvent, useState} from "react";
+import {format} from "date-fns";
 
 function UseFields() {
-
-    const [inputTaskName, setInputTaskName] = useState('');
-    const [inputCreator, setInputCreator] = useState('');
-    const [inputCategory, setInputCategory] = useState('');
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [inputDescription, setInputDescription] = useState('');
+    const [inputTaskName, setInputTaskName] = useState("");
+    const [inputCreator, setInputCreator] = useState("");
+    const [inputCategory, setInputCategory] = useState("");
+    const [selectedDate, setSelectedDate] = useState<string | null>(null);
+    const [inputDescription, setInputDescription] = useState("");
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
 
-
     const handleDateChange = (date: Date | null) => {
-        setSelectedDate(date);
+        const formattedDate = date ? format(date, "dd.MM.yyyy") : null;
+        setSelectedDate(formattedDate);
     };
 
     function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {
         const {name, value} = event.target;
 
         switch (name) {
-            case 'taskName':
+            case "taskName":
                 setInputTaskName(value);
                 break;
-            case 'creator':
+            case "creator":
                 setInputCreator(value);
                 break;
-            case 'category':
+            case "category":
                 setInputCategory(value);
                 break;
-            case 'description':
+            case "description":
                 setInputDescription(value);
                 break;
-            case 'amoundOfPeople':
+            case "amoundOfPeople":
                 setInputAmoundOfPeople(Number(value));
                 break;
             default:
@@ -52,7 +52,7 @@ function UseFields() {
         inputCreator,
         inputCategory,
         inputDescription,
-        inputTaskName
+        inputTaskName,
     };
 }
 

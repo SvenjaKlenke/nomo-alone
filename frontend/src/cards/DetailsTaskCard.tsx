@@ -35,7 +35,7 @@ function DetailsTaskCard(props: Props) {
     }
 
     function clickForJoin() {
-
+        navigate('/edit/' + actualTask?.id)
     }
 
     return (
