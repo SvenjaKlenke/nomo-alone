@@ -17,7 +17,7 @@ import {ToastContainer} from "react-toastify";
 function App() {
     const {getAllTasks, tasksList} = useTasks();
     const {login, logout, user, getUsername} = useUserModel();
-    const backUrl = localStorage.getItem('backUrl') || '';
+    const backUrl = localStorage.getItem('backUrl') ?? '';
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => getUsername(), [])
