@@ -104,7 +104,7 @@ function EditTaskCard(props: Props) {
                     )}
                     {!authorizedUser && (
                         <button className="ButtonsNewEdit" onClick={updatedTask}>
-                            Join
+                            Submit
                         </button>
                     )}
                     <button className="ButtonsNewEdit" onClick={cancelUpdateTask}>
