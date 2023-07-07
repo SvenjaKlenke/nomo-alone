@@ -7,11 +7,13 @@ import axios from 'axios';
 type Props = {
     allTasks: TaskModel[];
     user: string | undefined;
+    backUrl: string
 };
 
 function DetailsTaskCard(props: Props) {
     const params = useParams();
     const id: string | undefined = params.id;
+
 
     const actualTask: TaskModel | undefined = props.allTasks.find(
         currentTask => currentTask.id === id
@@ -30,8 +32,11 @@ function DetailsTaskCard(props: Props) {
     }
 
     function goBack() {
-        navigate('/' + actualTask?.category);
+        navigate(props.backUrl);
+        console.log("GoBackfunktion:", props.backUrl)
     }
+
+    console.log("BackURL DetailsTaskCard: ", props.backUrl);
 
     return (
         <div>

@@ -13,11 +13,20 @@ import useUserModel from "./login/useUserModel";
 import ProtectedRoutes from "./login/ProtectedRoutes";
 import RegisterPage from "./login/RegisterPage";
 import {ToastContainer} from "react-toastify";
+import useUrl from "./hook/useUrl";
 
 function App() {
 
     const {getAllTasks, tasksList} = useTasks()
     const {login, logout, user, getUsername} = useUserModel()
+    const {backUrl, saveBackUrl} = useUrl()
+
+
+    useEffect(() => {
+            saveBackUrl();
+        },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => getUsername(), [])
@@ -46,7 +55,8 @@ function App() {
                     <Route path="/mytasks"
                            element={<TaskCardGallery allTasks={tasksList} getAllTasks={getAllTasks}
                                                      category="mytasks" user={user}/>}/>
-                    <Route path="tasks/:id" element={<DetailsTaskCard allTasks={tasksList} user={user}/>}/>
+                    <Route path="tasks/:id"
+                           element={<DetailsTaskCard allTasks={tasksList} user={user} backUrl={backUrl}/>}/>
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
                     <Route path="edit/:id" element={<EditTaskCard taskModels={tasksList} username={user || ''}/>}/>
                     <Route path="/" element={<Homepage/>}/>
