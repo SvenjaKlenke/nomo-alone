@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {TaskModel} from "../model/TaskModel";
 import './TaskCard.css';
 import {useNavigate} from "react-router-dom";
+import useUrl from "../hook/useUrl";
 
 type Props = {
     task: TaskModel
@@ -10,8 +11,17 @@ type Props = {
 function TaskCard(props:Props) {
 
     const navigate = useNavigate();
+    const {saveBackUrl} = useUrl()
+
+
+    useEffect(() => {
+            saveBackUrl();
+        },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []);
 
     function clickForDetails() {
+        saveBackUrl();
         navigate("/tasks/" + props.task.id)
     }
 

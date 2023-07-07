@@ -64,7 +64,7 @@ function LoginPage(props: Props) {
                         <div className="color align">
                             Don't have an account?{" "}
                             <Link className="LinkRegister" to={`/register`}>
-                                Sign in
+                                Sign up
                             </Link>
                         </div>
                     </div>

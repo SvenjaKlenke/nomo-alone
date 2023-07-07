@@ -93,7 +93,7 @@ function RegisterPage() {
                         <label className="color">Password :</label>
                         <div className="password-input">
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 className="input password"
                                 name="password"
                                 value={userModelRequest.password}

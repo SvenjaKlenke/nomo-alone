@@ -4,9 +4,11 @@ import {TaskModel} from '../model/TaskModel';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 
+
 type Props = {
     allTasks: TaskModel[];
     user: string | undefined;
+    backUrl: string
 };
 
 function DetailsTaskCard(props: Props) {
@@ -30,7 +32,7 @@ function DetailsTaskCard(props: Props) {
     }
 
     function goBack() {
-        navigate('/' + actualTask?.category);
+        window.location.replace(props.backUrl);
     }
 
     return (
