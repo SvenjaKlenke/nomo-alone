@@ -34,7 +34,6 @@ function DetailsTaskCard(props: Props) {
     const assigneeNames = actualTask?.assigneeName;
     const assigneeCount = assigneeNames?.length;
 
-
     function clickForDelete() {
         axios.delete('/api/tasks/' + actualTask?.id).then(r => navigate(-1));
     }
