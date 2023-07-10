@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './DetailsTaskCard.css';
 import {TaskModel} from '../model/TaskModel';
 import {useNavigate, useParams} from 'react-router-dom';
@@ -21,6 +21,19 @@ function DetailsTaskCard(props: Props) {
 
     const navigate = useNavigate();
     const authorizedUser = actualTask?.creator === props.user;
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleClick = () => {
+        setShowPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+    };
+
+    const assigneeNames = actualTask?.assigneeName;
+    const assigneeCount = assigneeNames?.length;
+
 
     function clickForDelete() {
         axios.delete('/api/tasks/' + actualTask?.id).then(r => navigate(-1));
@@ -77,8 +90,26 @@ function DetailsTaskCard(props: Props) {
                 <div className="FieldContainer">
                     <div className="AmountOfPeople">
                         <label htmlFor="amoundOfPeople">Amount of People:</label>
-                        <button
-                            className="CountButtonDetails">{actualTask?.assigneeName.length === actualTask?.amoundOfPeople ? "Full" : actualTask?.assigneeName.length}</button>
+                        <button className="CountButtonDetails" onClick={handleClick}>
+                            {assigneeCount === actualTask?.amoundOfPeople ? "Full" : (assigneeCount || "None")}
+                        </button>
+
+                        {showPopup && (
+                            <div className="popup">
+                                <div className="popup-content">
+                                    {assigneeCount ? (
+                                        <ol>
+                                            {assigneeNames.map((name, index) => (
+                                                <li key={index}>{name}</li>
+                                            ))}
+                                        </ol>
+                                    ) : (
+                                        <p>No one has signed up yet.</p>
+                                    )}
+                                    <button className="ButtonsDetailsCard" onClick={handleClosePopup}>Close</button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <div className="Smallline">
                         <p>{actualTask?.amoundOfPeople}</p>
