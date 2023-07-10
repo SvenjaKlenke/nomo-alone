@@ -48,16 +48,6 @@ function DetailsTaskCard(props: Props) {
     }
 
     function clickForEdit() {
-        if (assigneeNames && props.user && assigneeNames.includes(props.user)) {
-            setShowJoinPopup(true);
-            return;
-        }
-
-        if (assigneeCount === actualTask?.amoundOfPeople) {
-            setShowMaxParticipantsPopup(true);
-            return;
-        }
-
         navigate('/edit/' + actualTask?.id);
     }
 
