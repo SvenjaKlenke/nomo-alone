@@ -91,7 +91,7 @@ function DetailsTaskCard(props: Props) {
                     <div className="AmountOfPeople">
                         <label htmlFor="amoundOfPeople">Amount of People:</label>
                         <button className="CountButtonDetails" onClick={handleClick}>
-                            {assigneeCount === actualTask?.amoundOfPeople ? "Full" : (assigneeCount || "None")}
+                            {assigneeCount === actualTask?.amoundOfPeople ? "Full" : (assigneeCount ?? "None")}
                         </button>
 
                         {showPopup && (
