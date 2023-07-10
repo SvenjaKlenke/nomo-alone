@@ -55,3 +55,24 @@
     overflow: hidden;
     cursor: pointer;
 }
+
+.CountButton {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background: #B6D7A8;
+    border: 1px solid #C7E8B9;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    color: #274E13;
+    outline: none;
+    box-shadow: rgba(39, 78, 19, 0.7) 2px 2px 0 0;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
