@@ -38,6 +38,19 @@ function EditTaskCard(props: Props) {
         inputDescription,
         inputTaskName
     } = useFields();
+    const deadline = actualTask?.deadline;
+    let formattedDeadline = "";
+
+    if (deadline) {
+        const parts = deadline.split(".");
+        if (parts.length === 3) {
+            const year = parseInt(parts[2]);
+            const month = parseInt(parts[1]) - 1;
+            const day = parseInt(parts[0]);
+
+            formattedDeadline = new Date(year, month, day).toISOString();
+        }
+    }
 
 
     useEffect(() => {
@@ -47,7 +60,7 @@ function EditTaskCard(props: Props) {
                 setInputCreator(actualTask.creator);
             }
             setInputCategory(actualTask.category);
-            setSelectedDate(new Date(actualTask.deadline));
+            setSelectedDate(new Date(formattedDeadline));
             setInputDescription(actualTask.text);
             setInputAmoundOfPeople(actualTask.amoundOfPeople);
         }
