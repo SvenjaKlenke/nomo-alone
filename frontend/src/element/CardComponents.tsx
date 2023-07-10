@@ -7,7 +7,7 @@ type Props = {
     handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void,
     setInputCategory: (value: string) => void,
     setInputAmoundOfPeople: (number: number | null) => void,
-    selectedDate: string;
+    selectedDate: Date | null,
     inputAmoundOfPeople: number | null,
     inputCategory: string,
     inputDescription: string,
@@ -52,6 +52,7 @@ function CardComponents(props: Props) {
                 onChange={handleDatePickerChange}
                 placeholderText="Select Deadline"
                 dateFormat="dd.MM.yyyy"
+                locale="de"
                 className="custom-datepicker"
             />
 

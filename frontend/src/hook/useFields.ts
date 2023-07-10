@@ -1,17 +1,15 @@
 import {ChangeEvent, useState} from "react";
-import {format} from "date-fns";
 
 function UseFields() {
     const [inputTaskName, setInputTaskName] = useState("");
     const [inputCreator, setInputCreator] = useState("");
     const [inputCategory, setInputCategory] = useState("");
-    const [selectedDate, setSelectedDate] = useState<string>("");
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [inputDescription, setInputDescription] = useState("");
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
 
     const handleDateChange = (date: Date | null) => {
-        const formattedDate = date ? format(date, "dd.MM.yyyy") : "";
-        setSelectedDate(formattedDate);
+        setSelectedDate(date);
     };
 
     function handleInputChange(event: ChangeEvent<HTMLTextAreaElement>) {

@@ -8,6 +8,7 @@ import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
 import {toast} from "react-toastify";
+import {format} from "date-fns";
 
 type Props = {
     taskModels: TaskModel[];
@@ -46,7 +47,7 @@ function EditTaskCard(props: Props) {
                 setInputCreator(actualTask.creator);
             }
             setInputCategory(actualTask.category);
-            setSelectedDate(actualTask.deadline);
+            setSelectedDate(new Date(actualTask.deadline));
             setInputDescription(actualTask.text);
             setInputAmoundOfPeople(actualTask.amoundOfPeople);
         }
@@ -68,13 +69,14 @@ function EditTaskCard(props: Props) {
         const assigneeName = authorizedUser
             ? actualTask?.assigneeName ?? [] : [props.username, ...(actualTask?.assigneeName ?? [])];
 
+        const formattedDeadline = selectedDate ? format(selectedDate, 'dd.MM.yyyy') : '';
         const updatedTask: TaskModel = {
             id: actualTask?.id ?? '',
             creator: authorizedUser ? props.username : actualTask?.creator,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
-            deadline: selectedDate,
+            deadline: formattedDeadline,
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription,
             assigneeName: assigneeName

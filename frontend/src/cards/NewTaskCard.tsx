@@ -8,6 +8,7 @@ import useToday from "../hook/useToday";
 import useFields from "../hook/useFields";
 import CardComponents from "../element/CardComponents";
 import {toast} from "react-toastify";
+import {format} from "date-fns";
 
 type Props = {
     username: string
@@ -40,13 +41,14 @@ function NewTaskCard(props: Props) {
             toast.error('Please fill in all fields.')
             return;
         }
+        const formattedDeadline = selectedDate ? format(selectedDate, 'dd.MM.yyyy') : '';
         const newTask: TaskModel = {
             id: '',
             creator: props.username,
             category: inputCategory,
             name: inputTaskName,
             createDate: getTodayDate(),
-            deadline: selectedDate,
+            deadline: formattedDeadline,
             amoundOfPeople: inputAmoundOfPeople,
             text: inputDescription,
             assigneeName: []
