@@ -42,12 +42,12 @@ function DetailsTaskCard(props: Props) {
         <div>
             <h1>{actualTask?.name}</h1>
             <div className="Detailstaskcard">
-                <div className="FieldContainer">
-                    <label htmlFor="creator">Creator:</label>
-                    <div className="Smallline">
-                        <p>{actualTask?.creator}</p>
+                    <div className="FieldContainer">
+                        <label htmlFor="creator">Creator:</label>
+                        <div className="Smallline">
+                            <p>{actualTask?.creator}</p>
+                        </div>
                     </div>
-                </div>
                 <div className="FieldContainer">
                     <label htmlFor="category">Category:</label>
                     <div className="Smallline">
@@ -75,7 +75,11 @@ function DetailsTaskCard(props: Props) {
                     </div>
                 </div>
                 <div className="FieldContainer">
-                    <label htmlFor="amoundOfPeople">Amount of People:</label>
+                    <div className="AmountOfPeople">
+                        <label htmlFor="amoundOfPeople">Amount of People:</label>
+                        <button
+                            className="CountButtonDetails">{actualTask?.assigneeName.length === actualTask?.amoundOfPeople ? "Full" : actualTask?.assigneeName.length}</button>
+                    </div>
                     <div className="Smallline">
                         <p>{actualTask?.amoundOfPeople}</p>
                     </div>
