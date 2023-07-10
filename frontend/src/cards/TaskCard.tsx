@@ -27,6 +27,9 @@ function TaskCard(props:Props) {
 
     return (
         <div className="Taskcard">
+            <button className="CountButton" onClick={clickForDetails}>
+                {props.task.assigneeName.length === props.task.amoundOfPeople ? "Full" : props.task.assigneeName.length}
+            </button>
             <label htmlFor="taskName">Taskname:</label>
             <div className="Smallcard">
                 <p>{props.task.name}</p>
