@@ -52,7 +52,6 @@ function CardComponents(props: Props) {
                 onChange={handleDatePickerChange}
                 placeholderText="Select Deadline"
                 dateFormat="dd.MM.yyyy"
-                locale="de"
                 className="custom-datepicker"
             />
 
