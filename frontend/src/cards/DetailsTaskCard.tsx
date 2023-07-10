@@ -4,11 +4,10 @@ import {TaskModel} from '../model/TaskModel';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 
-
 type Props = {
     allTasks: TaskModel[];
     user: string | undefined;
-    backUrl: string
+    backUrl: string;
 };
 
 function DetailsTaskCard(props: Props) {
@@ -22,6 +21,8 @@ function DetailsTaskCard(props: Props) {
     const navigate = useNavigate();
     const authorizedUser = actualTask?.creator === props.user;
     const [showPopup, setShowPopup] = useState(false);
+    const [showJoinPopup, setShowJoinPopup] = useState(false);
+    const [showMaxParticipantsPopup, setShowMaxParticipantsPopup] = useState(false);
 
     const handleClick = () => {
         setShowPopup(true);
@@ -29,6 +30,14 @@ function DetailsTaskCard(props: Props) {
 
     const handleClosePopup = () => {
         setShowPopup(false);
+    };
+
+    const handleCloseJoinPopup = () => {
+        setShowJoinPopup(false);
+    };
+
+    const handleCloseMaxParticipantsPopup = () => {
+        setShowMaxParticipantsPopup(false);
     };
 
     const assigneeNames = actualTask?.assigneeName;
@@ -39,6 +48,16 @@ function DetailsTaskCard(props: Props) {
     }
 
     function clickForEdit() {
+        if (assigneeNames && props.user && assigneeNames.includes(props.user)) {
+            setShowJoinPopup(true);
+            return;
+        }
+
+        if (assigneeCount === actualTask?.amoundOfPeople) {
+            setShowMaxParticipantsPopup(true);
+            return;
+        }
+
         navigate('/edit/' + actualTask?.id);
     }
 
@@ -47,19 +66,29 @@ function DetailsTaskCard(props: Props) {
     }
 
     function clickForJoin() {
-        navigate('/edit/' + actualTask?.id)
+        if (assigneeNames && props.user && assigneeNames.includes(props.user)) {
+            setShowJoinPopup(true);
+            return;
+        }
+
+        if (assigneeCount === actualTask?.amoundOfPeople) {
+            setShowMaxParticipantsPopup(true);
+            return;
+        }
+
+        navigate('/edit/' + actualTask?.id);
     }
 
     return (
         <div>
             <h1>{actualTask?.name}</h1>
             <div className="Detailstaskcard">
-                    <div className="FieldContainer">
-                        <label htmlFor="creator">Creator:</label>
-                        <div className="Smallline">
-                            <p>{actualTask?.creator}</p>
-                        </div>
+                <div className="FieldContainer">
+                    <label htmlFor="creator">Creator:</label>
+                    <div className="Smallline">
+                        <p>{actualTask?.creator}</p>
                     </div>
+                </div>
                 <div className="FieldContainer">
                     <label htmlFor="category">Category:</label>
                     <div className="Smallline">
@@ -90,7 +119,7 @@ function DetailsTaskCard(props: Props) {
                     <div className="AmountOfPeople">
                         <label htmlFor="amoundOfPeople">Amount of People:</label>
                         <button className="CountButtonDetails" onClick={handleClick}>
-                            {assigneeCount === actualTask?.amoundOfPeople ? "Full" : (assigneeCount ?? "None")}
+                            {assigneeCount === actualTask?.amoundOfPeople ? 'Full' : assigneeCount ?? 'None'}
                         </button>
 
                         {showPopup && (
@@ -98,14 +127,16 @@ function DetailsTaskCard(props: Props) {
                                 <div className="popup-content">
                                     {assigneeCount ? (
                                         <ol>
-                                            {assigneeNames.map((name, index) => (
+                                            {assigneeNames?.map((name, index) => (
                                                 <li key={index}>{name}</li>
                                             ))}
                                         </ol>
                                     ) : (
                                         <p>No one has signed up yet.</p>
                                     )}
-                                    <button className="ButtonsDetailsCard" onClick={handleClosePopup}>Close</button>
+                                    <button className="ButtonsDetailsCard" onClick={handleClosePopup}>
+                                        Close
+                                    </button>
                                 </div>
                             </div>
                         )}
@@ -137,6 +168,28 @@ function DetailsTaskCard(props: Props) {
                     </button>
                 </div>
             </div>
+
+            {showJoinPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <p>You have already joined this task.</p>
+                        <button className="ButtonsDetailsCard" onClick={handleCloseJoinPopup}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {showMaxParticipantsPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <p>The maximum number of participants has been reached.</p>
+                        <button className="ButtonsDetailsCard" onClick={handleCloseMaxParticipantsPopup}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
