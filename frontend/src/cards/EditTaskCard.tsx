@@ -95,18 +95,15 @@ function EditTaskCard(props: Props) {
             assigneeName: assigneeName
         };
 
-
         axios.put('/api/tasks/' + actualTask?.id, updatedTask).then(r => {
             navigate(-1);
             toast.success("Update successful!");
-        })
-
+        });
     }
 
     function cancelUpdateTask() {
         navigate("/tasks/" + actualTask?.id);
     }
-
 
     return (
         <div>
