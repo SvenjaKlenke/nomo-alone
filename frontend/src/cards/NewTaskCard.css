@@ -122,6 +122,7 @@ select {
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;
     text-align: center;
+    z-index: 2;
 }
 
 .custom-datepicker:focus {
