@@ -27,8 +27,7 @@ function App() {
             {user === "" || user === "anonymousUser" ? (
                 <> </>
             ) : (
-                <Header logout={logout}/>
-            )}
+                <Header logout={logout}/>)}
             <ToastContainer/>
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
