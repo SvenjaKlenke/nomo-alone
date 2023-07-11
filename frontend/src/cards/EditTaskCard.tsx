@@ -13,6 +13,7 @@ import {format} from "date-fns";
 type Props = {
     taskModels: TaskModel[];
     username: string
+    getAllTasks: () => void,
 };
 
 function EditTaskCard(props: Props) {
@@ -38,6 +39,7 @@ function EditTaskCard(props: Props) {
         inputDescription,
         inputTaskName
     } = useFields();
+
     const deadline = actualTask?.deadline;
     let formattedDeadline = "";
 
@@ -96,6 +98,7 @@ function EditTaskCard(props: Props) {
         };
 
         axios.put('/api/tasks/' + actualTask?.id, updatedTask).then(r => {
+            props.getAllTasks();
             navigate("/tasks/" + actualTask?.id);
             toast.success("Update successful!");
         });

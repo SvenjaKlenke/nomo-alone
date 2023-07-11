@@ -106,7 +106,7 @@ function App() {
                             <EditTaskCard
                                 taskModels={tasksList}
                                 username={user || ''}
-                            />
+                                getAllTasks={getAllTasks}/>
                         }
                     />
                     <Route path="/" element={<Homepage/>}/>
