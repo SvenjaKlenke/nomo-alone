@@ -97,8 +97,7 @@ function App() {
                                 user={user}
                                 backUrl={backUrl}
                                 getAllTasks={getAllTasks}/>
-                        }
-                    />
+                        }/>
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
                     <Route
                         path="edit/:id"
