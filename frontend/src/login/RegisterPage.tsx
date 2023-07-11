@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {UserModelRequest} from "./UserModelRequest";
 import {toast} from "react-toastify";
+import {ImEye, ImEyeBlocked} from "react-icons/im";
+
 
 function RegisterPage() {
     const [userModelRequest, setUserModelRequest] = useState<UserModelRequest>({
@@ -104,7 +106,8 @@ function RegisterPage() {
                                 className="show-password-button"
                                 onClick={toggleShowPassword}
                             >
-                                {showPassword ? "Hide" : "Show"}
+                                {showPassword ? <ImEyeBlocked className="icon-large"/> :
+                                    <ImEye className="icon-large"/>}
                             </button>
                         </div>
                         <button>Register</button>

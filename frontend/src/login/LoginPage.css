@@ -16,8 +16,11 @@
 }
 
 .form button {
-    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 6px;
+    margin-top: 5px;
     padding-top: 4px;
     padding-bottom: 4px;
     background: #B6D7A8;
@@ -64,6 +67,10 @@
 
 .form button:hover {
     box-shadow: 2px 2px 12px #F2F2F2;
+}
+
+.icon-large {
+    font-size: 32px;
 }
 
 .input {
@@ -126,7 +133,7 @@
 .password-input {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
 }
 
 .input.password {
@@ -136,7 +143,7 @@
 
 .show-password-button {
     font-size: 12px;
-    height: 60px;
+    height: 58px;
     margin-left: 5px;
     box-shadow: inset 2px 5px 10px #274E13;
     transition: 300ms ease-in-out;

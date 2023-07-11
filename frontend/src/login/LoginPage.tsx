@@ -2,6 +2,7 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import './LoginPage.css';
 import logo from "../Logo.png";
 import {Link} from "react-router-dom";
+import {ImEye, ImEyeBlocked} from "react-icons/im";
 
 type Props = {
     login: (username: string, password: string) => void;
@@ -56,7 +57,8 @@ function LoginPage(props: Props) {
                                 className="show-password-button"
                                 onClick={toggleShowPassword}
                             >
-                                {showPassword ? "Hide" : "Show"}
+                                {showPassword ? <ImEyeBlocked className="icon-large"/> :
+                                    <ImEye className="icon-large"/>}
                             </button>
                         </div>
                         <button className="">Login</button>
