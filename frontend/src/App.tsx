@@ -96,7 +96,7 @@ function App() {
                                 allTasks={tasksList}
                                 user={user}
                                 backUrl={backUrl}
-                            />
+                                getAllTasks={getAllTasks}/>
                         }
                     />
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>

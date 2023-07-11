@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './DetailsTaskCard.css';
 import {TaskModel} from '../model/TaskModel';
 import {useNavigate, useParams} from 'react-router-dom';
@@ -8,6 +8,7 @@ type Props = {
     allTasks: TaskModel[];
     user: string | undefined;
     backUrl: string;
+    getAllTasks: () => void,
 };
 
 function DetailsTaskCard(props: Props) {
@@ -42,6 +43,11 @@ function DetailsTaskCard(props: Props) {
 
     const assigneeNames = actualTask?.assigneeName;
     const assigneeCount = assigneeNames?.length;
+
+    useEffect(() => {
+        props.getAllTasks();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function clickForDelete() {
         axios.delete('/api/tasks/' + actualTask?.id).then(r => navigate(-1));
