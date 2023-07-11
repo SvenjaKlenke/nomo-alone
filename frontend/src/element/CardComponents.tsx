@@ -4,9 +4,9 @@ import '../cards/NewTaskCard.css';
 
 type Props = {
     handleDateChange: (date: Date | null) => void,
-    handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void
+    handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void,
     setInputCategory: (value: string) => void,
-    setInputAmoundOfPeople: (number: number) => void,
+    setInputAmoundOfPeople: (number: number | null) => void,
     selectedDate: Date | null,
     inputAmoundOfPeople: number | null,
     inputCategory: string,
@@ -15,7 +15,11 @@ type Props = {
 }
 
 function CardComponents(props: Props) {
+    const parsedSelectedDate = props.selectedDate ? new Date(props.selectedDate) : null;
 
+    const handleDatePickerChange = (date: Date | null) => {
+        props.handleDateChange(date);
+    };
 
     return (
         <div className="CardComponents">
@@ -44,8 +48,8 @@ function CardComponents(props: Props) {
 
             <label htmlFor="deadline">Deadline:</label>
             <DatePicker
-                selected={props.selectedDate}
-                onChange={props.handleDateChange}
+                selected={parsedSelectedDate}
+                onChange={handleDatePickerChange}
                 placeholderText="Select Deadline"
                 dateFormat="dd.MM.yyyy"
                 className="custom-datepicker"

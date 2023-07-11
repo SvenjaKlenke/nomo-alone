@@ -27,8 +27,7 @@ function App() {
             {user === "" || user === "anonymousUser" ? (
                 <> </>
             ) : (
-                <Header logout={logout}/>
-            )}
+                <Header logout={logout}/>)}
             <ToastContainer/>
             <Routes>
                 <Route path={"/login"} element={<LoginPage login={login}/>}/>
@@ -96,9 +95,8 @@ function App() {
                                 allTasks={tasksList}
                                 user={user}
                                 backUrl={backUrl}
-                            />
-                        }
-                    />
+                                getAllTasks={getAllTasks}/>
+                        }/>
                     <Route path="new" element={<NewTaskCard username={user || ''}/>}/>
                     <Route
                         path="edit/:id"
@@ -106,7 +104,7 @@ function App() {
                             <EditTaskCard
                                 taskModels={tasksList}
                                 username={user || ''}
-                            />
+                                getAllTasks={getAllTasks}/>
                         }
                     />
                     <Route path="/" element={<Homepage/>}/>

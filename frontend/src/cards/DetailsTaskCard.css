@@ -15,9 +15,71 @@
     transition: 300ms ease-in-out;
 }
 
-.Detailstaskcard.without-buttons {
-    height: 420px;
+.CountButtonDetails {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    background: #B6D7A8;
+    border: 1px solid #C7E8B9;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    color: #274E13;
+    outline: none;
+    box-shadow: rgba(39, 78, 19, 0.7) 2px 2px 0 0;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
 }
+
+.AmountOfPeople {
+    display: flex;
+    align-items: center;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to right, #356B1C, #B6D7A8);
+    border: 1px solid #274E13;
+    border-radius: 10px;
+    margin: auto;
+    color: #274E13;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    box-shadow: inset 2px 5px 10px #274E13;
+    transition: 300ms ease-in-out;
+    padding: 20px;
+    z-index: 10000;
+}
+
+.popup-content ol {
+    list-style-type: decimal;
+    padding-left: 20px
+}
+
+.popup-content li {
+    text-align: left;
+    padding-left: 5px;
+}
+
 
 .FieldContainer {
     display: flex;

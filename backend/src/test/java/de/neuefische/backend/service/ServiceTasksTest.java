@@ -23,7 +23,8 @@ class ServiceTasksTest {
             "12.06.2023",
             "15.06.2023",
             3,
-            "This ist a Test!"
+            "This ist a Test!",
+            List.of("Assignee 1", "Assignee 2")
     );
 
 

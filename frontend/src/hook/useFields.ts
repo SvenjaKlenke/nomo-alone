@@ -1,14 +1,12 @@
 import {ChangeEvent, useState} from "react";
 
 function UseFields() {
-
-    const [inputTaskName, setInputTaskName] = useState('');
-    const [inputCreator, setInputCreator] = useState('');
-    const [inputCategory, setInputCategory] = useState('');
+    const [inputTaskName, setInputTaskName] = useState("");
+    const [inputCreator, setInputCreator] = useState("");
+    const [inputCategory, setInputCategory] = useState("");
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [inputDescription, setInputDescription] = useState('');
+    const [inputDescription, setInputDescription] = useState("");
     const [inputAmoundOfPeople, setInputAmoundOfPeople] = useState<number | null>(null);
-
 
     const handleDateChange = (date: Date | null) => {
         setSelectedDate(date);
@@ -18,19 +16,19 @@ function UseFields() {
         const {name, value} = event.target;
 
         switch (name) {
-            case 'taskName':
+            case "taskName":
                 setInputTaskName(value);
                 break;
-            case 'creator':
+            case "creator":
                 setInputCreator(value);
                 break;
-            case 'category':
+            case "category":
                 setInputCategory(value);
                 break;
-            case 'description':
+            case "description":
                 setInputDescription(value);
                 break;
-            case 'amoundOfPeople':
+            case "amoundOfPeople":
                 setInputAmoundOfPeople(Number(value));
                 break;
             default:
@@ -52,7 +50,7 @@ function UseFields() {
         inputCreator,
         inputCategory,
         inputDescription,
-        inputTaskName
+        inputTaskName,
     };
 }
 

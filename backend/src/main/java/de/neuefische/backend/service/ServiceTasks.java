@@ -32,5 +32,4 @@ public class ServiceTasks {
         return repoTasks.save(taskModel);
     }
 
-
 }
